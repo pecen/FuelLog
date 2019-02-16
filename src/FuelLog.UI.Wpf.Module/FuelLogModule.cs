@@ -5,7 +5,7 @@ using Prism.Regions;
 
 namespace FuelLog.UI.Wpf.Module
 {
-    public class ModuleModule : IModule
+    public class FuelLogModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelLog.UI.Wpf.Shell", "Fue
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelLog.UI.Wpf.Module", "FuelLog.UI.Wpf.Module\FuelLog.UI.Wpf.Module.csproj", "{DB731895-B39F-494D-B213-3FF666DD62C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelLog.Library", "FuelLog.Library\FuelLog.Library.csproj", "{CE6737B8-D587-4F4A-9FDC-1945D9E681A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelLog.Dal", "FuelLog.Dal\FuelLog.Dal.csproj", "{661677FB-D55A-4C11-9456-69046B084EB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{DB731895-B39F-494D-B213-3FF666DD62C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB731895-B39F-494D-B213-3FF666DD62C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB731895-B39F-494D-B213-3FF666DD62C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE6737B8-D587-4F4A-9FDC-1945D9E681A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE6737B8-D587-4F4A-9FDC-1945D9E681A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE6737B8-D587-4F4A-9FDC-1945D9E681A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE6737B8-D587-4F4A-9FDC-1945D9E681A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{661677FB-D55A-4C11-9456-69046B084EB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{661677FB-D55A-4C11-9456-69046B084EB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{661677FB-D55A-4C11-9456-69046B084EB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{661677FB-D55A-4C11-9456-69046B084EB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
