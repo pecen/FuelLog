@@ -99,5 +99,11 @@
       <Version>7.1.0.431</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FuelLog.UI.Wpf.Module\FuelLog.UI.Wpf.Module.csproj">
+      <Project>{db731895-b39f-494d-b213-3ff666dd62c9}</Project>
+      <Name>FuelLog.UI.Wpf.Module</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
