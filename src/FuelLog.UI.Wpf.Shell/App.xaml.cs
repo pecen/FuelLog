@@ -1,23 +1,25 @@
-﻿using FuelLog.UI.Wpf.Shell.Views;
+﻿using FuelLog.UI.Wpf.Module;
+using FuelLog.UI.Wpf.Shell.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
 
-namespace FuelLog.UI.Wpf.Shell
-{
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App
-    {
-        protected override Window CreateShell()
-        {
-            return Container.Resolve<MainWindow>();
-        }
-
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        {
-
-        }
+namespace FuelLog.UI.Wpf.Shell {
+  /// <summary>
+  /// Interaction logic for App.xaml
+  /// </summary>
+  public partial class App {
+    protected override Window CreateShell() {
+      return Container.Resolve<MainWindow>();
     }
+
+    protected override void RegisterTypes(IContainerRegistry containerRegistry) {
+    }
+
+    protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog) {
+      base.ConfigureModuleCatalog(moduleCatalog);
+
+      moduleCatalog.AddModule<FuelLogModule>();
+    }
+  }
 }

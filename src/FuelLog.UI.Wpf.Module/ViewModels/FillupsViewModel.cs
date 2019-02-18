@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FuelLog.UI.Wpf.Module.ViewModels
 {
-    public class ViewAViewModel : BindableBase
+    public class FillupsViewModel : BindableBase
     {
         private string _message;
         public string Message
@@ -17,9 +17,9 @@ namespace FuelLog.UI.Wpf.Module.ViewModels
             set { SetProperty(ref _message, value); }
         }
 
-        public ViewAViewModel()
+        public FillupsViewModel()
         {
-            Message = "View A from your Prism Module";
+            Message = "Fillups view from your Prism Module";
         }
     }
 }

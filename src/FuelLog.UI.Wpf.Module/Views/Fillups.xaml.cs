@@ -15,12 +15,12 @@ using System.Windows.Shapes;
 
 namespace FuelLog.UI.Wpf.Module.Views
 {
-    /// <summary>
-    /// Interaction logic for ViewA.xaml
-    /// </summary>
-    public partial class ViewA : UserControl
+  /// <summary>
+  /// Interaction logic for Fillups.xaml
+  /// </summary>
+  public partial class Fillups : UserControl
     {
-        public ViewA()
+        public Fillups()
         {
             InitializeComponent();
         }
