@@ -63,9 +63,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModels\FillupsViewModel.cs" />
-    <Compile Include="Views\Fillups.xaml.cs">
-      <DependentUpon>Fillups.xaml</DependentUpon>
+    <Compile Include="ViewModels\CarItemViewModel.cs" />
+    <Compile Include="Views\CarItem.xaml.cs">
+      <DependentUpon>CarItem.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -79,7 +79,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\Fillups.xaml">
+    <Page Include="Views\CarItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

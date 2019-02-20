@@ -18,9 +18,9 @@ namespace FuelLog.UI.Wpf.Module.Views
   /// <summary>
   /// Interaction logic for Fillups.xaml
   /// </summary>
-  public partial class Fillups : UserControl
+  public partial class CarItem : UserControl
     {
-        public Fillups()
+        public CarItem()
         {
             InitializeComponent();
         }

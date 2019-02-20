@@ -7,7 +7,13 @@ namespace FuelLog.UI.Wpf.Shell.ViewModels {
   public class MainWindowViewModel : BindableBase {
     private readonly IRegionManager _regionManager;
 
-    private string Title => "Fuel Log";
+    //private string Title => "Fuel Log";
+
+    private string _title = "Fuel Log";
+    public string Title {
+      get { return _title; }
+      set { SetProperty(ref _title, value); }
+    }
 
     private string _tabRegion; // => "TabRegion";
     public string TabRegion {

@@ -13,11 +13,11 @@ namespace FuelLog.UI.Wpf.Module {
     }
 
     public void OnInitialized(IContainerProvider containerProvider) {
-      _regionManager.RegisterViewWithRegion("CarListRegion", typeof(Fillups));
+      _regionManager.RegisterViewWithRegion("CarListRegion", typeof(CarItem));
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry) {
-      containerRegistry.RegisterForNavigation<Fillups>(nameof(Fillups));
+      containerRegistry.RegisterForNavigation<CarItem>(nameof(CarItem));
     }
   }
 }
