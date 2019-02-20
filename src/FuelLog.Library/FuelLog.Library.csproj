@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarEdit.cs" />
+    <Compile Include="CarInfo.cs" />
+    <Compile Include="CarList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\lib\CSLA-Core.4.9.0\analyzers\c#\Csla.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FuelLog.Dal\FuelLog.Dal.csproj">
+      <Project>{661677fb-d55a-4c11-9456-69046b084eb4}</Project>
+      <Name>FuelLog.Dal</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
