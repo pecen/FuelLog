@@ -79,7 +79,7 @@
     <Compile Include="ViewModels\CarItemViewModel.cs" />
     <Compile Include="ViewModels\CarListViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\CarItem.xaml.cs">
+    <Compile Include="UserControls\CarItem.xaml.cs">
       <DependentUpon>CarItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CarList.xaml.cs">
@@ -97,7 +97,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\CarItem.xaml">
+    <Page Include="UserControls\CarItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
