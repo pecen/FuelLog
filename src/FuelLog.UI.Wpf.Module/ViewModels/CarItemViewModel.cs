@@ -1,4 +1,5 @@
-﻿using FuelLog.UI.Wpf.Module.Views;
+﻿using FuelLog.UI.Wpf.Module.Enums;
+using FuelLog.UI.Wpf.Module.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -9,7 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FuelLog.UI.Wpf.Module.ViewModels {
-  public class CarItemViewModel : BindableBase {
+  public class CarItemViewModel : ViewModelBase {
+    public readonly string _tabHeader = TabHeaders.Cars.ToString();
+
     #region Properties
 
     private string _fullName = "BMW 320d Touring";
@@ -53,6 +56,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     public ObservableCollection<CarItem> CarItems { get; set; }
 
     public CarItemViewModel() {
+      Title = _tabHeader;
     }
   }
 }

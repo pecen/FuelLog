@@ -17,7 +17,8 @@
     Background="#494949">
     <Grid.Resources>
       <Style x:Key="LabelSmall" TargetType="Label">
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" />
+        <!--<Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" />-->
+        <Setter Property="Background" Value="#494949" />
         <Setter Property="FontFamily" Value="Arial" />
         <Setter Property="FontSize" Value="8.25pt" />
         <Setter Property="Foreground" Value="Silver" />

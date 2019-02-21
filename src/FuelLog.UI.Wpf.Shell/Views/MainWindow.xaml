@@ -4,24 +4,18 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:fuellog="clr-namespace:FuelLog.UI.Wpf.Module.Views;assembly=FuelLog.UI.Wpf.Module"
   xmlns:prism="http://prismlibrary.com/"
+  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
   Title="{Binding Title}"
-  Width="360"
+  Width="330"
   Height="491"
   prism:ViewModelLocator.AutoWireViewModel="True">
+
+  <Window.Resources>
+    <Style TargetType="telerik:RadTabItem">
+      <Setter Property="Header" Value="{Binding DataContext.Title}" />
+    </Style>
+  </Window.Resources>
   <Grid>
-    <TabControl prism:RegionManager.RegionName="{Binding TabRegion}">
-      <TabItem>
-        <fuellog:CarItem />
-      </TabItem>
-    </TabControl>
-    <!--<ContentControl prism:RegionManager.RegionName="{Binding ContentRegion}">-->
-    <!--<Grid>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="300" />
-          <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <ContentControl Grid.Column="0" prism:RegionManager.RegionName="{Binding CarListRegion}" />
-        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="Detailspage" />
-      </Grid>-->
+    <telerik:RadTabControl prism:RegionManager.RegionName="{Binding TabRegion}" />
   </Grid>
 </Window>
