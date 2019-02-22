@@ -1,4 +1,5 @@
-﻿using FuelLog.UI.Wpf.Module.Views;
+﻿//using FuelLog.UI.Wpf.Module.UserControls;
+using FuelLog.UI.Wpf.Module.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -13,11 +14,11 @@ namespace FuelLog.UI.Wpf.Module {
     }
 
     public void OnInitialized(IContainerProvider containerProvider) {
-      _regionManager.RegisterViewWithRegion("TabRegion", typeof(CarItem));
+      _regionManager.RegisterViewWithRegion("TabRegion", typeof(CarList));
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry) {
-      containerRegistry.RegisterForNavigation<CarItem>(nameof(CarItem));
+      containerRegistry.RegisterForNavigation<CarList>(nameof(CarList));
     }
   }
 }

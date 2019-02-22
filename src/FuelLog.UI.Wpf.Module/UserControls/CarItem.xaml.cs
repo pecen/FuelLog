@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FuelLog.UI.Wpf.Module.Views
+namespace FuelLog.UI.Wpf.Module.UserControls
 {
   /// <summary>
   /// Interaction logic for Fillups.xaml

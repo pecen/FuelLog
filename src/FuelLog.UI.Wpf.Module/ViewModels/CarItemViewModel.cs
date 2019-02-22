@@ -11,8 +11,6 @@ using System.Threading.Tasks;
 
 namespace FuelLog.UI.Wpf.Module.ViewModels {
   public class CarItemViewModel : ViewModelBase {
-    public readonly string _tabHeader = TabHeaders.Cars.ToString();
-
     #region Properties
 
     private string _fullName = "BMW 320d Touring";
@@ -53,10 +51,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
     #endregion
 
-    public ObservableCollection<CarItem> CarItems { get; set; }
-
     public CarItemViewModel() {
-      Title = _tabHeader;
     }
   }
 }

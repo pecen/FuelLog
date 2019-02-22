@@ -1,5 +1,5 @@
 ﻿<UserControl
-  x:Class="FuelLog.UI.Wpf.Module.Views.CarItem"
+  x:Class="FuelLog.UI.Wpf.Module.UserControls.CarItem"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -50,7 +50,7 @@
       Text="{Binding Message}" />
     -->
     <TextBlock
-      x:Name="lblFullName"
+      x:Name="txtFullName"
       Grid.Row="0"
       Grid.Column="0"
       Margin="6,6,0,0"
@@ -63,7 +63,7 @@
       Text="{Binding FullName}"
       TextAlignment="Left" />
     <TextBlock
-      x:Name="lblChosenUnits"
+      x:Name="txtChosenUnits"
       Grid.Row="0"
       Grid.Column="2"
       Padding="0,0,15,0"
@@ -72,7 +72,7 @@
       Style="{StaticResource TextBlock}"
       Text="{Binding ChosenUnits}" />
     <TextBlock
-      x:Name="lblTotalDistance"
+      x:Name="txtTotalDistance"
       Grid.Row="1"
       Grid.Column="0"
       Padding="15,0,0,0"
@@ -80,14 +80,14 @@
       Style="{StaticResource TextBlock}"
       Text="{Binding TotalDistance}" />
     <TextBlock
-      x:Name="lblTotalFillups"
+      x:Name="txtTotalFillups"
       Grid.Row="1"
       Grid.Column="1"
       VerticalAlignment="Top"
       Style="{StaticResource TextBlock}"
       Text="{Binding TotalFillups}" />
     <TextBlock
-      x:Name="lblAverageConsumption"
+      x:Name="txtAverageConsumption"
       Grid.Row="1"
       Grid.Column="2"
       Padding="0,0,15,0"
@@ -109,6 +109,7 @@
       X1="0"
       X2="1" />
     <TextBlock
+      x:Name="txtLicensePlate"
       Grid.Row="2"
       Grid.RowSpan="2"
       Grid.Column="0"

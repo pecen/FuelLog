@@ -1,7 +1,10 @@
 ﻿using FuelLog.UI.Wpf.Module;
+using FuelLog.UI.Wpf.Module.UserControls;
+using FuelLog.UI.Wpf.Module.ViewModels;
 using FuelLog.UI.Wpf.Shell.Views;
 using Prism.Ioc;
 using Prism.Modularity;
+using Prism.Mvvm;
 using System.Windows;
 
 namespace FuelLog.UI.Wpf.Shell {
@@ -20,6 +23,12 @@ namespace FuelLog.UI.Wpf.Shell {
       base.ConfigureModuleCatalog(moduleCatalog);
 
       moduleCatalog.AddModule<FuelLogModule>();
+    }
+
+    protected override void ConfigureViewModelLocator() {
+      base.ConfigureViewModelLocator();
+
+      ViewModelLocationProvider.Register<CarItem, CarItemViewModel>();
     }
   }
 }

@@ -1,13 +1,50 @@
-﻿using Prism.Commands;
+﻿using FuelLog.Library;
+using FuelLog.UI.Wpf.Module.Enums;
+using FuelLog.UI.Wpf.Module.UserControls;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace FuelLog.UI.Wpf.Module.ViewModels {
-  public class CarListViewModel : BindableBase {
-    public CarListViewModel() {
+  public class CarListViewModel : ViewModelBase {
+    public readonly string _tabHeader = TabHeaders.Cars.ToString();
 
+    public ObservableCollection<CarInfo> CarItems { get; set; }
+    //public ObservableCollection<CarInfo> CarItems2 { get; set; }
+
+    public CarListViewModel() {
+      Title = _tabHeader;
+
+      CarItems = new ObservableCollection<CarInfo>();
+
+      Initialize();
+    }
+
+    private void Initialize() {
+      //CarItems2 = CarList.GetCars();
+
+      var cars = CarList.GetCars().ToList();
+      foreach(var car in cars) {
+        CarItems.Add(car);
+      }
+
+      //foreach (var car in cars) {
+      //  var carItemVm = new CarItemViewModel {
+      //    AverageConsumption = $"{car.AverageConsumption}l/km",
+      //    ChosenUnits = car.ChosenUnits,
+      //    FullName = car.FullName,
+      //    Plate = car.LicensePlate,
+      //    TotalDistance = $"{car.TotalDistance} km",
+      //    TotalFillups = $"{car.TotalFillups} fill-ups"
+      //  };
+      //  var carItem = new CarItem {
+      //    DataContext = carItemVm
+      //  };
+      //  CarItems.Add(carItem);
+      //}
     }
   }
 }

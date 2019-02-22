@@ -117,6 +117,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FuelLog.DalMock\FuelLog.DalMock.csproj">
+      <Project>{e729945c-1f53-42ac-9ada-26aba05429a2}</Project>
+      <Name>FuelLog.DalMock</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FuelLog.UI.Wpf.Module\FuelLog.UI.Wpf.Module.csproj">
       <Project>{db731895-b39f-494d-b213-3ff666dd62c9}</Project>
       <Name>FuelLog.UI.Wpf.Module</Name>

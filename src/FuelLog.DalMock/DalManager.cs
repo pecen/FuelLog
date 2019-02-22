@@ -19,8 +19,6 @@ namespace FuelLog.DalMock
         throw new NotImplementedException(typeName);
     }
 
-    public void Dispose() {
-      throw new NotImplementedException();
-    }
+    public void Dispose() { }
   }
 }
