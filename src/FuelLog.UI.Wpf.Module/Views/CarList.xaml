@@ -14,13 +14,13 @@
     </DataTemplate>
   </UserControl.Resources>
   <Grid>
-    <ListView ItemTemplate="{StaticResource CarItem}" ItemsSource="{Binding CarList}">
+    <ListBox ItemTemplate="{StaticResource CarItem}" ItemsSource="{Binding CarList}">
       <!--<ListView.ItemTemplate>
         <DataTemplate>
           <UserControls:CarItem DataContext="{Binding CarItems}" />
         </DataTemplate>
       </ListView.ItemTemplate>-->
-    </ListView>
+    </ListBox>
     <Label
       HorizontalAlignment="Center"
       VerticalAlignment="Center"
