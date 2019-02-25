@@ -16,6 +16,6 @@
     </Style>
   </Window.Resources>
   <Grid>
-    <telerik:RadTabControl prism:RegionManager.RegionName="{Binding TabRegion}" Background="White" />
+    <telerik:RadTabControl prism:RegionManager.RegionName="{Binding TabRegion}" Background="Black" />
   </Grid>
 </Window>

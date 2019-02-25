@@ -8,49 +8,42 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace FuelLog.UI.Wpf.Module.ViewModels
-{
-    public class CarListViewModel : ViewModelBase
-    {
-        public ObservableCollection<CarItem> CarItems { get; set; }
-        //public ObservableCollection<CarInfo> CarItems2 { get; set; }
+namespace FuelLog.UI.Wpf.Module.ViewModels {
+  public class CarListViewModel : ViewModelBase {
+    public ObservableCollection<CarItem> CarItems { get; set; }
+    //public ObservableCollection<CarInfo> CarItems2 { get; set; }
 
-        public CarListViewModel()
-        {
-            Title = TabHeaders.Cars.ToString();
+    public CarListViewModel() {
+      Title = TabHeaders.Cars.ToString();
 
-            CarItems = new ObservableCollection<CarItem>();
+      CarItems = new ObservableCollection<CarItem>();
 
-            Initialize();
-        }
-
-        private void Initialize()
-        {
-            //CarItems2 = CarList.GetCars();
-
-            var cars = CarList.GetCars().ToList();
-            //foreach (var car in cars)
-            //{
-            //    CarItems.Add(car);
-            //}
-
-            foreach (var car in cars)
-            {
-                var carItemVm = new CarItemViewModel
-                {
-                    AverageConsumption = $"{car.AverageConsumption}l/km",
-                    ChosenUnits = car.ChosenUnits,
-                    FullName = car.FullName,
-                    Plate = car.LicensePlate,
-                    TotalDistance = $"{car.TotalDistance} km",
-                    TotalFillups = $"{car.TotalFillups} fill-ups"
-                };
-                var carItem = new CarItem
-                {
-                    DataContext = carItemVm
-                };
-                CarItems.Add(carItem);
-            }
-        }
+      Initialize();
     }
+
+    private void Initialize() {
+      //CarItems2 = CarList.GetCars();
+
+      var cars = CarList.GetCars().ToList();
+      //foreach (var car in cars)
+      //{
+      //    CarItems.Add(car);
+      //}
+
+      foreach (var car in cars) {
+        var carItemVm = new CarItemViewModel {
+          AverageConsumption = $"{car.AverageConsumption}l/km",
+          ChosenUnits = car.ChosenUnits,
+          FullName = car.FullName,
+          Plate = car.LicensePlate,
+          TotalDistance = $"{car.TotalDistance} km",
+          TotalFillups = $"{car.TotalFillups} fill-ups"
+        };
+        var carItem = new CarItem {
+          DataContext = carItemVm
+        };
+        CarItems.Add(carItem);
+      }
+    }
+  }
 }
