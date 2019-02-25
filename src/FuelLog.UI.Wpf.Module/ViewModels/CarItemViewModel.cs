@@ -1,5 +1,5 @@
 ﻿using FuelLog.UI.Wpf.Module.Enums;
-using FuelLog.UI.Wpf.Module.Views;
+using FuelLog.UI.Wpf.Module.UserControls;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -13,37 +13,37 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
   public class CarItemViewModel : ViewModelBase {
     #region Properties
 
-    private string _fullName = "BMW 320d Touring";
+    private string _fullName;// = "BMW 320d Touring";
     public string FullName {
       get { return _fullName; }
       set { SetProperty(ref _fullName, value); }
     }
 
-    private string _chosenUnits = "km, l, l/100km";
+    private string _chosenUnits;// = "km, l, l/100km";
     public string ChosenUnits {
       get { return _chosenUnits; }
       set { SetProperty(ref _chosenUnits, value); }
     }
 
-    private string _totalDistance = "5561 km";
+    private string _totalDistance;// = "5561 km";
     public string TotalDistance {
       get { return _totalDistance; }
       set { SetProperty(ref _totalDistance, value); }
     }
 
-    private string _totalFillups = "64 Fillups";
+    private string _totalFillups; //= "64 Fillups";
     public string TotalFillups {
       get { return _totalFillups; }
       set { SetProperty(ref _totalFillups, value); }
     }
 
-    private string _averageConsumption = "6,75l/100km";
+    private string _averageConsumption;// = "6,75l/100km";
     public string AverageConsumption {
       get { return _averageConsumption; }
       set { SetProperty(ref _averageConsumption, value); }
     }
 
-    private string plate = "OUS 307";
+    private string plate;// = "OUS 307";
     public string Plate {
       get { return plate; }
       set { SetProperty(ref plate, value); }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace FuelLog.Library {
   [Serializable]
   public class CarInfo : ReadOnlyBase<CarInfo> {
-    #region Properties and Enums
+    #region Properties
 
     public static readonly PropertyInfo<int> IdProperty = RegisterProperty<int>(c => c.Id);
     public int Id {

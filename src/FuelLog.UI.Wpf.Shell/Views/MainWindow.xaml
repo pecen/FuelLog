@@ -2,11 +2,11 @@
   x:Class="FuelLog.UI.Wpf.Shell.Views.MainWindow"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:fuellog="clr-namespace:FuelLog.UI.Wpf.Module.Views;assembly=FuelLog.UI.Wpf.Module"
+  xmlns:fuellog="clr-namespace:FuelLog.UI.Wpf.Module.UserControls;assembly=FuelLog.UI.Wpf.Module"
   xmlns:prism="http://prismlibrary.com/"
   xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
   Title="{Binding Title}"
-  Width="330"
+  Width="342"
   Height="491"
   prism:ViewModelLocator.AutoWireViewModel="True">
 
@@ -16,6 +16,6 @@
     </Style>
   </Window.Resources>
   <Grid>
-    <telerik:RadTabControl prism:RegionManager.RegionName="{Binding TabRegion}" Background="Black" />
+    <telerik:RadTabControl prism:RegionManager.RegionName="{Binding TabRegion}" />
   </Grid>
 </Window>
