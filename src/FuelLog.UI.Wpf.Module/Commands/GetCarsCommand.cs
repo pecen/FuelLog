@@ -8,6 +8,5 @@ using System.Threading.Tasks;
 
 namespace FuelLog.UI.Wpf.Module.Commands {
   public class GetCarsCommand : PubSubEvent<CarList> {
-    string s = "";
   }
 }

@@ -60,7 +60,7 @@
       FontSize="10pt"
       FontWeight="Bold"
       Foreground="Silver"
-      Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"
+      Text="{Binding FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
       TextAlignment="Left" />
     <TextBlock
       x:Name="txtChosenUnits"

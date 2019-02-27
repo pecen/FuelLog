@@ -1,6 +1,9 @@
-﻿using FuelLog.UI.Wpf.Module.Enums;
+﻿using FuelLog.Library;
+using FuelLog.UI.Wpf.Module.Commands;
+using FuelLog.UI.Wpf.Module.Enums;
 using FuelLog.UI.Wpf.Module.UserControls;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -11,6 +14,9 @@ using System.Threading.Tasks;
 
 namespace FuelLog.UI.Wpf.Module.ViewModels {
   public class CarItemViewModel : ViewModelBase {
+    private readonly IEventAggregator _eventAggregator;
+    private CarList Items { get; set; }
+
     #region Properties
 
     private string _fullName;// = "BMW 320d Touring";
@@ -51,7 +57,13 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
     #endregion
 
-    public CarItemViewModel() {
+    public CarItemViewModel(IEventAggregator eventAggregator) {
+      _eventAggregator = eventAggregator;
+
+      _eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
     }
+
+    private void CarListReceived(CarList obj) => Items = obj;
   }
 }
+

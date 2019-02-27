@@ -8,7 +8,6 @@
   xmlns:vm="clr-namespace:FuelLog.UI.Wpf.Module.ViewModels"
   prism:ViewModelLocator.AutoWireViewModel="True">
   <UserControl.Resources>
-    <!--<DataTemplate x:Key="CarItem" DataType="{x:Type vm:CarItemViewModel}">-->
     <DataTemplate x:Key="CarItem" DataType="{x:Type vm:CarItemViewModel}">
       <uc:CarItem />
     </DataTemplate>

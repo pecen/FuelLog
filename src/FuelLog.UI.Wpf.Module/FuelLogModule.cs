@@ -1,4 +1,5 @@
 ﻿//using FuelLog.UI.Wpf.Module.UserControls;
+using FuelLog.UI.Wpf.Module.UserControls;
 using FuelLog.UI.Wpf.Module.Views;
 using Prism.Ioc;
 using Prism.Modularity;

@@ -15,14 +15,13 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     private IEventAggregator _eventAggregator;
 
     public ObservableCollection<CarInfo> CarItems { get; set; }
-    //public ObservableCollection<CarInfo> CarItems2 { get; set; }
 
-    public DelegateCommand GetCarsCommand { get; set; }
+    //public DelegateCommand GetCarsCommand { get; set; }
 
     public CarListViewModel(IEventAggregator eventAggregator) {
       _eventAggregator = eventAggregator;
 
-      GetCarsCommand = new DelegateCommand(Execute);
+      //GetCarsCommand = new DelegateCommand(Execute);
 
       Title = TabHeaders.Cars.ToString();
       //CarItems = new ObservableCollection<CarItem>();
@@ -30,6 +29,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       //Initialize();
 
       _eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
+      Execute();
     }
 
     private void CarListReceived(CarList obj) => CarItems = obj;
