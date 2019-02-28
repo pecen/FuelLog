@@ -59,7 +59,7 @@
       FontSize="10pt"
       FontWeight="Bold"
       Foreground="Silver"
-      Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"
+      Text="{Binding FullName}"
       TextAlignment="Left" />
     <TextBlock
       x:Name="txtChosenUnits"
@@ -77,7 +77,7 @@
       Padding="15,0,0,0"
       VerticalAlignment="Top"
       Style="{StaticResource TextBlock}"
-      Text="{Binding TotalDistance, UpdateSourceTrigger=PropertyChanged}" />
+      Text="{Binding TotalDistance}" />
     <TextBlock
       x:Name="txtTotalFillups"
       Grid.Row="1"
@@ -116,6 +116,6 @@
       Margin="6,-10,0,0"
       VerticalAlignment="Top"
       Style="{StaticResource TextBlock}"
-      Text="{Binding Plate}" />
+      Text="{Binding LicensePlate}" />
   </Grid>
 </UserControl>

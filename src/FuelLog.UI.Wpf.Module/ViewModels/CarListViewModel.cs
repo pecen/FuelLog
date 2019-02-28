@@ -37,32 +37,5 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     private void Execute() {
       _eventAggregator.GetEvent<GetCarsCommand>().Publish(CarList.GetCars());
     }
-
-    private void Initialize() {
-      //CarItems2 = CarList.GetCars();
-
-      var cars = CarList.GetCars().ToList();
-      //foreach (var car in cars)
-      //{
-      //    CarItems.Add(car);
-      //}
-
-      foreach (var car in cars) {
-        // var carItemVm = new CarItemViewModel {
-        //   AverageConsumption = $"{car.AverageConsumption}l/km",
-        //   ChosenUnits = car.ChosenUnits,
-        //   FullName = car.FullName,
-        //   Plate = car.LicensePlate,
-        //   TotalDistance = $"{car.TotalDistance} km",
-        //   TotalFillups = $"{car.TotalFillups} fill-ups"
-        // };
-        //var carItem = new CarItem {
-        //  DataContext = carItemVm
-        //};
-        //CarItems.Add(carItem);
-
-        CarItems.Add(car);
-      }
-    }
   }
 }

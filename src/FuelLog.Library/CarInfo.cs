@@ -69,20 +69,20 @@ namespace FuelLog.Library {
       get { return DistanceUnit + ", " + VolumeUnit + ", " + ConsumptionUnit; }
     }
 
-    public static readonly PropertyInfo<int> TotalFillupsProperty = RegisterProperty<int>(c => c.TotalFillups);
-    public int TotalFillups {
+    public static readonly PropertyInfo<string> TotalFillupsProperty = RegisterProperty<string>(c => c.TotalFillups);
+    public string TotalFillups {
       get { return GetProperty(TotalFillupsProperty); }
       set { LoadProperty(TotalFillupsProperty, value); }
     }
 
-    public static readonly PropertyInfo<int> TotalDistanceProperty = RegisterProperty<int>(c => c.TotalDistance);
-    public int TotalDistance {
+    public static readonly PropertyInfo<string> TotalDistanceProperty = RegisterProperty<string>(c => c.TotalDistance);
+    public string TotalDistance {
       get { return GetProperty(TotalDistanceProperty); }
       set { LoadProperty(TotalDistanceProperty, value); }
     }
 
-    public static readonly PropertyInfo<decimal> AverageConsumptionProperty = RegisterProperty<decimal>(c => c.AverageConsumption);
-    public decimal AverageConsumption {
+    public static readonly PropertyInfo<string> AverageConsumptionProperty = RegisterProperty<string>(c => c.AverageConsumption);
+    public string AverageConsumption {
       get { return GetProperty(AverageConsumptionProperty); }
       set { LoadProperty(AverageConsumptionProperty, value); }
     }
@@ -141,9 +141,9 @@ namespace FuelLog.Library {
       DistanceUnit = item.DistanceUnit;
       VolumeUnit = item.VolumeUnit;
       ConsumptionUnit = item.ConsumptionUnit;
-      TotalFillups = item.TotalFillups;
-      TotalDistance = item.TotalDistance;
-      AverageConsumption = item.AverageConsumption;
+      TotalFillups = item.TotalFillups.ToString() + " Fillups";
+      TotalDistance = item.TotalDistance.ToString() + " km";
+      AverageConsumption = item.AverageConsumption.ToString() + $" {ConsumptionUnit}";
 
       //CarSettings = DataPortal.FetchChild<CarSettingsInfo>(Id);
       //CarStatistics = DataPortal.FetchChild<CarStatisticsInfo>(Id);
