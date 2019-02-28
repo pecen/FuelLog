@@ -30,7 +30,6 @@ namespace FuelLog.Library {
       set { LoadProperty(ModelProperty, value); }
     }
 
-    //public static readonly PropertyInfo<string> FullNameProperty = RegisterProperty<string>(c => c.FullName);
     public string FullName {
       get { return Make + " " + Model; }
     }

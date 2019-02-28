@@ -5,10 +5,9 @@
   xmlns:Views="clr-namespace:FuelLog.UI.Wpf.Module.UserControls"
   xmlns:prism="http://prismlibrary.com/"
   xmlns:uc="clr-namespace:FuelLog.UI.Wpf.Module.UserControls"
-  xmlns:vm="clr-namespace:FuelLog.UI.Wpf.Module.ViewModels"
   prism:ViewModelLocator.AutoWireViewModel="True">
   <UserControl.Resources>
-    <DataTemplate x:Key="CarItem" DataType="{x:Type vm:CarItemViewModel}">
+    <DataTemplate x:Key="CarItem">
       <uc:CarItem DataContext="{Binding}" />
     </DataTemplate>
   </UserControl.Resources>
@@ -18,17 +17,8 @@
         Background="Black"
         BorderThickness="0"
         ItemTemplate="{StaticResource CarItem}"
-        ItemsSource="{Binding CarItems, UpdateSourceTrigger=PropertyChanged}">
-        <!--<ListView.ItemTemplate>
-        <DataTemplate>
-          <UserControls:CarItem DataContext="{Binding CarItems}" />
-        </DataTemplate>
-      </ListView.ItemTemplate>-->
+        ItemsSource="{Binding CarItems}">
       </ListView>
-      <!--<Label
-      HorizontalAlignment="Center"
-      VerticalAlignment="Center"
-      Content="CarList View" />-->
     </StackPanel>
   </Grid>
 </UserControl>

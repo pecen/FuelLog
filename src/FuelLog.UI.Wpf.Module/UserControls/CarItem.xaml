@@ -40,14 +40,6 @@
       <ColumnDefinition Width="*" />
       <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
-
-    <!--  <TextBlock  -->
-    <!--
-      HorizontalAlignment="Center"
-      VerticalAlignment="Center"
-      Style="{StaticResource TextBlock}"
-      Text="{Binding Message}" />
-    -->
     <TextBlock
       x:Name="txtFullName"
       Grid.Row="0"

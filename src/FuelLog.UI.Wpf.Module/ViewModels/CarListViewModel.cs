@@ -16,6 +16,8 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
     public ObservableCollection<CarInfo> CarItems { get; set; }
 
+    // This one is used only if there should be like an update button
+    // to bind to
     //public DelegateCommand GetCarsCommand { get; set; }
 
     public CarListViewModel(IEventAggregator eventAggregator) {
@@ -24,9 +26,6 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       //GetCarsCommand = new DelegateCommand(Execute);
 
       Title = TabHeaders.Cars.ToString();
-      //CarItems = new ObservableCollection<CarItem>();
-
-      //Initialize();
 
       _eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
       Execute();

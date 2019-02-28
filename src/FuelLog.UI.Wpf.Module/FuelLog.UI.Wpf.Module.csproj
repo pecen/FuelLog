@@ -79,7 +79,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Enums\TabHeaders.cs" />
-    <Compile Include="ViewModels\CarItemViewModel.cs" />
     <Compile Include="ViewModels\CarListViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="UserControls\CarItem.xaml.cs">
