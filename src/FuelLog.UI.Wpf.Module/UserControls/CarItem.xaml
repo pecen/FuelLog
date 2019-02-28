@@ -8,7 +8,6 @@
   xmlns:prism="http://prismlibrary.com/"
   d:DesignHeight="60"
   d:DesignWidth="311"
-  prism:ViewModelLocator.AutoWireViewModel="True"
   mc:Ignorable="d">
   <!--<Grid Width="311" Height="60" Background="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}">-->
   <Grid
@@ -60,7 +59,7 @@
       FontSize="10pt"
       FontWeight="Bold"
       Foreground="Silver"
-      Text="{Binding FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+      Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"
       TextAlignment="Left" />
     <TextBlock
       x:Name="txtChosenUnits"

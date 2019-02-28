@@ -60,7 +60,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     public CarItemViewModel(IEventAggregator eventAggregator) {
       _eventAggregator = eventAggregator;
 
-      _eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
+      //_eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
     }
 
     private void CarListReceived(CarList obj) => Items = obj;

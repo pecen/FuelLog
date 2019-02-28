@@ -9,7 +9,7 @@
   prism:ViewModelLocator.AutoWireViewModel="True">
   <UserControl.Resources>
     <DataTemplate x:Key="CarItem" DataType="{x:Type vm:CarItemViewModel}">
-      <uc:CarItem />
+      <uc:CarItem DataContext="{Binding}" />
     </DataTemplate>
   </UserControl.Resources>
   <Grid>

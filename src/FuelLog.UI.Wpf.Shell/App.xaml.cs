@@ -28,7 +28,7 @@ namespace FuelLog.UI.Wpf.Shell {
     protected override void ConfigureViewModelLocator() {
       base.ConfigureViewModelLocator();
 
-      ViewModelLocationProvider.Register<CarItem, CarItemViewModel>();
+      //ViewModelLocationProvider.Register<CarItem, CarItemViewModel>();
     }
   }
 }
