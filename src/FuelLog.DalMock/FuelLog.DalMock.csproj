@@ -44,6 +44,7 @@
     <Compile Include="CarDal.cs" />
     <Compile Include="DalManager.cs" />
     <Compile Include="MockDb\CarData.cs" />
+    <Compile Include="MockDb\FillupData.cs" />
     <Compile Include="MockDb\MockDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
