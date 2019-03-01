@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\GetCarsCommand.cs" />
+    <Compile Include="Commands\GetFillupsCommand.cs" />
     <Compile Include="Converters\NameToContentConverter.cs" />
     <Compile Include="FuelLogModule.cs" />
     <Compile Include="Models\Car.cs" />
