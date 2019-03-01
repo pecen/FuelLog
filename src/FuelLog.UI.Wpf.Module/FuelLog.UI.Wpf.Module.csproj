@@ -79,6 +79,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Enums\TabHeaders.cs" />
+    <Compile Include="UserControls\FillupItem.xaml.cs">
+      <DependentUpon>FillupItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CarListViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="UserControls\CarItem.xaml.cs">
@@ -105,6 +108,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="UserControls\CarItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\FillupItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
