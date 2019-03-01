@@ -65,6 +65,10 @@ namespace FuelLog.Library {
       set { LoadProperty(NoteProperty, value); }
     }
 
+    public string DaysSinceLast { get; set; }
+    public string DistanceSinceLast { get; set; }
+    public string AverageConsumption { get; set; }
+
     #endregion
 
     #region Data Access
@@ -72,11 +76,24 @@ namespace FuelLog.Library {
     private void Child_Fetch(FillupDto item) {
       Id = item.Id;
       CarId = item.CarId;
-      FillupDate = $"{item.FillUpDate.ToShortDateString()}";
-      Odometer = $"{item.Odometer} Km";
+      FillupDate = item.FillUpDate.ToShortDateString();
       Amount = $"{item.Amount} L";
-      VolumePrice = $"SEK {Math.Round(item.VolumePrice, 2)}/L";
+      Odometer = $"{item.Odometer} Km";
       TotalCost = $"SEK {Math.Round(item.Amount * item.VolumePrice, 2)}";
+
+      DaysSinceLast = item.DaysSinceLast == 0
+        ? string.Empty
+        : $"(+ {item.DaysSinceLast} days)";
+
+      DistanceSinceLast = item.DaysSinceLast == 0
+        ? string.Empty
+        : $"+ {item.DistanceSinceLast} Km";
+
+      AverageConsumption = item.AverageConsumption == 0
+        ? string.Empty
+        : $"{Math.Round(item.AverageConsumption, 2)} L/100 Km";
+
+      VolumePrice = $"SEK {Math.Round(item.VolumePrice, 2)}/L";
       PartialFillup = item.PartialFillUp;
       Note = item.Note;
     }

@@ -23,6 +23,7 @@ namespace FuelLog.DalMock {
     public List<FillupDto> FetchForCar(int carId) {
       var data = (from r in MockDb.MockDb.Fillups
                   where r.CarId == carId
+                  orderby r.FillUpDate
                   select new FillupDto {
                     Id = r.Id,
                     CarId = r.CarId,

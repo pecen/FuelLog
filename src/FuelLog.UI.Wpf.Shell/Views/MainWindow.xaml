@@ -8,7 +8,8 @@
   Title="{Binding Title}"
   Width="342"
   Height="491"
-  prism:ViewModelLocator.AutoWireViewModel="True">
+  prism:ViewModelLocator.AutoWireViewModel="True"
+  WindowStartupLocation="CenterScreen">
 
   <Window.Resources>
     <Style TargetType="telerik:RadTabItem">

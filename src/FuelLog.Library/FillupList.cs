@@ -1,5 +1,6 @@
 ﻿using Csla;
 using FuelLog.Dal;
+using FuelLog.Dal.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,12 +29,27 @@ namespace FuelLog.Library {
         var dal = dalManager.GetProvider<IFillupDal>();
         var data = dal.FetchForCar(carId);
 
-        foreach (var item in data)
-          Add(DataPortal.FetchChild<FillupInfo>(item));
+        CalcSummaries(data);
+
+        foreach (var item in data) {
+          Add(DataPortal.FetchChild<FillupInfo>(item)); 
+        }
       }
 
       RaiseListChangedEvents = true;
       IsReadOnly = true;
+    }
+
+    private void CalcSummaries(List<FillupDto> data) {
+      for(int i = 1; i < data.Count(); i++) {
+        var daysSinceLast = (data[i].FillUpDate - data[i - 1].FillUpDate).Days;
+        var distanceSinceLast = data[i].Odometer - data[i - 1].Odometer;
+        var consumption = data[i].Amount / distanceSinceLast * 100;
+
+        data[i].DaysSinceLast = daysSinceLast;
+        data[i].DistanceSinceLast = distanceSinceLast;
+        data[i].AverageConsumption = consumption;
+      }
     }
 
     #endregion

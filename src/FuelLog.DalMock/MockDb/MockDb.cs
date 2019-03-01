@@ -17,9 +17,9 @@ namespace FuelLog.DalMock.MockDb {
             };
 
       Fillups = new List<FillupData>{
-                new FillupData{ Id = 0, CarId = 0, FillUpDate = new DateTime(2016, 05, 01), Odometer = 52816, Amount = 66.23, VolumePrice = 12.14, PartialFillUp = false, Note = "First fillup for BMW" },
-                new FillupData{ Id = 1, CarId = 1, FillUpDate = new DateTime(2016, 05, 16), Odometer = 53661, Amount = 64.23, VolumePrice = 12.58, PartialFillUp = false, Note = "First fillup for Volvo" },
-                new FillupData{ Id = 2, CarId = 1, FillUpDate = new DateTime(2016, 05, 24), Odometer = 54441, Amount = 66.23, VolumePrice = 12.54, PartialFillUp = false, Note = "Second fillup for Volvo" },
+                new FillupData{ Id = 0, CarId = 0, FillUpDate = new DateTime(2016, 05, 01), Odometer = 52816, Amount = 66.23m, VolumePrice = 12.14m, PartialFillUp = false, Note = "First fillup for BMW" },
+                new FillupData{ Id = 1, CarId = 1, FillUpDate = new DateTime(2016, 05, 16), Odometer = 53661, Amount = 64.23m, VolumePrice = 12.58m, PartialFillUp = false, Note = "First fillup for Volvo" },
+                new FillupData{ Id = 2, CarId = 1, FillUpDate = new DateTime(2016, 05, 24), Odometer = 54441, Amount = 66.23m, VolumePrice = 12.54m, PartialFillUp = false, Note = "Second fillup for Volvo" },
             };
     }
   }

@@ -45,7 +45,7 @@
       HorizontalAlignment="Left"
       VerticalAlignment="Top"
       Style="{StaticResource TextBox}"
-      Text="(+16 days)"
+      Text="{Binding DaysSinceLast}"
       TextAlignment="Left" />
     <TextBlock
       Width="60"
@@ -72,7 +72,7 @@
       HorizontalAlignment="Left"
       VerticalAlignment="Top"
       Style="{StaticResource TextBox}"
-      Text="+ 745 Km"
+      Text="{Binding DistanceSinceLast}"
       TextAlignment="Right" />
     <TextBlock
       Width="66"
@@ -102,7 +102,7 @@
       FontWeight="Bold"
       Foreground="#FFE1E180"
       Style="{StaticResource TextBox}"
-      Text="9.07 L/100 Km"
+      Text="{Binding AverageConsumption}"
       TextAlignment="Right" />
   </Grid>
 </UserControl>

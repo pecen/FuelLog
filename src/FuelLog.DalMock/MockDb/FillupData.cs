@@ -10,8 +10,8 @@ namespace FuelLog.DalMock.MockDb {
     public int CarId { get; set; }
     public DateTime FillUpDate { get; set; }
     public int Odometer { get; set; }
-    public double Amount { get; set; }
-    public double VolumePrice { get; set; }
+    public decimal Amount { get; set; }
+    public decimal VolumePrice { get; set; }
     public bool PartialFillUp { get; set; }
     public string Note { get; set; }
   }
