@@ -23,6 +23,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       set {
         SetProperty(ref _selectedCar, value);
         _eventAggregator.GetEvent<GetFillupsCommand>().Publish(FillupList.GetFillups(_selectedCar.Id));
+        RaisePropertyChanged(nameof(Fillups));
       }
     }
 

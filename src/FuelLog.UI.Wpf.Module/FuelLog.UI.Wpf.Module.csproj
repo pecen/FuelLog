@@ -69,7 +69,6 @@
     <Compile Include="Commands\GetFillupsCommand.cs" />
     <Compile Include="Converters\NameToContentConverter.cs" />
     <Compile Include="FuelLogModule.cs" />
-    <Compile Include="Models\Car.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
