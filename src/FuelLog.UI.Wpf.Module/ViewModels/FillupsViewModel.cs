@@ -22,11 +22,12 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       get { return _selectedCar; }
       set {
         SetProperty(ref _selectedCar, value);
-        _eventAggregator.GetEvent<GetFillupsCommand>().Publish(FillupList.GetFillups(_selectedCar.Id));
+        _eventAggregator
+          .GetEvent<GetFillupsCommand>()
+          .Publish(FillupList.GetFillups(_selectedCar.Id));
         RaisePropertyChanged(nameof(Fillups));
       }
     }
-
 
     public FillupsViewModel(IEventAggregator eventAggregator) {
       Title = TabHeaders.Fillups.ToString();
