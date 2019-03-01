@@ -44,8 +44,10 @@
   <ItemGroup>
     <Compile Include="DalFactory.cs" />
     <Compile Include="Dto\CarDto.cs" />
+    <Compile Include="Dto\FillupDto.cs" />
     <Compile Include="ICarDal.cs" />
     <Compile Include="IDalManager.cs" />
+    <Compile Include="IFillupDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -47,6 +47,8 @@
     <Compile Include="CarEdit.cs" />
     <Compile Include="CarInfo.cs" />
     <Compile Include="CarList.cs" />
+    <Compile Include="FillupInfo.cs" />
+    <Compile Include="FillupList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

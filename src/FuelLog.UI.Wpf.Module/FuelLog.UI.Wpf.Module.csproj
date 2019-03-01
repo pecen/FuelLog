@@ -48,6 +48,10 @@
       <HintPath>..\lib\RCWPF\2019.1.220.45.Trial\Telerik.Windows.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2019.1.220.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2019.1.220.45.Trial\Telerik.Windows.Controls.Input.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Telerik.Windows.Controls.Navigation, Version=2019.1.220.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
       <HintPath>..\lib\RCWPF\2019.1.220.45.Trial\Telerik.Windows.Controls.Navigation.dll</HintPath>
       <Private>True</Private>
@@ -62,9 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\GetCarsCommand.cs" />
+    <Compile Include="Commands\GetFillupsCommand.cs" />
     <Compile Include="Converters\NameToContentConverter.cs" />
     <Compile Include="FuelLogModule.cs" />
-    <Compile Include="Models\Car.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -79,13 +83,20 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Enums\TabHeaders.cs" />
+    <Compile Include="UserControls\FillupItem.xaml.cs">
+      <DependentUpon>FillupItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CarListViewModel.cs" />
+    <Compile Include="ViewModels\FillupsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="UserControls\CarItem.xaml.cs">
       <DependentUpon>CarItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CarList.xaml.cs">
       <DependentUpon>CarList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Fillups.xaml.cs">
+      <DependentUpon>Fillups.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -108,7 +119,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\FillupItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CarList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Fillups.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

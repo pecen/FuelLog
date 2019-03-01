@@ -28,13 +28,11 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       Title = TabHeaders.Cars.ToString();
 
       _eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
-      Execute();
     }
 
-    private void CarListReceived(CarList obj) => CarItems = obj;
-
-    private void Execute() {
-      _eventAggregator.GetEvent<GetCarsCommand>().Publish(CarList.GetCars());
+    private void CarListReceived(CarList obj) {
+      CarItems = obj;
+      RaisePropertyChanged(nameof(CarItems));
     }
   }
 }
