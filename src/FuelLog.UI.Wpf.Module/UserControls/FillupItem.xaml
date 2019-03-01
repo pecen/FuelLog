@@ -36,7 +36,7 @@
       FontSize="10pt"
       FontWeight="Bold"
       Foreground="Silver"
-      Text="02/08/2013"
+      Text="{Binding FillupDate}"
       TextAlignment="Left" />
     <TextBlock
       Width="60"
@@ -54,7 +54,7 @@
       HorizontalAlignment="Left"
       VerticalAlignment="Top"
       Style="{StaticResource TextBox}"
-      Text="66.23 L"
+      Text="{Binding Amount}"
       TextAlignment="Right" />
     <TextBlock
       Width="66"
@@ -63,7 +63,7 @@
       HorizontalAlignment="Left"
       VerticalAlignment="Top"
       Style="{StaticResource TextBox}"
-      Text="44351 Km"
+      Text="{Binding Odometer}"
       TextAlignment="Right" />
     <TextBlock
       Width="66"
@@ -81,7 +81,7 @@
       HorizontalAlignment="Left"
       VerticalAlignment="Top"
       Style="{StaticResource TextBox}"
-      Text="SEK 949.08"
+      Text="{Binding TotalCost}"
       TextAlignment="Left" />
     <TextBlock
       Width="66"
@@ -90,7 +90,7 @@
       HorizontalAlignment="Left"
       VerticalAlignment="Top"
       Style="{StaticResource TextBox}"
-      Text="SEK 14.33/L"
+      Text="{Binding VolumePrice}"
       TextAlignment="Left" />
     <TextBlock
       Width="114"

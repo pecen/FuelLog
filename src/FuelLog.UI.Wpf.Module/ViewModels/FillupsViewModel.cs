@@ -1,4 +1,5 @@
-﻿using FuelLog.UI.Wpf.Module.Commands;
+﻿using FuelLog.Library;
+using FuelLog.UI.Wpf.Module.Commands;
 using FuelLog.UI.Wpf.Module.Enums;
 using Prism.Commands;
 using Prism.Events;
@@ -20,8 +21,14 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       _eventAggregator = eventAggregator;
 
       _eventAggregator.GetEvent<GetFillupsCommand>().Subscribe(FillupsReceived);
+
+      Initialize();
     }
 
     private void FillupsReceived(FillupList obj) => Fillups = obj;
+
+    private void Initialize() {
+      _eventAggregator.GetEvent<GetFillupsCommand>().Publish(FillupList.GetFillups(1));
+    }
   }
 }

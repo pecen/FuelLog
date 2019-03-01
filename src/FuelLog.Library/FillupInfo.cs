@@ -23,32 +23,32 @@ namespace FuelLog.Library {
       set { LoadProperty(CarIdProperty, value); }
     }
 
-    public static readonly PropertyInfo<DateTime> FillUpDateProperty = RegisterProperty<DateTime>(c => c.FillUpDate);
-    public DateTime FillUpDate {
-      get { return GetProperty(FillUpDateProperty); }
-      set { LoadProperty(FillUpDateProperty, value); }
+    public static readonly PropertyInfo<string> FillupDateProperty = RegisterProperty<string>(c => c.FillupDate);
+    public string FillupDate {
+      get { return GetProperty(FillupDateProperty); }
+      set { LoadProperty(FillupDateProperty, value); }
     }
 
-    public static readonly PropertyInfo<int> OdometerProperty = RegisterProperty<int>(c => c.Odometer);
-    public int Odometer {
+    public static readonly PropertyInfo<string> OdometerProperty = RegisterProperty<string>(c => c.Odometer);
+    public string Odometer {
       get { return GetProperty(OdometerProperty); }
       set { LoadProperty(OdometerProperty, value); }
     }
 
-    public static readonly PropertyInfo<double> FuelProperty = RegisterProperty<double>(c => c.Amount);
-    public double Amount {
+    public static readonly PropertyInfo<string> FuelProperty = RegisterProperty<string>(c => c.Amount);
+    public string Amount {
       get { return GetProperty(FuelProperty); }
       set { LoadProperty(FuelProperty, value); }
     }
 
-    public static readonly PropertyInfo<double> VolumePriceProperty = RegisterProperty<double>(c => c.VolumePrice);
-    public double VolumePrice {
+    public static readonly PropertyInfo<string> VolumePriceProperty = RegisterProperty<string>(c => c.VolumePrice);
+    public string VolumePrice {
       get { return GetProperty(VolumePriceProperty); }
       set { LoadProperty(VolumePriceProperty, value); }
     }
 
-    public static readonly PropertyInfo<double> TotalCostProperty = RegisterProperty<double>(c => c.TotalCost);
-    public double TotalCost {
+    public static readonly PropertyInfo<string> TotalCostProperty = RegisterProperty<string>(c => c.TotalCost);
+    public string TotalCost {
       get { return GetProperty(TotalCostProperty); }
       set { LoadProperty(TotalCostProperty, value); }
     }
@@ -72,11 +72,11 @@ namespace FuelLog.Library {
     private void Child_Fetch(FillupDto item) {
       Id = item.Id;
       CarId = item.CarId;
-      FillUpDate = item.FillUpDate;
-      Odometer = item.Odometer;
-      Amount = item.Amount;
-      VolumePrice = item.VolumePrice;
-      TotalCost = Amount * VolumePrice;
+      FillupDate = $"{item.FillUpDate.ToShortDateString()}";
+      Odometer = $"{item.Odometer} Km";
+      Amount = $"{item.Amount} L";
+      VolumePrice = $"SEK {Math.Round(item.VolumePrice, 2)}/L";
+      TotalCost = $"SEK {Math.Round(item.Amount * item.VolumePrice, 2)}";
       PartialFillup = item.PartialFillUp;
       Note = item.Note;
     }
