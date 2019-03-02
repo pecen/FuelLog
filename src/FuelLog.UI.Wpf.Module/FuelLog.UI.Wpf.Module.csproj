@@ -86,11 +86,15 @@
     <Compile Include="UserControls\FillupItem.xaml.cs">
       <DependentUpon>FillupItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddCarViewModel.cs" />
     <Compile Include="ViewModels\CarListViewModel.cs" />
     <Compile Include="ViewModels\FillupsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="UserControls\CarItem.xaml.cs">
       <DependentUpon>CarItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddCar.xaml.cs">
+      <DependentUpon>AddCar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CarList.xaml.cs">
       <DependentUpon>CarList.xaml</DependentUpon>
@@ -120,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\FillupItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddCar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
