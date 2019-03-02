@@ -5,6 +5,7 @@ using FuelLog.UI.Wpf.Module.UserControls;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +14,7 @@ using System.Linq;
 namespace FuelLog.UI.Wpf.Module.ViewModels {
   public class CarListViewModel : ViewModelBase {
     private IEventAggregator _eventAggregator;
+    private readonly IRegionManager _regionManager;
 
     public ObservableCollection<CarInfo> CarItems { get; set; }
 
@@ -20,14 +22,22 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     // to bind to
     //public DelegateCommand GetCarsCommand { get; set; }
 
-    public CarListViewModel(IEventAggregator eventAggregator) {
+    public DelegateCommand<string> AddCarCommand { get; set; }
+
+    public CarListViewModel(IEventAggregator eventAggregator, IRegionManager regionManager) {
       _eventAggregator = eventAggregator;
+      _regionManager = regionManager;
 
       //GetCarsCommand = new DelegateCommand(Execute);
+      AddCarCommand = new DelegateCommand<string>(AddCar);
 
       Title = TabHeaders.Cars.ToString();
 
       _eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
+    }
+
+    private void AddCar(string uri) {
+      _regionManager.RequestNavigate("ContentRegion", uri);
     }
 
     private void CarListReceived(CarList obj) {

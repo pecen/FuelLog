@@ -22,6 +22,7 @@ namespace FuelLog.UI.Wpf.Module {
     public void RegisterTypes(IContainerRegistry containerRegistry) {
       containerRegistry.RegisterForNavigation<CarList>(nameof(CarList));
       containerRegistry.RegisterForNavigation<Fillups>(nameof(Fillups));
+      containerRegistry.RegisterForNavigation<AddCar>(nameof(AddCar));
     }
   }
 }

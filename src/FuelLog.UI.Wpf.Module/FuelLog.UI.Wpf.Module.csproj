@@ -65,6 +65,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddCarCommand.cs" />
     <Compile Include="Commands\GetCarsCommand.cs" />
     <Compile Include="Commands\GetFillupsCommand.cs" />
     <Compile Include="Converters\NameToContentConverter.cs" />

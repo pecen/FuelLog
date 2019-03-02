@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace FuelLog.UI.Wpf.Module.ViewModels {
-  public class AddCarViewModel : BindableBase {
+  public class AddCarViewModel : ViewModelBase {
     public AddCarViewModel() {
 
     }

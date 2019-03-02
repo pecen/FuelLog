@@ -1,4 +1,5 @@
-﻿using FuelLog.UI.Wpf.Shell.Enums;
+﻿using System;
+using FuelLog.UI.Wpf.Shell.Enums;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -34,15 +35,21 @@ namespace FuelLog.UI.Wpf.Shell.ViewModels {
     }
 
     public DelegateCommand<string> NavigateCommand { get; set; }
+    public DelegateCommand<string> ContentNavigateCommand { get; set; }
 
     public MainWindowViewModel(IRegionManager regionManager) {
       _regionManager = regionManager;
 
       NavigateCommand = new DelegateCommand<string>(Navigate);
+      ContentNavigateCommand = new DelegateCommand<string>(ContentNavigate);
 
       TabRegion = WindowRegions.TabRegion.ToString();
       ContentRegion = WindowRegions.ContentRegion.ToString();
       CarListRegion = WindowRegions.CarListRegion.ToString();
+    }
+
+    private void ContentNavigate(string uri) {
+      _regionManager.RequestNavigate(ContentRegion, uri);
     }
 
     private void Navigate(string uri) {
