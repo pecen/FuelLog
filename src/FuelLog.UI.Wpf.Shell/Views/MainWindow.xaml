@@ -18,6 +18,6 @@
   </Window.Resources>
   <Grid>
     <telerik:RadTabControl prism:RegionManager.RegionName="{Binding TabRegion}" />
-    <ContentControl prism:RegionManager.RegionName="{Binding ContentRegion}" />
+    <!--<ContentControl prism:RegionManager.RegionName="{Binding ContentRegion}" />-->
   </Grid>
 </Window>
