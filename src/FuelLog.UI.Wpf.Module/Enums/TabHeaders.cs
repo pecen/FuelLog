@@ -9,6 +9,7 @@ namespace FuelLog.UI.Wpf.Module.Enums
   public enum TabHeaders {
     Cars,
     Fillups,
-    Costs
+    Costs,
+    AddCar
   }
 }
