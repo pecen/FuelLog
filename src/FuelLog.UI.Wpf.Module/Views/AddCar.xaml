@@ -5,25 +5,59 @@
   xmlns:prism="http://prismlibrary.com/"
   xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
   prism:ViewModelLocator.AutoWireViewModel="True">
-  <Grid>
+  <Grid Background="#808080">
     <Grid.Resources>
       <Style TargetType="telerik:RadWatermarkTextBox">
-        <Setter Property="Width" Value="200" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Margin" Value="5,5,5,5" />
+        <Setter Property="Grid.Column" Value="1" />
+      </Style>
+      <Style TargetType="Label">
+        <Setter Property="Margin" Value="0,0,5,0" />
       </Style>
     </Grid.Resources>
-    <StackPanel Background="#808080">
-      <Label VerticalAlignment="Center" Content="Make*" />
-      <telerik:RadWatermarkTextBox WatermarkContent="Volvo, Bmw, Mercedes etc" />
-      <Label VerticalAlignment="Center" Content="Make*" />
-      <telerik:RadWatermarkTextBox WatermarkContent="Volvo, Bmw, Mercedes etc" />
-      <Label VerticalAlignment="Center" Content="Make*" />
-      <telerik:RadWatermarkTextBox WatermarkContent="Volvo, Bmw, Mercedes etc" />
-      <Label VerticalAlignment="Center" Content="Make*" />
-      <telerik:RadWatermarkTextBox WatermarkContent="Volvo, Bmw, Mercedes etc" />
-      <!--<StackPanel Background="#808080">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="100*" />
+      <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <!--<StackPanel Background="#808080">-->
+    <Label
+      Margin="0,30,5,0"
+      VerticalAlignment="Center"
+      Content="Make*" />
+    <telerik:RadWatermarkTextBox
+      Grid.Column="1"
+      Margin="5,30,5,5"
+      WatermarkContent="Volvo, Bmw, Mercedes etc" />
+    <Label
+      Grid.Row="1"
+      VerticalAlignment="Center"
+      Content="Model*" />
+    <telerik:RadWatermarkTextBox Grid.Row="1" WatermarkContent="XC60, 320d etc" />
+    <Label
+      Grid.Row="2"
+      VerticalAlignment="Center"
+      Content="Plate" />
+    <telerik:RadWatermarkTextBox Grid.Row="2" WatermarkContent="ABC123 etc" />
+    <Label
+      Grid.Row="3"
+      VerticalAlignment="Center"
+      Content="Note" />
+    <telerik:RadWatermarkTextBox Grid.Row="3" WatermarkContent="Additional information..." />
+    <!--<StackPanel Background="#808080">
       <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
         <Label VerticalAlignment="Center" Content="Make*" />
         <telerik:RadWatermarkTextBox
@@ -32,28 +66,75 @@
       <StackPanel Orientation="Horizontal">
         <Label VerticalAlignment="Center" Content="Model*" />
         <telerik:RadWatermarkTextBox
-          WatermarkContent="Volvo, Bmw, Mercedes etc" />
+          WatermarkContent="XC60, 320d etc" />
       </StackPanel>
       <StackPanel Orientation="Horizontal">
         <Label VerticalAlignment="Center" Content="Plate" />
         <telerik:RadWatermarkTextBox
-          WatermarkContent="Volvo, Bmw, Mercedes etc" />
+          WatermarkContent="ABC123 etc" />
       </StackPanel>
       <StackPanel Orientation="Horizontal">
         <Label VerticalAlignment="Center" Content="Note" />
         <telerik:RadWatermarkTextBox
-          WatermarkContent="Volvo, Bmw, Mercedes etc" />
-      </StackPanel>
-      <StackPanel Orientation="Horizontal">
-        <Label VerticalAlignment="Center" Content="Distance" />
-        <ComboBox ItemsSource="{Binding Cars}" SelectedItem="{Binding SelectedCar}">
-          <ComboBox.ItemTemplate>
-            <DataTemplate>
-              <TextBlock Text="{Binding FullName}" />
-            </DataTemplate>
-          </ComboBox.ItemTemplate>
-        </ComboBox>
+          WatermarkContent="Additional information" />
       </StackPanel>-->
-    </StackPanel>
+    <!--<StackPanel Grid.Row="4" Orientation="Horizontal">-->
+    <Label
+      Grid.Row="4"
+      Margin="0,15,0,0"
+      VerticalAlignment="Center"
+      Content="Distance" />
+    <ComboBox
+      Grid.Row="4"
+      Grid.Column="1"
+      Margin="5,15,5,5"
+      ItemsSource="{Binding DistanceUnit}"
+      SelectedItem="{Binding SelectedDistance}">
+      <ComboBox.ItemTemplate>
+        <DataTemplate>
+          <TextBlock Text="{Binding Distance}" />
+        </DataTemplate>
+      </ComboBox.ItemTemplate>
+    </ComboBox>
+    <Label
+      Grid.Row="5"
+      VerticalAlignment="Center"
+      Content="Volume" />
+    <ComboBox
+      Grid.Row="5"
+      Grid.Column="1"
+      Margin="5,5,5,5"
+      ItemsSource="{Binding VolumeUnit}"
+      SelectedItem="{Binding SelectedVolume}">
+      <ComboBox.ItemTemplate>
+        <DataTemplate>
+          <TextBlock Text="{Binding FullName}" />
+        </DataTemplate>
+      </ComboBox.ItemTemplate>
+    </ComboBox>
+    <Label
+      Grid.Row="6"
+      VerticalAlignment="Center"
+      Content="Consumption" />
+    <ComboBox
+      Grid.Row="6"
+      Grid.Column="1"
+      Margin="5,5,5,5"
+      ItemsSource="{Binding ConsumptionUnit}"
+      SelectedItem="{Binding SelectedConsumption}">
+      <ComboBox.ItemTemplate>
+        <DataTemplate>
+          <TextBlock Text="{Binding FullName}" />
+        </DataTemplate>
+      </ComboBox.ItemTemplate>
+    </ComboBox>
+    <Label
+      Grid.Row="7"
+      Margin="0,15,5,0"
+      Content="* Required"
+      FontFamily="Arial"
+      FontSize="9" />
+    <!--</StackPanel>-->
+    <!--</StackPanel>-->
   </Grid>
 </UserControl>
