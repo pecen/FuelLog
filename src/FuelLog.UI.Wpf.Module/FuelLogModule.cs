@@ -15,9 +15,8 @@ namespace FuelLog.UI.Wpf.Module {
     }
 
     public void OnInitialized(IContainerProvider containerProvider) {
-      _regionManager.RegisterViewWithRegion("TabRegion", typeof(CarList));
-      _regionManager.RegisterViewWithRegion("TabRegion", typeof(Fillups));
-      //_regionManager.RegisterViewWithRegion("TabRegion", typeof(AddCar));
+      _regionManager.RegisterViewWithRegion("ContentRegion", typeof(CarList));
+      _regionManager.RegisterViewWithRegion("ContentRegion", typeof(Fillups));
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry) {

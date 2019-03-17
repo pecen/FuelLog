@@ -17,6 +17,25 @@
     </Style>
   </Window.Resources>
   <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <StackPanel Orientation="Horizontal">
+      <Button
+        Margin="5"
+        Command="{Binding NavigateCommand}"
+        CommandParameter="CarList"
+        Content="Cars" />
+      <Button
+        Margin="5"
+        Command="{Binding NavigateCommand}"
+        CommandParameter="Fillups"
+        Content="Fillups" />
+    </StackPanel>
+    <!--<telerik:RadTabControl prism:RegionManager.RegionName="{Binding TabRegion}" />-->
+    <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{Binding ContentRegion}" />
     <telerik:RadTabControl prism:RegionManager.RegionName="{Binding TabRegion}">
       <telerik:RadTabItem Name="CarList">
         <ContentControl prism:RegionManager.RegionName="{Binding ContentRegion}" />

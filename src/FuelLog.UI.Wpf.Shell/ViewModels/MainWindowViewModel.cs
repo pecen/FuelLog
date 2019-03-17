@@ -22,11 +22,11 @@ namespace FuelLog.UI.Wpf.Shell.ViewModels {
       set { SetProperty(ref _tabRegion, value); }
     }
 
-    private string _carListRegion;
-    public string CarListRegion {
-      get { return _carListRegion; }
-      set { SetProperty(ref _carListRegion, value); }
-    }
+    //private string _carListRegion;
+    //public string CarListRegion {
+    //  get { return _carListRegion; }
+    //  set { SetProperty(ref _carListRegion, value); }
+    //}
 
     private string _contentRegion;
     public string ContentRegion {
@@ -35,25 +35,25 @@ namespace FuelLog.UI.Wpf.Shell.ViewModels {
     }
 
     public DelegateCommand<string> NavigateCommand { get; set; }
-    public DelegateCommand<string> ContentNavigateCommand { get; set; }
+    //public DelegateCommand<string> ContentNavigateCommand { get; set; }
 
     public MainWindowViewModel(IRegionManager regionManager) {
       _regionManager = regionManager;
 
       NavigateCommand = new DelegateCommand<string>(Navigate);
-      ContentNavigateCommand = new DelegateCommand<string>(ContentNavigate);
+      //ContentNavigateCommand = new DelegateCommand<string>(ContentNavigate);
 
-      TabRegion = WindowRegions.TabRegion.ToString();
+      //TabRegion = WindowRegions.TabRegion.ToString();
       ContentRegion = WindowRegions.ContentRegion.ToString();
-      CarListRegion = WindowRegions.CarListRegion.ToString();
+      //CarListRegion = WindowRegions.CarListRegion.ToString();
     }
 
-    private void ContentNavigate(string uri) {
-      _regionManager.RequestNavigate(ContentRegion, uri);
-    }
+    //private void ContentNavigate(string uri) {
+    //  _regionManager.RequestNavigate(ContentRegion, uri);
+    //}
 
     private void Navigate(string uri) {
-      _regionManager.RequestNavigate(TabRegion, uri);
+      _regionManager.RequestNavigate(ContentRegion, uri);
     }
   }
 }
