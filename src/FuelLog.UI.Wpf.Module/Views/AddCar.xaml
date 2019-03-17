@@ -16,18 +16,14 @@
     </Grid.Resources>
     <StackPanel Background="#808080">
       <Label VerticalAlignment="Center" Content="Make*" />
-    <telerik:RadWatermarkTextBox
-          WatermarkContent="Volvo, Bmw, Mercedes etc" />
-    <Label VerticalAlignment="Center" Content="Make*" />
-    <telerik:RadWatermarkTextBox
-          WatermarkContent="Volvo, Bmw, Mercedes etc" />
-    <Label VerticalAlignment="Center" Content="Make*" />
-    <telerik:RadWatermarkTextBox
-          WatermarkContent="Volvo, Bmw, Mercedes etc" />
-    <Label VerticalAlignment="Center" Content="Make*" />
-    <telerik:RadWatermarkTextBox
-          WatermarkContent="Volvo, Bmw, Mercedes etc" />
-    <!--<StackPanel Background="#808080">
+      <telerik:RadWatermarkTextBox WatermarkContent="Volvo, Bmw, Mercedes etc" />
+      <Label VerticalAlignment="Center" Content="Make*" />
+      <telerik:RadWatermarkTextBox WatermarkContent="Volvo, Bmw, Mercedes etc" />
+      <Label VerticalAlignment="Center" Content="Make*" />
+      <telerik:RadWatermarkTextBox WatermarkContent="Volvo, Bmw, Mercedes etc" />
+      <Label VerticalAlignment="Center" Content="Make*" />
+      <telerik:RadWatermarkTextBox WatermarkContent="Volvo, Bmw, Mercedes etc" />
+      <!--<StackPanel Background="#808080">
       <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
         <Label VerticalAlignment="Center" Content="Make*" />
         <telerik:RadWatermarkTextBox
