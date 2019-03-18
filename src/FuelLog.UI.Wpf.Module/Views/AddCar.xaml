@@ -32,6 +32,7 @@
       <RowDefinition Height="Auto" />
       <RowDefinition Height="Auto" />
       <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
     </Grid.RowDefinitions>
     <!--<StackPanel Background="#808080">-->
     <Label
@@ -41,12 +42,16 @@
     <telerik:RadWatermarkTextBox
       Grid.Column="1"
       Margin="5,30,5,5"
+      Text="{Binding Make, UpdateSourceTrigger=PropertyChanged}"
       WatermarkContent="Volvo, Bmw, Mercedes etc" />
     <Label
       Grid.Row="1"
       VerticalAlignment="Center"
       Content="Model*" />
-    <telerik:RadWatermarkTextBox Grid.Row="1" WatermarkContent="XC60, 320d etc" />
+    <telerik:RadWatermarkTextBox
+      Grid.Row="1"
+      Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}"
+      WatermarkContent="XC60, 320d etc" />
     <Label
       Grid.Row="2"
       VerticalAlignment="Center"
@@ -134,6 +139,22 @@
       Content="* Required"
       FontFamily="Arial"
       FontSize="9" />
+    <StackPanel
+      Grid.Row="8"
+      Grid.ColumnSpan="2"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Bottom"
+      Orientation="Horizontal">
+      <telerik:RadButton
+        Width="100"
+        Margin="20,30,20,20"
+        Command="{Binding SaveCommand}"
+        Content="Save" />
+      <telerik:RadButton
+        Width="100"
+        Margin="0,30,20,20"
+        Content="Cancel" />
+    </StackPanel>
     <!--</StackPanel>-->
     <!--</StackPanel>-->
   </Grid>
