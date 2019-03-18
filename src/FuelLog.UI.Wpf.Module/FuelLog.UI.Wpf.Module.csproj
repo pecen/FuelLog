@@ -68,6 +68,7 @@
     <Compile Include="Commands\AddCarCommand.cs" />
     <Compile Include="Commands\GetCarsCommand.cs" />
     <Compile Include="Commands\GetFillupsCommand.cs" />
+    <Compile Include="Commands\SaveCarCommand.cs" />
     <Compile Include="Converters\NameToContentConverter.cs" />
     <Compile Include="FuelLogModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
