@@ -1,8 +1,10 @@
 ﻿using FuelLog.Library;
+using FuelLog.UI.Wpf.Module.Commands;
 using FuelLog.UI.Wpf.Module.Enums;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,6 +13,7 @@ using System.Linq;
 namespace FuelLog.UI.Wpf.Module.ViewModels {
   public class AddCarViewModel : ViewModelBase {
     private readonly IEventAggregator _eventAggregator;
+    private readonly IRegionManager _regionManager;
 
     public ObservableCollection<CarInfo> DistanceUnit { get; set; }
     public ObservableCollection<CarInfo> VolumeUnit { get; set; }
@@ -28,13 +31,25 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       set { SetProperty(ref _model, value); }
     }
 
+    private string _plate;
+    public string Plate {
+      get { return _plate; }
+      set { SetProperty(ref _plate, value); }
+    }
+
+    private string _note;
+    public string Note {
+      get { return _note; }
+      set { SetProperty(ref _note, value); }
+    }
+
     public DelegateCommand SaveCommand { get; set; }
 
-    public AddCarViewModel(IEventAggregator eventAggregator) {
+    public AddCarViewModel(IEventAggregator eventAggregator, IRegionManager regionManager) {
       Title = TabHeaders.AddCar.ToString();
 
       _eventAggregator = eventAggregator;
-
+      _regionManager = regionManager;
       SaveCommand = new DelegateCommand(Execute, CanExecute)
         .ObservesProperty(() => Make)
         .ObservesProperty(() => Model);
@@ -46,7 +61,19 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     }
 
     private void Execute() {
-      throw new NotImplementedException();
+      var car = CarEdit.NewCar();
+      car.Make = Make;
+      car.Model = Model;
+      car.LicensePlate = Plate;
+      car.Note = Note;
+      car = car.Save();
+
+      _eventAggregator
+        .GetEvent<SaveCarCommand>()
+        .Publish(CarList.GetCars());
+      //.Publish(car);
+
+      _regionManager.RequestNavigate("ContentRegion", "CarList");
     }
   }
 }

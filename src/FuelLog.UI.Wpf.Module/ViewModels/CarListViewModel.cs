@@ -34,7 +34,13 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       Title = TabHeaders.Cars.ToString();
 
       _eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
+      _eventAggregator.GetEvent<SaveCarCommand>().Subscribe(CarListReceived);  //NewCarReceived);
     }
+
+    //private void NewCarReceived(CarEdit obj) {
+    //  _eventAggregator.GetEvent<GetCarsCommand>().Publish(CarList.GetCars());
+    //  RaisePropertyChanged(nameof(CarItems));
+    //}
 
     private void AddCar(string uri) {
       _regionManager.RequestNavigate("ContentRegion", uri);

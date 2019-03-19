@@ -56,12 +56,15 @@
       Grid.Row="2"
       VerticalAlignment="Center"
       Content="Plate" />
-    <telerik:RadWatermarkTextBox Grid.Row="2" WatermarkContent="ABC123 etc" />
+    <telerik:RadWatermarkTextBox Text="{Binding LicensePlate}" Grid.Row="2" WatermarkContent="ABC123 etc" />
     <Label
       Grid.Row="3"
       VerticalAlignment="Center"
       Content="Note" />
-    <telerik:RadWatermarkTextBox Grid.Row="3" WatermarkContent="Additional information..." />
+    <telerik:RadWatermarkTextBox
+      Grid.Row="3"
+      Text="{Binding Note}"
+      WatermarkContent="Additional information..." />
     <!--<StackPanel Background="#808080">
       <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
         <Label VerticalAlignment="Center" Content="Make*" />

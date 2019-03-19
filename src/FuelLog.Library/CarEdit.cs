@@ -1,4 +1,6 @@
 ﻿using Csla;
+using FuelLog.Dal;
+using FuelLog.Dal.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,6 +98,45 @@ namespace FuelLog.Library
     public DateTimeOffset LastModified {
       get { return GetProperty(LastModifiedProperty); }
       set { SetProperty(LastModifiedProperty, value); }
+    }
+
+    #endregion
+
+    #region Factory Methods
+
+    public static CarEdit NewCar() {
+      return DataPortal.Create<CarEdit>();
+    }
+
+    public static CarEdit GetCar(int id) {
+      return DataPortal.Fetch<CarEdit>(id);
+    }
+
+    #endregion
+
+    #region Data Access
+
+    protected override void DataPortal_Create() {
+      base.DataPortal_Create();
+    }
+
+    protected override void DataPortal_Insert() {
+      using (var ctx = DalFactory.GetManager()) {
+        var dal = ctx.GetProvider<ICarDal>();
+        using (BypassPropertyChecks) {
+          var item = new CarDto {
+            Make = Make,
+            Model = Model,
+            LicensePlate = LicensePlate,
+            Note = Note,
+            ConsumptionUnit = ConsumptionUnit,
+            DistanceUnit = DistanceUnit,
+            VolumeUnit = VolumeUnit            
+          };
+          dal.Insert(item);
+          Id = item.Id;
+        }
+      }
     }
 
     #endregion

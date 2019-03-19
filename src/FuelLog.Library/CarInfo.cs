@@ -41,6 +41,16 @@ namespace FuelLog.Library {
     }
 
     public static readonly PropertyInfo<string> NoteProperty = RegisterProperty<string>(c => c.Note);
+
+    public static explicit operator CarInfo(CarEdit v) {
+      return new CarInfo {
+        Make = v.Make,
+        Model = v.Model,
+        LicensePlate = v.LicensePlate,
+        Note = v.Note
+      };
+    }
+
     public string Note {
       get { return GetProperty(NoteProperty); }
       set { LoadProperty(NoteProperty, value); }
