@@ -116,6 +116,7 @@ namespace FuelLog.Library
 
     #region Data Access
 
+    [RunLocal]
     protected override void DataPortal_Create() {
       base.DataPortal_Create();
     }

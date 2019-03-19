@@ -44,15 +44,23 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     }
 
     public DelegateCommand SaveCommand { get; set; }
+    public DelegateCommand<string> CancelCommand { get; set; }
 
     public AddCarViewModel(IEventAggregator eventAggregator, IRegionManager regionManager) {
       Title = TabHeaders.AddCar.ToString();
 
       _eventAggregator = eventAggregator;
       _regionManager = regionManager;
+
       SaveCommand = new DelegateCommand(Execute, CanExecute)
         .ObservesProperty(() => Make)
         .ObservesProperty(() => Model);
+
+      CancelCommand = new DelegateCommand<string>(Cancel);
+    }
+
+    private void Cancel(string uri) {
+      throw new NotImplementedException();
     }
 
     private bool CanExecute() {

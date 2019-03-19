@@ -56,7 +56,10 @@
       Grid.Row="2"
       VerticalAlignment="Center"
       Content="Plate" />
-    <telerik:RadWatermarkTextBox Text="{Binding LicensePlate}" Grid.Row="2" WatermarkContent="ABC123 etc" />
+    <telerik:RadWatermarkTextBox
+      Grid.Row="2"
+      Text="{Binding LicensePlate}"
+      WatermarkContent="ABC123 etc" />
     <Label
       Grid.Row="3"
       VerticalAlignment="Center"
@@ -156,6 +159,7 @@
       <telerik:RadButton
         Width="100"
         Margin="0,30,20,20"
+        Command="{Binding CancelCommand}"
         Content="Cancel" />
     </StackPanel>
     <!--</StackPanel>-->
