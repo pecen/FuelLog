@@ -18,7 +18,7 @@
       <RowDefinition Height="20*" />
     </Grid.RowDefinitions>
     <StackPanel Grid.Row="0" Background="Black">
-      <ListView
+      <ListView 
         Background="Black"
         BorderThickness="0"
         ItemTemplate="{StaticResource CarItem}"

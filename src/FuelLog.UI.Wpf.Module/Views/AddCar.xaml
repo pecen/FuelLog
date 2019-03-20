@@ -160,6 +160,7 @@
         Width="100"
         Margin="0,30,20,20"
         Command="{Binding CancelCommand}"
+        CommandParameter="CarList"
         Content="Cancel" />
     </StackPanel>
     <!--</StackPanel>-->

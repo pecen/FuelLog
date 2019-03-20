@@ -60,7 +60,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     }
 
     private void Cancel(string uri) {
-      throw new NotImplementedException();
+      _regionManager.RequestNavigate("ContentRegion", uri);
     }
 
     private bool CanExecute() {
@@ -74,6 +74,9 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       car.Model = Model;
       car.LicensePlate = Plate;
       car.Note = Note;
+      car.DateAdded = DateTime.Now;
+      car.LastModified = DateTime.Now;
+      car.TotalFillups = "0";
       car = car.Save();
 
       _eventAggregator
