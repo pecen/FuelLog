@@ -13,22 +13,32 @@
     </DataTemplate>
   </UserControl.Resources>
   <Grid Background="Black">
-    <Grid.RowDefinitions>
+    <!--<Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
       <RowDefinition Height="20*" />
-    </Grid.RowDefinitions>
-    <StackPanel Grid.Row="0" Background="Black">
-      <ListView 
-        Background="Black"
-        BorderThickness="0"
-        ItemTemplate="{StaticResource CarItem}"
-        ItemsSource="{Binding CarItems}" />
-    </StackPanel>
-    <telerik:RadDockPanel Grid.Row="1" VerticalAlignment="Bottom">
-      <telerik:RadButton Width="200"
+    </Grid.RowDefinitions>-->
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+      <StackPanel Grid.Row="0" Background="Black">
+        <ListView
+          Background="Black"
+          BorderThickness="0"
+          ItemTemplate="{StaticResource CarItem}"
+          ItemsSource="{Binding CarItems}" />
+      </StackPanel>
+    </ScrollViewer>
+    <!--<telerik:RadDockPanel
+      Grid.Row="1"
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Bottom"
+      Background="Wheat">
+      <telerik:RadButton telerik:RadDockPanel.Dock="Left"
         Command="{Binding AddCarCommand}"
         CommandParameter="AddCar"
         Content="Add Car" />
-    </telerik:RadDockPanel>
+    </telerik:RadDockPanel>-->
+    <telerik:RadButton
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Bottom"
+      Content="Add Car" />
   </Grid>
 </UserControl>
