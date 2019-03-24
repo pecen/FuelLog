@@ -58,7 +58,7 @@
       Content="Plate" />
     <telerik:RadWatermarkTextBox
       Grid.Row="2"
-      Text="{Binding LicensePlate}"
+      Text="{Binding Plate}"
       WatermarkContent="ABC123 etc" />
     <Label
       Grid.Row="3"
