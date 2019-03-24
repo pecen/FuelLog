@@ -26,19 +26,23 @@
           ItemsSource="{Binding CarItems}" />
       </StackPanel>
     </ScrollViewer>
-    <!--<telerik:RadDockPanel
+    <telerik:RadDockPanel
       Grid.Row="1"
       HorizontalAlignment="Stretch"
       VerticalAlignment="Bottom"
       Background="Wheat">
-      <telerik:RadButton telerik:RadDockPanel.Dock="Left"
+      <telerik:RadButton
+        Width="250"
+        telerik:RadDockPanel.Dock="Left"
         Command="{Binding AddCarCommand}"
         CommandParameter="AddCar"
         Content="Add Car" />
-    </telerik:RadDockPanel>-->
-    <telerik:RadButton
+    </telerik:RadDockPanel>
+    <!--<telerik:RadButton
       HorizontalAlignment="Stretch"
       VerticalAlignment="Bottom"
-      Content="Add Car" />
+      Command="{Binding AddCarCommand}"
+      CommandParameter="AddCar"
+      Content="Add Car" />-->
   </Grid>
 </UserControl>

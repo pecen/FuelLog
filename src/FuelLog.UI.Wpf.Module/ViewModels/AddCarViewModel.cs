@@ -85,6 +85,14 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       //.Publish(car);
 
       _regionManager.RequestNavigate("ContentRegion", "CarList");
+      ClearFields();
+    }
+
+    private void ClearFields() {
+      Make = string.Empty;
+      Model = string.Empty;
+      Plate = string.Empty;
+      Note = string.Empty;
     }
   }
 }
