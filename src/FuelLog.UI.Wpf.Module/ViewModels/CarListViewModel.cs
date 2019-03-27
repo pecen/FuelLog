@@ -18,6 +18,15 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
     public ObservableCollection<CarInfo> CarItems { get; set; }
 
+    private CarInfo _selectedCar;
+    public CarInfo SelectedCar {
+      get { return _selectedCar; }
+      set {
+        SetProperty(ref _selectedCar, value);
+        _regionManager.RequestNavigate("ContentRegion", "AddCar");
+      }
+    }
+
     // This one is used only if there should be like an update button
     // to bind to
     //public DelegateCommand GetCarsCommand { get; set; }

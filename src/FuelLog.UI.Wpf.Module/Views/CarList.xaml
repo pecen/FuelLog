@@ -23,7 +23,8 @@
           Background="Black"
           BorderThickness="0"
           ItemTemplate="{StaticResource CarItem}"
-          ItemsSource="{Binding CarItems}" />
+          ItemsSource="{Binding CarItems}"
+          SelectedItem="{Binding SelectedCar}" />
       </StackPanel>
     </ScrollViewer>
     <telerik:RadDockPanel
