@@ -23,6 +23,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       get { return _selectedCar; }
       set {
         SetProperty(ref _selectedCar, value);
+        _eventAggregator.GetEvent<EditCarCommand>().Publish(_selectedCar);
         _regionManager.RequestNavigate("ContentRegion", "AddCar");
       }
     }

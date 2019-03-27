@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AddCarCommand.cs" />
+    <Compile Include="Commands\EditCarCommand.cs" />
     <Compile Include="Commands\GetCarsCommand.cs" />
     <Compile Include="Commands\GetFillupsCommand.cs" />
     <Compile Include="Commands\SaveCarCommand.cs" />

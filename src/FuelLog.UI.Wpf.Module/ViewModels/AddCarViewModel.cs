@@ -57,6 +57,15 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
         .ObservesProperty(() => Model);
 
       CancelCommand = new DelegateCommand<string>(Cancel);
+
+      _eventAggregator.GetEvent<EditCarCommand>().Subscribe(EditCar);
+    }
+
+    private void EditCar(CarInfo car) {
+      Make = car.Make;
+      Model = car.Model;
+      Plate = car.LicensePlate;
+      Note = car.Note;
     }
 
     private void Cancel(string uri) {
