@@ -56,26 +56,26 @@ namespace FuelLog.Library {
       set { LoadProperty(NoteProperty, value); }
     }
 
-    public static readonly PropertyInfo<string> DistanceUnitProperty = RegisterProperty<string>(c => c.DistanceUnit);
-    public string DistanceUnit {
+    public static readonly PropertyInfo<int> DistanceUnitProperty = RegisterProperty<int>(c => c.DistanceUnitId);
+    public int DistanceUnitId {
       get { return GetProperty(DistanceUnitProperty); }
       set { LoadProperty(DistanceUnitProperty, value); }
     }
 
-    public static readonly PropertyInfo<string> VolumeUnitProperty = RegisterProperty<string>(c => c.VolumeUnit);
-    public string VolumeUnit {
+    public static readonly PropertyInfo<int> VolumeUnitProperty = RegisterProperty<int>(c => c.VolumeUnitId);
+    public int VolumeUnitId {
       get { return GetProperty(VolumeUnitProperty); }
       set { LoadProperty(VolumeUnitProperty, value); }
     }
 
-    public static readonly PropertyInfo<string> ConsumptionUnitProperty = RegisterProperty<string>(c => c.ConsumptionUnit);
-    public string ConsumptionUnit {
+    public static readonly PropertyInfo<int> ConsumptionUnitProperty = RegisterProperty<int>(c => c.ConsumptionUnitId);
+    public int ConsumptionUnitId {
       get { return GetProperty(ConsumptionUnitProperty); }
       set { LoadProperty(ConsumptionUnitProperty, value); }
     }
 
     public string ChosenUnits {
-      get { return DistanceUnit + ", " + VolumeUnit + ", " + ConsumptionUnit; }
+      get { return DistanceUnitId + ", " + VolumeUnitId + ", " + ConsumptionUnitId; }
     }
 
     public static readonly PropertyInfo<string> TotalFillupsProperty = RegisterProperty<string>(c => c.TotalFillups);
@@ -147,12 +147,12 @@ namespace FuelLog.Library {
       Model = item.Model;
       LicensePlate = item.LicensePlate;
       Note = item.Note;
-      DistanceUnit = item.DistanceUnit;
-      VolumeUnit = item.VolumeUnit;
-      ConsumptionUnit = item.ConsumptionUnit;
+      DistanceUnitId = item.DistanceUnitId;
+      VolumeUnitId = item.VolumeUnitId;
+      ConsumptionUnitId = item.ConsumptionUnitId;
       TotalFillups = item.TotalFillups.ToString() + " Fillups";
       TotalDistance = item.TotalDistance.ToString() + " km";
-      AverageConsumption = item.AverageConsumption.ToString() + $" {ConsumptionUnit}";
+      AverageConsumption = item.AverageConsumption.ToString() + $" {ConsumptionUnitId}";
 
       //CarSettings = DataPortal.FetchChild<CarSettingsInfo>(Id);
       //CarStatistics = DataPortal.FetchChild<CarStatisticsInfo>(Id);

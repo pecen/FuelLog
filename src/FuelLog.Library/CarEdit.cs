@@ -48,26 +48,26 @@ namespace FuelLog.Library
       set { SetProperty(NoteProperty, value); }
     }
 
-    public static readonly PropertyInfo<string> DistanceUnitProperty = RegisterProperty<string>(c => c.DistanceUnit);
-    public string DistanceUnit {
+    public static readonly PropertyInfo<int> DistanceUnitProperty = RegisterProperty<int>(c => c.DistanceUnitId);
+    public int DistanceUnitId {
       get { return GetProperty(DistanceUnitProperty); }
       set { SetProperty(DistanceUnitProperty, value); }
     }
 
-    public static readonly PropertyInfo<string> VolumeUnitProperty = RegisterProperty<string>(c => c.VolumeUnit);
-    public string VolumeUnit {
+    public static readonly PropertyInfo<int> VolumeUnitProperty = RegisterProperty<int>(c => c.VolumeUnitId);
+    public int VolumeUnitId {
       get { return GetProperty(VolumeUnitProperty); }
       set { SetProperty(VolumeUnitProperty, value); }
     }
 
-    public static readonly PropertyInfo<string> ConsumptionUnitProperty = RegisterProperty<string>(c => c.ConsumptionUnit);
-    public string ConsumptionUnit {
+    public static readonly PropertyInfo<int> ConsumptionUnitProperty = RegisterProperty<int>(c => c.ConsumptionUnitId);
+    public int ConsumptionUnitId {
       get { return GetProperty(ConsumptionUnitProperty); }
       set { SetProperty(ConsumptionUnitProperty, value); }
     }
 
     public string ChosenUnits {
-      get { return DistanceUnit + ", " + VolumeUnit + ", " + ConsumptionUnit; }
+      get { return DistanceUnitId + ", " + VolumeUnitId + ", " + ConsumptionUnitId; }
     }
 
     public static readonly PropertyInfo<string> TotalFillupsProperty = RegisterProperty<string>(c => c.TotalFillups);
@@ -130,9 +130,9 @@ namespace FuelLog.Library
             Model = Model,
             LicensePlate = LicensePlate,
             Note = Note,
-            ConsumptionUnit = ConsumptionUnit,
-            DistanceUnit = DistanceUnit,
-            VolumeUnit = VolumeUnit            
+            ConsumptionUnitId = ConsumptionUnitId,
+            DistanceUnitId = DistanceUnitId,
+            VolumeUnitId = VolumeUnitId            
           };
           dal.Insert(item);
           Id = item.Id;

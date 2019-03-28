@@ -15,9 +15,33 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     private readonly IEventAggregator _eventAggregator;
     private readonly IRegionManager _regionManager;
 
-    public ObservableCollection<CarInfo> DistanceUnit { get; set; }
-    public ObservableCollection<CarInfo> VolumeUnit { get; set; }
-    public ObservableCollection<CarInfo> ConsumptionUnit { get; set; }
+    public ObservableCollection<DistanceInfo> DistanceUnits { get; set; }
+    public ObservableCollection<VolumeInfo> VolumeUnits { get; set; }
+    public ObservableCollection<ConsumptionInfo> ConsumptionUnits { get; set; }
+
+    private DistanceInfo _selectedDistance;
+    public DistanceInfo SelectedDistance {
+      get { return _selectedDistance; }
+      set {
+        SetProperty(ref _selectedDistance, value);
+      }
+    }
+
+    private VolumeInfo _selectedVolume;
+    public VolumeInfo SelectedVolume {
+      get { return _selectedVolume; }
+      set {
+        SetProperty(ref _selectedVolume, value);
+      }
+    }
+
+    private ConsumptionInfo _selectedConsumption;
+    public ConsumptionInfo SelectedConsumption {
+      get { return _selectedConsumption; }
+      set {
+        SetProperty(ref _selectedConsumption, value);
+      }
+    }
 
     private string _make;
     public string Make {
@@ -59,6 +83,14 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       CancelCommand = new DelegateCommand<string>(Cancel);
 
       _eventAggregator.GetEvent<EditCarCommand>().Subscribe(EditCar);
+
+      DistanceUnits = DistanceList.GetDistanceList();
+      VolumeUnits = VolumeList.GetVolumeList();
+      ConsumptionUnits = ConsumptionList.GetConsumptionList();
+
+      SelectedDistance = DistanceUnits.FirstOrDefault();
+      SelectedVolume = VolumeUnits.FirstOrDefault();
+      SelectedConsumption = ConsumptionUnits.FirstOrDefault();
     }
 
     private void EditCar(CarInfo car) {

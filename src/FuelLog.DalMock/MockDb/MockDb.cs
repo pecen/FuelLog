@@ -8,6 +8,10 @@ namespace FuelLog.DalMock.MockDb {
   public class MockDb {
     public static List<CarData> Cars { get; private set; }
     public static List<FillupData> Fillups { get; private set; }
+    public static List<DistanceData> DistanceUnits { get; private set; }
+    public static List<VolumeData> VolumeUnits { get; private set; }
+    public static List<ConsumptionData> ConsumptionUnits { get; private set; }
+
 
     static MockDb() {
       Cars = new List<CarData>{
@@ -24,6 +28,21 @@ namespace FuelLog.DalMock.MockDb {
                 new FillupData{ Id = 4, CarId = 2, FillUpDate = new DateTime(2016, 05, 16), Odometer = 53661, Amount = 64.23m, VolumePrice = 12.58m, PartialFillUp = false, Note = "First fillup for Volvo" },
                 new FillupData{ Id = 5, CarId = 2, FillUpDate = new DateTime(2016, 05, 24), Odometer = 54441, Amount = 66.23m, VolumePrice = 12.54m, PartialFillUp = false, Note = "Second fillup for Volvo" },
             };
+
+      DistanceUnits = new List<DistanceData> {
+        new DistanceData{ Id = 0, Name = "Dist 1" },
+        new DistanceData{ Id = 1, Name = "Distance 2" }
+      };
+
+      VolumeUnits = new List<VolumeData> {
+        new VolumeData{ Id = 0, Name = "Kg/m" },
+        new VolumeData{ Id = 1, Name = "Km/l" }
+      };
+
+      ConsumptionUnits = new List<ConsumptionData> {
+        new ConsumptionData{ Id = 0, Name = "Km" },
+        new ConsumptionData{ Id = 1, Name = "Miles" }
+      };
     }
   }
 }
