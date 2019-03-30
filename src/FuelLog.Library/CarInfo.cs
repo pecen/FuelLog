@@ -44,10 +44,18 @@ namespace FuelLog.Library {
 
     public static explicit operator CarInfo(CarEdit v) {
       return new CarInfo {
+        Id = v.Id,
         Make = v.Make,
         Model = v.Model,
         LicensePlate = v.LicensePlate,
-        Note = v.Note
+        Note = v.Note,
+        DistanceUnitId = v.DistanceUnitId,
+        VolumeUnitId = v.VolumeUnitId,
+        ConsumptionUnitId = v.ConsumptionUnitId,
+        DateAdded = v.DateAdded,
+        LastModified = v.LastModified,
+        TotalDistance = v.TotalDistance,
+        TotalFillups = v.TotalFillups
       };
     }
 
@@ -154,6 +162,7 @@ namespace FuelLog.Library {
       TotalDistance = item.TotalDistance.ToString() + " km";
       AverageConsumption = item.AverageConsumption.ToString() + $" {ConsumptionUnitId}";
 
+      var d = DataPortal.FetchChild<DistanceInfo>();
       //CarSettings = DataPortal.FetchChild<CarSettingsInfo>(Id);
       //CarStatistics = DataPortal.FetchChild<CarStatisticsInfo>(Id);
     }

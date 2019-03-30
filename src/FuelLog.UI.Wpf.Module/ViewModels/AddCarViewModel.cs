@@ -43,6 +43,8 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       }
     }
 
+    private int Id { get; set; }
+
     private string _make;
     public string Make {
       get { return _make; }
@@ -88,12 +90,13 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       VolumeUnits = VolumeList.GetVolumeList();
       ConsumptionUnits = ConsumptionList.GetConsumptionList();
 
-      SelectedDistance = DistanceUnits.FirstOrDefault();
+      SelectedDistance = DistanceUnits.FirstOrDefault(); //DistanceUnits.Where(d => d.Id == Id).FirstOrDefault(); 
       SelectedVolume = VolumeUnits.FirstOrDefault();
       SelectedConsumption = ConsumptionUnits.FirstOrDefault();
     }
 
     private void EditCar(CarInfo car) {
+      Id = car.Id;
       Make = car.Make;
       Model = car.Model;
       Plate = car.LicensePlate;
@@ -111,6 +114,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
     private void Execute() {
       var car = CarEdit.NewCar();
+      car.Id = Id;
       car.Make = Make;
       car.Model = Model;
       car.LicensePlate = Plate;

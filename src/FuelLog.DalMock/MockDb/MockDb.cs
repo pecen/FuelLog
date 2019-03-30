@@ -15,9 +15,9 @@ namespace FuelLog.DalMock.MockDb {
 
     static MockDb() {
       Cars = new List<CarData>{
-                new CarData{ Id = 0, Make = "BMW", Model = "320d", LicensePlate = "OUS318", Note = "My first BMW", DistanceUnit = "km", VolumeUnit = "l", ConsumptionUnit = "l/100km", TotalFillups = 64, TotalDistance = 55221, AverageConsumption = 6.75M },
-                new CarData{ Id = 1, Make = "Volvo", Model = "XC60", LicensePlate = "MTZ418", Note = "My current car in Finland", DistanceUnit = "km", VolumeUnit = "l", ConsumptionUnit = "l/100km", TotalFillups = 48, TotalDistance = 78965, AverageConsumption = 8.45M },
-                new CarData{ Id = 2, Make = "Volvo", Model = "XC70", LicensePlate = "BKX594", Note = "My rental Volvo in Gothenburg", DistanceUnit = "km", VolumeUnit = "l", ConsumptionUnit = "l/100km", TotalFillups = 64, TotalDistance = 8922, AverageConsumption = 7.75M },
+                new CarData{ Id = 0, Make = "BMW", Model = "320d", LicensePlate = "OUS318", Note = "My first BMW", DistanceUnit = 0, VolumeUnit = 0, ConsumptionUnit = 0, TotalFillups = 64, TotalDistance = 55221, AverageConsumption = 6.75M },
+                new CarData{ Id = 1, Make = "Volvo", Model = "XC60", LicensePlate = "MTZ418", Note = "My current car in Finland", DistanceUnit = 0, VolumeUnit = 0, ConsumptionUnit = 0, TotalFillups = 48, TotalDistance = 78965, AverageConsumption = 8.45M },
+                new CarData{ Id = 2, Make = "Volvo", Model = "XC70", LicensePlate = "BKX594", Note = "My rental Volvo in Gothenburg", DistanceUnit = 0, VolumeUnit = 0, ConsumptionUnit = 0, TotalFillups = 64, TotalDistance = 8922, AverageConsumption = 7.75M },
             };
 
       Fillups = new List<FillupData>{
@@ -30,18 +30,69 @@ namespace FuelLog.DalMock.MockDb {
             };
 
       DistanceUnits = new List<DistanceData> {
-        new DistanceData{ Id = 0, Name = "Dist 1" },
-        new DistanceData{ Id = 1, Name = "Distance 2" }
+        new DistanceData{ Id = 0, Name = "Kilometers (Km)" },
+        new DistanceData{ Id = 1, Name = "Miles (mi)" },
+        new DistanceData{ Id = 2, Name = "Hours (h)" }
       };
 
       VolumeUnits = new List<VolumeData> {
-        new VolumeData{ Id = 0, Name = "Kg/m" },
-        new VolumeData{ Id = 1, Name = "Km/l" }
+        new VolumeData{ Id = 0, Name = "Litres (l)" },
+        new VolumeData{ Id = 1, Name = "Gallons US (gal)" },
+        new VolumeData{ Id = 2, Name = "Gallons Imp (gal)" },
+        new VolumeData{ Id = 3, Name = "Electric (kWh)" },
+        new VolumeData{ Id = 4, Name = "CNG (kg)" },
+        new VolumeData{ Id = 5, Name = "CNG (gge)" }
       };
 
       ConsumptionUnits = new List<ConsumptionData> {
-        new ConsumptionData{ Id = 0, Name = "Km" },
-        new ConsumptionData{ Id = 1, Name = "Miles" }
+        new ConsumptionData{ Id = 0, Name = "l/100km" },
+        new ConsumptionData{ Id = 1, Name = "mpg (us)" },
+        new ConsumptionData{ Id = 2, Name = "mpg (uk)" },
+        new ConsumptionData{ Id = 3, Name = "km/l" },
+        new ConsumptionData{ Id = 4, Name = "l/km" },
+        new ConsumptionData{ Id = 5, Name = "l/mi" },
+        new ConsumptionData{ Id = 6, Name = "l/100mi" },
+        new ConsumptionData{ Id = 7, Name = "mi/l" },
+        new ConsumptionData{ Id = 0, Name = "gal(us)/km" },
+        new ConsumptionData{ Id = 1, Name = "gal(us)/100km" },
+        new ConsumptionData{ Id = 2, Name = "gal(us)/mi" },
+        new ConsumptionData{ Id = 3, Name = "gal(us)/100mi" },
+        new ConsumptionData{ Id = 4, Name = "km/gal(us)" },
+        new ConsumptionData{ Id = 5, Name = "gal(uk/km)" },
+        new ConsumptionData{ Id = 6, Name = "gal(uk)/100km" },
+        new ConsumptionData{ Id = 7, Name = "gal(uk)/mi" },
+        new ConsumptionData{ Id = 0, Name = "gal(uk)/100mi" },
+        new ConsumptionData{ Id = 1, Name = "km/gal(uk)" },
+        new ConsumptionData{ Id = 2, Name = "kWh/km" },
+        new ConsumptionData{ Id = 3, Name = "kWh/100km" },
+        new ConsumptionData{ Id = 4, Name = "kWh/mi" },
+        new ConsumptionData{ Id = 5, Name = "kWh/100mi" },
+        new ConsumptionData{ Id = 6, Name = "km/kWh" },
+        new ConsumptionData{ Id = 7, Name = "mi/kWh" },
+        new ConsumptionData{ Id = 2, Name = "kg/km" },
+        new ConsumptionData{ Id = 3, Name = "kg/100km" },
+        new ConsumptionData{ Id = 4, Name = "kg/mi" },
+        new ConsumptionData{ Id = 5, Name = "kg/100mi" },
+        new ConsumptionData{ Id = 6, Name = "km/kg" },
+        new ConsumptionData{ Id = 7, Name = "mi/kg" },
+        new ConsumptionData{ Id = 0, Name = "gge/km" },
+        new ConsumptionData{ Id = 1, Name = "gge/100km" },
+        new ConsumptionData{ Id = 2, Name = "gge/mi" },
+        new ConsumptionData{ Id = 3, Name = "gge/100mi" },
+        new ConsumptionData{ Id = 4, Name = "km/gge" },
+        new ConsumptionData{ Id = 5, Name = "mi/gge" },
+        new ConsumptionData{ Id = 6, Name = "l/h" },
+        new ConsumptionData{ Id = 7, Name = "h/l" },
+        new ConsumptionData{ Id = 2, Name = "gal(us)/h" },
+        new ConsumptionData{ Id = 3, Name = "h/gal(us)" },
+        new ConsumptionData{ Id = 4, Name = "gal(uk)/h" },
+        new ConsumptionData{ Id = 5, Name = "h/gal(uk)" },
+        new ConsumptionData{ Id = 6, Name = "kWh/h" },
+        new ConsumptionData{ Id = 7, Name = "h/kWh" },
+        new ConsumptionData{ Id = 2, Name = "kg/h" },
+        new ConsumptionData{ Id = 3, Name = "h/kg" },
+        new ConsumptionData{ Id = 4, Name = "gge/h" },
+        new ConsumptionData{ Id = 5, Name = "h/gge" }
       };
     }
   }

@@ -11,9 +11,9 @@ namespace FuelLog.DalMock.MockDb {
     public string Model { get; set; }
     public string LicensePlate { get; set; }
     public string Note { get; set; }
-    public string DistanceUnit { get; set; }
-    public string VolumeUnit { get; set; }
-    public string ConsumptionUnit { get; set; }
+    public int DistanceUnit { get; set; }
+    public int VolumeUnit { get; set; }
+    public int ConsumptionUnit { get; set; }
     public int TotalFillups { get; set; }
     public int TotalDistance { get; set; }
     public decimal AverageConsumption { get; set; }

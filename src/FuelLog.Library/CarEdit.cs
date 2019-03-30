@@ -66,9 +66,9 @@ namespace FuelLog.Library
       set { SetProperty(ConsumptionUnitProperty, value); }
     }
 
-    public string ChosenUnits {
-      get { return DistanceUnitId + ", " + VolumeUnitId + ", " + ConsumptionUnitId; }
-    }
+    //public string ChosenUnits {
+    //  get { return DistanceUnitId + ", " + VolumeUnitId + ", " + ConsumptionUnitId; }
+    //}
 
     public static readonly PropertyInfo<string> TotalFillupsProperty = RegisterProperty<string>(c => c.TotalFillups);
     public string TotalFillups {
@@ -137,6 +137,39 @@ namespace FuelLog.Library
           dal.Insert(item);
           Id = item.Id;
         }
+      }
+    }
+
+    protected override void DataPortal_Update() {
+      using (var dalManager = DalFactory.GetManager()) {
+        var dal = dalManager.GetProvider<ICarDal>();
+        using (BypassPropertyChecks) {
+          var data = new CarDto {
+            Id = Id,
+            Make = Make,
+            Model = Model,
+            LicensePlate = LicensePlate,
+            Note = Note,
+            ConsumptionUnitId = ConsumptionUnitId,
+            DistanceUnitId = DistanceUnitId,
+            VolumeUnitId = VolumeUnitId,
+            LastModified = DateTime.Now
+          };
+          dal.Update(data);
+        }
+      }
+    }
+
+    protected override void DataPortal_DeleteSelf() {
+      using (BypassPropertyChecks) {
+        DataPortal_Delete(Id);
+      }
+    }
+
+    private void DataPortal_Delete(int id) {
+      using (var dalManager = DalFactory.GetManager()) {
+        var dal = dalManager.GetProvider<ICarDal>();
+        dal.Delete(id);
       }
     }
 
