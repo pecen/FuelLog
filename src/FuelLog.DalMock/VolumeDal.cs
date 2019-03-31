@@ -12,7 +12,8 @@ namespace FuelLog.DalMock {
       var data = from r in MockDb.MockDb.VolumeUnits
                  select new VolumeDto {
                    Id = r.Id,
-                   Name = r.Name
+                   Name = r.Name,
+                   ShortName = r.ShortName
                  };
 
       return data.ToList();

@@ -8,5 +8,6 @@ namespace FuelLog.DalMock.MockDb {
   public class DistanceData {
     public int Id { get; set; }
     public string Name { get; set; }
+    public string ShortName { get; set; }
   }
 }

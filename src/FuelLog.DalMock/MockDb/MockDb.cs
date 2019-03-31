@@ -30,18 +30,18 @@ namespace FuelLog.DalMock.MockDb {
             };
 
       DistanceUnits = new List<DistanceData> {
-        new DistanceData{ Id = 0, Name = "Kilometers (Km)" },
-        new DistanceData{ Id = 1, Name = "Miles (mi)" },
-        new DistanceData{ Id = 2, Name = "Hours (h)" }
+        new DistanceData{ Id = 0, Name = "Kilometers (Km)", ShortName = "Km" },
+        new DistanceData{ Id = 1, Name = "Miles (mi)", ShortName = "Mi" },
+        new DistanceData{ Id = 2, Name = "Hours (h)", ShortName = "H" }
       };
 
       VolumeUnits = new List<VolumeData> {
-        new VolumeData{ Id = 0, Name = "Litres (l)" },
-        new VolumeData{ Id = 1, Name = "Gallons US (gal)" },
-        new VolumeData{ Id = 2, Name = "Gallons Imp (gal)" },
-        new VolumeData{ Id = 3, Name = "Electric (kWh)" },
-        new VolumeData{ Id = 4, Name = "CNG (kg)" },
-        new VolumeData{ Id = 5, Name = "CNG (gge)" }
+        new VolumeData{ Id = 0, Name = "Litres (l)", ShortName = "l" },
+        new VolumeData{ Id = 1, Name = "Gallons US (gal)", ShortName = "gal" },
+        new VolumeData{ Id = 2, Name = "Gallons Imp (gal)", ShortName = "gal" },
+        new VolumeData{ Id = 3, Name = "Electric (kWh)", ShortName = "kWh" },
+        new VolumeData{ Id = 4, Name = "CNG (kg)", ShortName = "kg" },
+        new VolumeData{ Id = 5, Name = "CNG (gge)", ShortName = "gge" }
       };
 
       ConsumptionUnits = new List<ConsumptionData> {

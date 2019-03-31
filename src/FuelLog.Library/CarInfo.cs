@@ -31,7 +31,7 @@ namespace FuelLog.Library {
     }
 
     public string FullName {
-      get { return Make + " " + Model; }
+      get { return $"{Make} {Model}"; }
     }
 
     public static readonly PropertyInfo<string> LicensePlateProperty = RegisterProperty<string>(c => c.LicensePlate);
@@ -42,38 +42,21 @@ namespace FuelLog.Library {
 
     public static readonly PropertyInfo<string> NoteProperty = RegisterProperty<string>(c => c.Note);
 
-    public static explicit operator CarInfo(CarEdit v) {
-      return new CarInfo {
-        Id = v.Id,
-        Make = v.Make,
-        Model = v.Model,
-        LicensePlate = v.LicensePlate,
-        Note = v.Note,
-        DistanceUnitId = v.DistanceUnitId,
-        VolumeUnitId = v.VolumeUnitId,
-        ConsumptionUnitId = v.ConsumptionUnitId,
-        DateAdded = v.DateAdded,
-        LastModified = v.LastModified,
-        TotalDistance = v.TotalDistance,
-        TotalFillups = v.TotalFillups
-      };
-    }
-
     public string Note {
       get { return GetProperty(NoteProperty); }
       set { LoadProperty(NoteProperty, value); }
     }
 
-    public static readonly PropertyInfo<int> DistanceUnitProperty = RegisterProperty<int>(c => c.DistanceUnitId);
-    public int DistanceUnitId {
+    public static readonly PropertyInfo<string> DistanceUnitProperty = RegisterProperty<string>(c => c.DistanceUnit);
+    public string DistanceUnit {
       get { return GetProperty(DistanceUnitProperty); }
       set { LoadProperty(DistanceUnitProperty, value); }
     }
 
-    public static readonly PropertyInfo<int> VolumeUnitProperty = RegisterProperty<int>(c => c.VolumeUnitId);
-    public int VolumeUnitId {
-      get { return GetProperty(VolumeUnitProperty); }
-      set { LoadProperty(VolumeUnitProperty, value); }
+    public static readonly PropertyInfo<VolumeInfo> VolumeProperty = RegisterProperty<VolumeInfo>(c => c.Volume);
+    public VolumeInfo Volume {
+      get { return GetProperty(VolumeProperty); }
+      set { LoadProperty(VolumeProperty, value); }
     }
 
     public static readonly PropertyInfo<int> ConsumptionUnitProperty = RegisterProperty<int>(c => c.ConsumptionUnitId);
@@ -83,7 +66,7 @@ namespace FuelLog.Library {
     }
 
     public string ChosenUnits {
-      get { return DistanceUnitId + ", " + VolumeUnitId + ", " + ConsumptionUnitId; }
+      get { return DistanceUnit + ", " + Volume.ShortName + ", " + ConsumptionUnitId; }
     }
 
     public static readonly PropertyInfo<string> TotalFillupsProperty = RegisterProperty<string>(c => c.TotalFillups);
@@ -132,6 +115,28 @@ namespace FuelLog.Library {
 
     #endregion
 
+    public static explicit operator CarInfo(CarEdit c) {
+      return new CarInfo {
+        Id = c.Id,
+        Make = c.Make,
+        Model = c.Model,
+        LicensePlate = c.LicensePlate,
+        Note = c.Note,
+        DistanceUnit = DistanceList.GetDistanceList()
+        .Where(d => d.Id == c.DistanceUnitId)
+        .FirstOrDefault()
+        .ShortName,
+        Volume = VolumeList.GetVolumeList()
+          .Where(v => v.Id == c.VolumeUnitId)
+          .FirstOrDefault(),
+        ConsumptionUnitId = c.ConsumptionUnitId,
+        DateAdded = c.DateAdded,
+        LastModified = c.LastModified,
+        TotalDistance = c.TotalDistance,
+        TotalFillups = c.TotalFillups
+      };
+    }
+
     #region Factory Methods
 
     public static CarInfo GetCar(int carId) {
@@ -155,14 +160,20 @@ namespace FuelLog.Library {
       Model = item.Model;
       LicensePlate = item.LicensePlate;
       Note = item.Note;
-      DistanceUnitId = item.DistanceUnitId;
-      VolumeUnitId = item.VolumeUnitId;
+      DistanceUnit = DistanceList.GetDistanceList()
+        .Where(d => d.Id == item.DistanceUnitId)
+        .FirstOrDefault()
+        .ShortName;
+      Volume = VolumeList.GetVolumeList()
+        .Where(v => v.Id == item.VolumeUnitId)
+        .FirstOrDefault();
       ConsumptionUnitId = item.ConsumptionUnitId;
       TotalFillups = item.TotalFillups.ToString() + " Fillups";
       TotalDistance = item.TotalDistance.ToString() + " km";
       AverageConsumption = item.AverageConsumption.ToString() + $" {ConsumptionUnitId}";
 
-      var d = DataPortal.FetchChild<DistanceInfo>();
+      //var unit = DistanceList.GetDistanceList().Where(d => d.Id == item.DistanceUnitId).FirstOrDefault().Name;
+      //var d = DataPortal.FetchChild<DistanceInfo>();
       //CarSettings = DataPortal.FetchChild<CarSettingsInfo>(Id);
       //CarStatistics = DataPortal.FetchChild<CarStatisticsInfo>(Id);
     }
