@@ -15,9 +15,9 @@ namespace FuelLog.DalMock.MockDb {
 
     static MockDb() {
       Cars = new List<CarData>{
-                new CarData{ Id = 0, Make = "BMW", Model = "320d", LicensePlate = "OUS318", Note = "My first BMW", DistanceUnit = 0, VolumeUnit = 0, ConsumptionUnit = 0, TotalFillups = 64, TotalDistance = 55221, AverageConsumption = 6.75M },
-                new CarData{ Id = 1, Make = "Volvo", Model = "XC60", LicensePlate = "MTZ418", Note = "My current car in Finland", DistanceUnit = 0, VolumeUnit = 0, ConsumptionUnit = 0, TotalFillups = 48, TotalDistance = 78965, AverageConsumption = 8.45M },
-                new CarData{ Id = 2, Make = "Volvo", Model = "XC70", LicensePlate = "BKX594", Note = "My rental Volvo in Gothenburg", DistanceUnit = 0, VolumeUnit = 0, ConsumptionUnit = 0, TotalFillups = 64, TotalDistance = 8922, AverageConsumption = 7.75M },
+                new CarData{ Id = 0, Make = "BMW", Model = "320d", LicensePlate = "OUS318", Note = "My first BMW", DistanceUnit = 0, VolumeUnit = 0, ConsumptionUnit = 0, TotalFillups = 64, TotalDistance = 55221 }, // AverageConsumption = 6.75M },
+                new CarData{ Id = 1, Make = "Volvo", Model = "XC60", LicensePlate = "MTZ418", Note = "My current car in Finland", DistanceUnit = 1, VolumeUnit = 2, ConsumptionUnit = 3, TotalFillups = 48, TotalDistance = 78965 }, // AverageConsumption = 8.45M },
+                new CarData{ Id = 2, Make = "Volvo", Model = "XC70", LicensePlate = "BKX594", Note = "My rental Volvo in Gothenburg", DistanceUnit = 0, VolumeUnit = 0, ConsumptionUnit = 10, TotalFillups = 64, TotalDistance = 8922 }, // AverageConsumption = 7.75M },
             };
 
       Fillups = new List<FillupData>{

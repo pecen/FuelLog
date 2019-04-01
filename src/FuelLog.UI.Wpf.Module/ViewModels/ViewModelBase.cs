@@ -18,7 +18,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels
     public virtual void OnNavigatedFrom(NavigationContext navigationContext) {
     }
 
-    public void OnNavigatedTo(NavigationContext navigationContext) {
+    public virtual void OnNavigatedTo(NavigationContext navigationContext) {
 
     }
   }

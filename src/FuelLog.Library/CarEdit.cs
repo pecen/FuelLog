@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace FuelLog.Library
@@ -48,20 +49,20 @@ namespace FuelLog.Library
       set { SetProperty(NoteProperty, value); }
     }
 
-    public static readonly PropertyInfo<int> DistanceUnitProperty = RegisterProperty<int>(c => c.DistanceUnitId);
-    public int DistanceUnitId {
+    public static readonly PropertyInfo<int> DistanceUnitProperty = RegisterProperty<int>(c => c.DistanceUnit);
+    public int DistanceUnit {
       get { return GetProperty(DistanceUnitProperty); }
       set { SetProperty(DistanceUnitProperty, value); }
     }
 
-    public static readonly PropertyInfo<int> VolumeUnitProperty = RegisterProperty<int>(c => c.VolumeUnitId);
-    public int VolumeUnitId {
+    public static readonly PropertyInfo<int> VolumeUnitProperty = RegisterProperty<int>(c => c.VolumeUnit);
+    public int VolumeUnit {
       get { return GetProperty(VolumeUnitProperty); }
       set { SetProperty(VolumeUnitProperty, value); }
     }
 
-    public static readonly PropertyInfo<int> ConsumptionUnitProperty = RegisterProperty<int>(c => c.ConsumptionUnitId);
-    public int ConsumptionUnitId {
+    public static readonly PropertyInfo<int> ConsumptionUnitProperty = RegisterProperty<int>(c => c.ConsumptionUnit);
+    public int ConsumptionUnit {
       get { return GetProperty(ConsumptionUnitProperty); }
       set { SetProperty(ConsumptionUnitProperty, value); }
     }
@@ -70,23 +71,23 @@ namespace FuelLog.Library
     //  get { return DistanceUnitId + ", " + VolumeUnitId + ", " + ConsumptionUnitId; }
     //}
 
-    public static readonly PropertyInfo<string> TotalFillupsProperty = RegisterProperty<string>(c => c.TotalFillups);
-    public string TotalFillups {
+    public static readonly PropertyInfo<int> TotalFillupsProperty = RegisterProperty<int>(c => c.TotalFillups);
+    public int TotalFillups {
       get { return GetProperty(TotalFillupsProperty); }
       set { SetProperty(TotalFillupsProperty, value); }
     }
 
-    public static readonly PropertyInfo<string> TotalDistanceProperty = RegisterProperty<string>(c => c.TotalDistance);
-    public string TotalDistance {
+    public static readonly PropertyInfo<int> TotalDistanceProperty = RegisterProperty<int>(c => c.TotalDistance);
+    public int TotalDistance {
       get { return GetProperty(TotalDistanceProperty); }
       set { SetProperty(TotalDistanceProperty, value); }
     }
 
-    public static readonly PropertyInfo<string> AverageConsumptionProperty = RegisterProperty<string>(c => c.AverageConsumption);
-    public string AverageConsumption {
-      get { return GetProperty(AverageConsumptionProperty); }
-      set { SetProperty(AverageConsumptionProperty, value); }
-    }
+    //public static readonly PropertyInfo<string> AverageConsumptionProperty = RegisterProperty<string>(c => c.AverageConsumption);
+    //public string AverageConsumption {
+    //  get { return GetProperty(AverageConsumptionProperty); }
+    //  set { SetProperty(AverageConsumptionProperty, value); }
+    //}
 
     public static readonly PropertyInfo<DateTimeOffset> DateAddedProperty = RegisterProperty<DateTimeOffset>(c => c.DateAdded);
     public DateTimeOffset DateAdded {
@@ -101,6 +102,23 @@ namespace FuelLog.Library
     }
 
     #endregion
+
+    public static explicit operator CarEdit(CarInfo car) {
+      return new CarEdit {
+        Id = car.Id,
+        Make = car.Make,
+        Model = car.Model,
+        LicensePlate = car.LicensePlate,
+        Note = car.Note,
+        DistanceUnit = car.DistanceUnit.Id,
+        VolumeUnit = car.VolumeUnit.Id,
+        ConsumptionUnit = car.ConsumptionUnit.Id,
+        DateAdded = car.DateAdded,
+        LastModified = car.LastModified,
+        TotalDistance = int.Parse(Regex.Match(car.TotalDistance, @"\d+").Value),
+        TotalFillups = int.Parse(Regex.Match(car.TotalFillups, @"\d+").Value)
+      };
+    }
 
     #region Factory Methods
 
@@ -130,9 +148,13 @@ namespace FuelLog.Library
             Model = Model,
             LicensePlate = LicensePlate,
             Note = Note,
-            ConsumptionUnitId = ConsumptionUnitId,
-            DistanceUnitId = DistanceUnitId,
-            VolumeUnitId = VolumeUnitId            
+            ConsumptionUnitId = ConsumptionUnit,
+            DistanceUnitId = DistanceUnit,
+            VolumeUnitId = VolumeUnit,
+            DateAdded = DateAdded,
+            LastModified = LastModified,
+            TotalDistance = TotalDistance,
+            TotalFillups = 0
           };
           dal.Insert(item);
           Id = item.Id;
@@ -150,9 +172,9 @@ namespace FuelLog.Library
             Model = Model,
             LicensePlate = LicensePlate,
             Note = Note,
-            ConsumptionUnitId = ConsumptionUnitId,
-            DistanceUnitId = DistanceUnitId,
-            VolumeUnitId = VolumeUnitId,
+            ConsumptionUnitId = ConsumptionUnit,
+            DistanceUnitId = DistanceUnit,
+            VolumeUnitId = VolumeUnit,
             LastModified = DateTime.Now
           };
           dal.Update(data);

@@ -116,25 +116,26 @@ namespace FuelLog.Library {
     #endregion
 
     public static explicit operator CarInfo(CarEdit car) {
+      var distanceUnit = DistanceList.GetDistanceList()
+        .FirstOrDefault(d => d.Id == car.DistanceUnit);
       return new CarInfo {
         Id = car.Id,
         Make = car.Make,
         Model = car.Model,
         LicensePlate = car.LicensePlate,
         Note = car.Note,
-        DistanceUnit = DistanceList.GetDistanceList()
-        .Where(d => d.Id == car.DistanceUnitId)
-        .FirstOrDefault(),
+        DistanceUnit = distanceUnit,
         VolumeUnit = VolumeList.GetVolumeList()
-          .Where(v => v.Id == car.VolumeUnitId)
-          .FirstOrDefault(),
+          .FirstOrDefault(v => v.Id == car.VolumeUnit),
         ConsumptionUnit = ConsumptionList.GetConsumptionList()
-          .Where(c => c.Id == car.ConsumptionUnitId)
-          .FirstOrDefault(),
+          .FirstOrDefault(c => c.Id == car.ConsumptionUnit),
+        //DistanceUnit = car.DistanceUnit,
+        //VolumeUnit = car.VolumeUnit,
+        //ConsumptionUnit = car.ConsumptionUnit,
         DateAdded = car.DateAdded,
         LastModified = car.LastModified,
-        TotalDistance = car.TotalDistance,
-        TotalFillups = car.TotalFillups
+        TotalDistance = $"{car.TotalDistance} {distanceUnit}",
+        TotalFillups = $"{car.TotalFillups} Fillups"
       };
     }
 
@@ -170,9 +171,9 @@ namespace FuelLog.Library {
       ConsumptionUnit = ConsumptionList.GetConsumptionList()
         .Where(c => c.Id == item.ConsumptionUnitId)
         .FirstOrDefault();
-      TotalFillups = $"{item.TotalFillups.ToString()} Fillups";
-      TotalDistance = $"{item.TotalDistance.ToString()} km";
-      AverageConsumption = $"{item.AverageConsumption.ToString()} {ConsumptionUnit.Name}";
+      TotalFillups = $"{item.TotalFillups} Fillups";
+      TotalDistance = $"{item.TotalDistance} km";
+      //AverageConsumption = $"{item.AverageConsumption.ToString()} {ConsumptionUnit.Name}";
 
       //var unit = DistanceList.GetDistanceList().Where(d => d.Id == item.DistanceUnitId).FirstOrDefault().Name;
       //var d = DataPortal.FetchChild<DistanceInfo>();

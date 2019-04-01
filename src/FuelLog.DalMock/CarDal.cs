@@ -21,7 +21,7 @@ namespace FuelLog.DalMock {
                    ConsumptionUnitId = r.ConsumptionUnit,
                    TotalFillups = r.TotalFillups,
                    TotalDistance = r.TotalDistance,
-                   AverageConsumption = r.AverageConsumption
+                   //AverageConsumption = r.AverageConsumption
                  };
 
       return data.ToList();
@@ -41,7 +41,7 @@ namespace FuelLog.DalMock {
                     ConsumptionUnitId = r.ConsumptionUnit,
                     TotalFillups = r.TotalFillups,
                     TotalDistance = r.TotalDistance,
-                    AverageConsumption = r.AverageConsumption
+                    //AverageConsumption = r.AverageConsumption
                   }).FirstOrDefault();
       return data;
     }
@@ -60,7 +60,7 @@ namespace FuelLog.DalMock {
                     ConsumptionUnitId = r.ConsumptionUnit,
                     TotalFillups = r.TotalFillups,
                     TotalDistance = r.TotalDistance,
-                    AverageConsumption = r.AverageConsumption
+                    //AverageConsumption = r.AverageConsumption
                   }).FirstOrDefault();
       return data;
     }
@@ -78,7 +78,7 @@ namespace FuelLog.DalMock {
         ConsumptionUnit = data.ConsumptionUnitId,
         TotalFillups = data.TotalFillups,
         TotalDistance = data.TotalDistance,
-        AverageConsumption = data.AverageConsumption
+        //AverageConsumption = data.AverageConsumption
       };
       MockDb.MockDb.Cars.Add(item);
       data.Id = newId;
@@ -95,7 +95,7 @@ namespace FuelLog.DalMock {
       item.ConsumptionUnit = data.ConsumptionUnitId;
       item.TotalFillups = data.TotalFillups;
       item.TotalDistance = data.TotalDistance;
-      item.AverageConsumption = data.AverageConsumption;
+      //item.AverageConsumption = data.AverageConsumption;
     }
 
     public void Delete(int id) {
@@ -118,7 +118,7 @@ namespace FuelLog.DalMock {
                       ConsumptionUnitId = r.ConsumptionUnit,
                       TotalFillups = r.TotalFillups,
                       TotalDistance = r.TotalDistance,
-                      AverageConsumption = r.AverageConsumption
+                      //AverageConsumption = r.AverageConsumption
                     }).Count();
 
       return retval > 0;

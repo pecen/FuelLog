@@ -101,10 +101,14 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       Model = car.Model;
       Plate = car.LicensePlate;
       Note = car.Note;
+      SelectedDistance = DistanceUnits.FirstOrDefault(d => d.Id == car.DistanceUnit.Id);  
+      SelectedVolume = VolumeUnits.FirstOrDefault(v => v.Id == car.VolumeUnit.Id);
+      SelectedConsumption = ConsumptionUnits.FirstOrDefault(c => c.Id == car.ConsumptionUnit.Id);
     }
 
     private void Cancel(string uri) {
       _regionManager.RequestNavigate("ContentRegion", uri);
+      //ClearFields();
     }
 
     private bool CanExecute() {
@@ -121,7 +125,10 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       car.Note = Note;
       car.DateAdded = DateTime.Now;
       car.LastModified = DateTime.Now;
-      car.TotalFillups = "0";
+      car.TotalFillups = 0;
+      car.DistanceUnit = SelectedDistance.Id;
+      car.VolumeUnit = SelectedVolume.Id;
+      car.ConsumptionUnit = SelectedConsumption.Id;
       car = car.Save();
 
       _eventAggregator
@@ -130,6 +137,12 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       //.Publish(car);
 
       _regionManager.RequestNavigate("ContentRegion", "CarList");
+      //ClearFields();
+    }
+
+    public override void OnNavigatedTo(NavigationContext navigationContext) {
+      base.OnNavigatedTo(navigationContext);
+
       ClearFields();
     }
 
@@ -138,6 +151,9 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       Model = string.Empty;
       Plate = string.Empty;
       Note = string.Empty;
+      SelectedDistance = DistanceUnits.FirstOrDefault(); 
+      SelectedVolume = VolumeUnits.FirstOrDefault();
+      SelectedConsumption = ConsumptionUnits.FirstOrDefault();
     }
   }
 }

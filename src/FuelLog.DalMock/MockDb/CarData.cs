@@ -16,6 +16,6 @@ namespace FuelLog.DalMock.MockDb {
     public int ConsumptionUnit { get; set; }
     public int TotalFillups { get; set; }
     public int TotalDistance { get; set; }
-    public decimal AverageConsumption { get; set; }
+    //public decimal AverageConsumption { get; set; }
   }
 }
