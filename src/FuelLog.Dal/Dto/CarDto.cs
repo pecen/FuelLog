@@ -14,8 +14,8 @@ namespace FuelLog.Dal.Dto {
     public int DistanceUnitId { get; set; }
     public int VolumeUnitId { get; set; }
     public int ConsumptionUnitId { get; set; }
-    public int TotalFillups { get; set; }
-    public int TotalDistance { get; set; }
+    //public int TotalFillups { get; set; }
+    //public int TotalDistance { get; set; }
     //public decimal AverageConsumption { get; set; }
     public DateTimeOffset DateAdded { get; set; }
     public DateTimeOffset LastModified { get; set; }

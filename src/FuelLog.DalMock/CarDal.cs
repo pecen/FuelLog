@@ -19,8 +19,8 @@ namespace FuelLog.DalMock {
                    DistanceUnitId = r.DistanceUnit,
                    VolumeUnitId = r.VolumeUnit,
                    ConsumptionUnitId = r.ConsumptionUnit,
-                   TotalFillups = r.TotalFillups,
-                   TotalDistance = r.TotalDistance,
+                   //TotalFillups = r.TotalFillups,
+                   //TotalDistance = r.TotalDistance,
                    //AverageConsumption = r.AverageConsumption
                  };
 
@@ -39,8 +39,8 @@ namespace FuelLog.DalMock {
                     DistanceUnitId = r.DistanceUnit,
                     VolumeUnitId = r.VolumeUnit,
                     ConsumptionUnitId = r.ConsumptionUnit,
-                    TotalFillups = r.TotalFillups,
-                    TotalDistance = r.TotalDistance,
+                    //TotalFillups = r.TotalFillups,
+                    //TotalDistance = r.TotalDistance,
                     //AverageConsumption = r.AverageConsumption
                   }).FirstOrDefault();
       return data;
@@ -58,8 +58,8 @@ namespace FuelLog.DalMock {
                     DistanceUnitId = r.DistanceUnit,
                     VolumeUnitId = r.VolumeUnit,
                     ConsumptionUnitId = r.ConsumptionUnit,
-                    TotalFillups = r.TotalFillups,
-                    TotalDistance = r.TotalDistance,
+                    //TotalFillups = r.TotalFillups,
+                    //TotalDistance = r.TotalDistance,
                     //AverageConsumption = r.AverageConsumption
                   }).FirstOrDefault();
       return data;
@@ -76,8 +76,8 @@ namespace FuelLog.DalMock {
         DistanceUnit = data.DistanceUnitId,
         VolumeUnit = data.VolumeUnitId,
         ConsumptionUnit = data.ConsumptionUnitId,
-        TotalFillups = data.TotalFillups,
-        TotalDistance = data.TotalDistance,
+        //TotalFillups = data.TotalFillups,
+        //TotalDistance = data.TotalDistance,
         //AverageConsumption = data.AverageConsumption
       };
       MockDb.MockDb.Cars.Add(item);
@@ -93,8 +93,8 @@ namespace FuelLog.DalMock {
       item.DistanceUnit = data.DistanceUnitId;
       item.VolumeUnit = data.VolumeUnitId;
       item.ConsumptionUnit = data.ConsumptionUnitId;
-      item.TotalFillups = data.TotalFillups;
-      item.TotalDistance = data.TotalDistance;
+      //item.TotalFillups = data.TotalFillups;
+      //item.TotalDistance = data.TotalDistance;
       //item.AverageConsumption = data.AverageConsumption;
     }
 
@@ -116,8 +116,8 @@ namespace FuelLog.DalMock {
                       DistanceUnitId = r.DistanceUnit,
                       VolumeUnitId = r.VolumeUnit,
                       ConsumptionUnitId = r.ConsumptionUnit,
-                      TotalFillups = r.TotalFillups,
-                      TotalDistance = r.TotalDistance,
+                      //TotalFillups = r.TotalFillups,
+                      //TotalDistance = r.TotalDistance,
                       //AverageConsumption = r.AverageConsumption
                     }).Count();
 

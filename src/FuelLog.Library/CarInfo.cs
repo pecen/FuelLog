@@ -179,7 +179,8 @@ namespace FuelLog.Library {
         .FirstOrDefault();
       Fillups = DataPortal.FetchChild<FillupList>(item.Id);
       TotalFillups = $"{Fillups.Count()} Fillup{(Fillups.Count() > 1 ? "s" : string.Empty)}";
-      TotalDistance = $"{item.TotalDistance} km";
+
+      //TotalDistance = $"{Fillups.Max(d => d.FillupDate).FirstOrDefault()} km";
       //AverageConsumption = $"{item.AverageConsumption.ToString()} {ConsumptionUnit.Name}";
 
       //var unit = DistanceList.GetDistanceList().Where(d => d.Id == item.DistanceUnitId).FirstOrDefault().Name;

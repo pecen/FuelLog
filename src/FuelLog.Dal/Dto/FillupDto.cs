@@ -14,8 +14,8 @@ namespace FuelLog.Dal.Dto {
     public decimal VolumePrice { get; set; }
     public bool PartialFillUp { get; set; }
     public string Note { get; set; }
-    public int DaysSinceLast { get; set; }
-    public int DistanceSinceLast { get; set; }
-    public decimal AverageConsumption { get; set; }
+    //public int DaysSinceLast { get; set; }
+    //public int DistanceSinceLast { get; set; }
+    //public decimal AverageConsumption { get; set; }
   }
 }

@@ -46,9 +46,9 @@ namespace FuelLog.Library {
         var distanceSinceLast = data[i].Odometer - data[i - 1].Odometer;
         var consumption = data[i].Amount / distanceSinceLast * 100;
 
-        data[i].DaysSinceLast = daysSinceLast;
-        data[i].DistanceSinceLast = distanceSinceLast;
-        data[i].AverageConsumption = consumption;
+        //data[i].DaysSinceLast = daysSinceLast;
+        //data[i].DistanceSinceLast = distanceSinceLast;
+        //data[i].AverageConsumption = consumption;
       }
     }
 

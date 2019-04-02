@@ -81,17 +81,17 @@ namespace FuelLog.Library {
       Odometer = $"{item.Odometer} Km";
       TotalCost = $"SEK {Math.Round(item.Amount * item.VolumePrice, 2)}";
 
-      DaysSinceLast = item.DaysSinceLast == 0
-        ? string.Empty
-        : $"(+ {item.DaysSinceLast} days)";
+      //DaysSinceLast = item.DaysSinceLast == 0
+      //  ? string.Empty
+      //  : $"(+ {item.DaysSinceLast} days)";
 
-      DistanceSinceLast = item.DaysSinceLast == 0
-        ? string.Empty
-        : $"+ {item.DistanceSinceLast} Km";
+      //DistanceSinceLast = item.DaysSinceLast == 0
+      //  ? string.Empty
+      //  : $"+ {item.DistanceSinceLast} Km";
 
-      AverageConsumption = item.AverageConsumption == 0
-        ? string.Empty
-        : $"{Math.Round(item.AverageConsumption, 2)} L/100 Km";
+      //AverageConsumption = item.AverageConsumption == 0
+      //  ? string.Empty
+      //  : $"{Math.Round(item.AverageConsumption, 2)} L/100 Km";
 
       VolumePrice = $"SEK {Math.Round(item.VolumePrice, 2)}/L";
       PartialFillup = item.PartialFillUp;

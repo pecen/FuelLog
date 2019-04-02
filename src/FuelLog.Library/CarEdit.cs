@@ -153,8 +153,8 @@ namespace FuelLog.Library
             VolumeUnitId = VolumeUnit,
             DateAdded = DateAdded,
             LastModified = LastModified,
-            TotalDistance = TotalDistance,
-            TotalFillups = 0
+            //TotalDistance = TotalDistance,
+            //TotalFillups = 0
           };
           dal.Insert(item);
           Id = item.Id;
