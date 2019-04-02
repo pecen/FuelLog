@@ -99,6 +99,12 @@ namespace FuelLog.Library {
       set { LoadProperty(LastModifiedProperty, value); }
     }
 
+    public static readonly PropertyInfo<FillupList> FillupsProperty = RegisterProperty<FillupList>(c => c.Fillups);
+    public FillupList Fillups {
+      get { return GetProperty(FillupsProperty); }
+      set { LoadProperty(FillupsProperty, value); }
+    }
+
     //public static readonly PropertyInfo<CarSettingsInfo> CarSettingsProperty = RegisterProperty<CarSettingsInfo>(c => c.CarSettings);
     //public CarSettingsInfo CarSettings
     //{
@@ -171,7 +177,8 @@ namespace FuelLog.Library {
       ConsumptionUnit = ConsumptionList.GetConsumptionList()
         .Where(c => c.Id == item.ConsumptionUnitId)
         .FirstOrDefault();
-      TotalFillups = $"{item.TotalFillups} Fillups";
+      Fillups = DataPortal.FetchChild<FillupList>(item.Id);
+      TotalFillups = $"{Fillups.Count()} Fillup{(Fillups.Count() > 1 ? "s" : string.Empty)}";
       TotalDistance = $"{item.TotalDistance} km";
       //AverageConsumption = $"{item.AverageConsumption.ToString()} {ConsumptionUnit.Name}";
 

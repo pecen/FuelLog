@@ -52,6 +52,21 @@ namespace FuelLog.Library {
       }
     }
 
+    private void Child_Fetch(int carId) {
+      using (var dalManger = DalFactory.GetManager()) {
+        var dal = dalManger.GetProvider<IFillupDal>();
+        var data = dal.FetchForCar(carId);
+        var rlce = RaiseListChangedEvents;
+        RaiseListChangedEvents = false;
+        IsReadOnly = false;
+        foreach(var item in data) {
+          Add(DataPortal.FetchChild<FillupInfo>(item));
+        }
+        RaiseListChangedEvents = rlce;
+        IsReadOnly = true;
+      }
+    }
+
     #endregion
   }
 }
