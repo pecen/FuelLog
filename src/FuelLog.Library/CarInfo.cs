@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace FuelLog.Library {
@@ -180,6 +181,16 @@ namespace FuelLog.Library {
       Fillups = DataPortal.FetchChild<FillupList>(item.Id);
       TotalFillups = $"{Fillups.Count()} Fillup{(Fillups.Count() > 1 ? "s" : string.Empty)}";
 
+      if (Fillups.Count() > 1) {
+        //var e = Fillups.OrderBy(a => a.FillupDate);
+
+        var first = Fillups.OrderBy(a => a.FillupDate).First();
+        var last = Fillups.OrderBy(a => a.FillupDate).Last();
+        var totalDistance = int.Parse(Regex.Match(last.Odometer, @"\d+").Value) 
+          - int.Parse(Regex.Match(first.Odometer, @"\d+").Value);
+
+        TotalDistance = $"{totalDistance} {DistanceUnit.ShortName}";
+      }
       //TotalDistance = $"{Fillups.Max(d => d.FillupDate).FirstOrDefault()} km";
       //AverageConsumption = $"{item.AverageConsumption.ToString()} {ConsumptionUnit.Name}";
 

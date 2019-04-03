@@ -74,7 +74,7 @@
       Grid.Column="1"
       VerticalAlignment="Top"
       Style="{StaticResource TextBlock}"
-      Text="{Binding TotalFillups}" />
+      Text="{Binding TotalFillups }" />
     <TextBlock
       x:Name="txtAverageConsumption"
       Grid.Row="1"
