@@ -186,14 +186,19 @@ namespace FuelLog.Library {
 
         var first = f.First(); // Fillups.OrderBy(a => a.FillupDate).First();
         var last = f.Last(); // Fillups.OrderBy(a => a.FillupDate).Last();
-        var totalDistance = int.Parse(Regex.Match(last.Odometer, @"\d+").Value) 
-          - int.Parse(Regex.Match(first.Odometer, @"\d+").Value);
+        var firstOdo = int.Parse(Regex.Match(first.Odometer, @"\d+").Value);
+        var lastOdo = int.Parse(Regex.Match(last.Odometer, @"\d+").Value);
+        var totalDistance = lastOdo - firstOdo;
+        //var totalDistance = int.Parse(Regex.Match(last.Odometer, @"\d+").Value) 
+        //  - int.Parse(Regex.Match(first.Odometer, @"\d+").Value);
 
         TotalDistance = $"{totalDistance} {DistanceUnit.ShortName}";
 
         var firstAmount = decimal.Parse(Regex.Match(first.Amount, @"\d+.+\d").Value);
+        var sumAmount = Fillups.Sum(con => decimal.Parse(Regex.Match(con.Amount, @"\d+.+\d").Value));
+        var avg = Math.Round((lastOdo - firstOdo) / (sumAmount - firstAmount), 2);
 
-        var sumAmount = Fillups.Sum(con => decimal.Parse(Regex.Match(con.Amount, @"\d+.+\d").Value)) - firstAmount;
+        AverageConsumption = $"{avg} {ConsumptionUnit.Name}";
       }
 
       //AverageConsumption = $"{item.AverageConsumption.ToString()} {ConsumptionUnit.Name}";
