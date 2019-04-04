@@ -190,7 +190,10 @@ namespace FuelLog.Library {
           - int.Parse(Regex.Match(first.Odometer, @"\d+").Value);
 
         TotalDistance = $"{totalDistance} {DistanceUnit.ShortName}";
-        AverageConsumption = Fillups.Sum(con => int.Parse(Regex.Match(con.Amount, @"\d+").Value)).ToString();
+
+        var firstAmount = decimal.Parse(Regex.Match(first.Amount, @"\d+.+\d").Value);
+
+        var sumAmount = Fillups.Sum(con => decimal.Parse(Regex.Match(con.Amount, @"\d+.+\d").Value)) - firstAmount;
       }
 
       //AverageConsumption = $"{item.AverageConsumption.ToString()} {ConsumptionUnit.Name}";
