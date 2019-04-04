@@ -182,16 +182,16 @@ namespace FuelLog.Library {
       TotalFillups = $"{Fillups.Count()} Fillup{(Fillups.Count() > 1 ? "s" : string.Empty)}";
 
       if (Fillups.Count() > 1) {
-        //var e = Fillups.OrderBy(a => a.FillupDate);
+        var f = Fillups.OrderBy(a => a.FillupDate);
 
-        var first = Fillups.OrderBy(a => a.FillupDate).First();
-        var last = Fillups.OrderBy(a => a.FillupDate).Last();
+        var first = f.First(); // Fillups.OrderBy(a => a.FillupDate).First();
+        var last = f.Last(); // Fillups.OrderBy(a => a.FillupDate).Last();
         var totalDistance = int.Parse(Regex.Match(last.Odometer, @"\d+").Value) 
           - int.Parse(Regex.Match(first.Odometer, @"\d+").Value);
 
         TotalDistance = $"{totalDistance} {DistanceUnit.ShortName}";
       }
-      //TotalDistance = $"{Fillups.Max(d => d.FillupDate).FirstOrDefault()} km";
+
       //AverageConsumption = $"{item.AverageConsumption.ToString()} {ConsumptionUnit.Name}";
 
       //var unit = DistanceList.GetDistanceList().Where(d => d.Id == item.DistanceUnitId).FirstOrDefault().Name;
