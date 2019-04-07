@@ -54,6 +54,7 @@
     <Compile Include="FillupInfo.cs" />
     <Compile Include="FillupList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ConsumptionCalcService.cs" />
     <Compile Include="VolumeInfo.cs" />
     <Compile Include="VolumeList.cs" />
   </ItemGroup>

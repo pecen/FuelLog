@@ -17,16 +17,16 @@ namespace FuelLog.DalMock.MockDb {
       Cars = new List<CarData>{
                 new CarData{ Id = 0, Make = "BMW", Model = "320d", LicensePlate = "OUS318", Note = "My first BMW", DistanceUnit = 0, VolumeUnit = 0, ConsumptionUnit = 0 }, // , TotalFillups = 64, TotalDistance = 55221AverageConsumption = 6.75M },
                 new CarData{ Id = 1, Make = "Volvo", Model = "XC60", LicensePlate = "MTZ418", Note = "My current car in Finland", DistanceUnit = 1, VolumeUnit = 2, ConsumptionUnit = 3 }, // , TotalFillups = 48, TotalDistance = 78965AverageConsumption = 8.45M },
-                new CarData{ Id = 2, Make = "Volvo", Model = "XC70", LicensePlate = "BKX594", Note = "My rental Volvo in Gothenburg", DistanceUnit = 0, VolumeUnit = 0, ConsumptionUnit = 10 }, // , TotalFillups = 64, TotalDistance = 8922AverageConsumption = 7.75M },
+                new CarData{ Id = 2, Make = "Volvo", Model = "XC90", LicensePlate = "BKX594", Note = "My rental Volvo in Gothenburg", DistanceUnit = 0, VolumeUnit = 0, ConsumptionUnit = 3 }, // , TotalFillups = 64, TotalDistance = 8922AverageConsumption = 7.75M },
             };
 
       Fillups = new List<FillupData>{
                 new FillupData{ Id = 0, CarId = 0, FillUpDate = new DateTime(2016, 05, 01), Odometer = 52816, Amount = 66.23m, VolumePrice = 12.14m, PartialFillUp = false, Note = "First fillup for BMW" },
                 new FillupData{ Id = 1, CarId = 1, FillUpDate = new DateTime(2016, 05, 16), Odometer = 53661, Amount = 64.23m, VolumePrice = 12.58m, PartialFillUp = false, Note = "First fillup for Volvo" },
                 new FillupData{ Id = 2, CarId = 1, FillUpDate = new DateTime(2016, 05, 24), Odometer = 54441, Amount = 66.23m, VolumePrice = 12.54m, PartialFillUp = false, Note = "Second fillup for Volvo" },
-                new FillupData{ Id = 3, CarId = 2, FillUpDate = new DateTime(2016, 05, 01), Odometer = 52816, Amount = 66.23m, VolumePrice = 12.14m, PartialFillUp = false, Note = "First fillup for BMW" },
-                new FillupData{ Id = 4, CarId = 2, FillUpDate = new DateTime(2016, 05, 16), Odometer = 53661, Amount = 64.23m, VolumePrice = 12.58m, PartialFillUp = false, Note = "First fillup for Volvo" },
-                new FillupData{ Id = 5, CarId = 2, FillUpDate = new DateTime(2016, 05, 24), Odometer = 54441, Amount = 66.23m, VolumePrice = 12.54m, PartialFillUp = false, Note = "Second fillup for Volvo" },
+                new FillupData{ Id = 3, CarId = 2, FillUpDate = new DateTime(2018, 04, 02), Odometer = 18, Amount = 65.00m, VolumePrice = 14.50m, PartialFillUp = false, Note = "First fillup for Volvo" },
+                new FillupData{ Id = 4, CarId = 2, FillUpDate = new DateTime(2018, 04, 07), Odometer = 768, Amount = 64.36m, VolumePrice = 14.32m, PartialFillUp = false, Note = "Second fillup for Volvo" },
+                new FillupData{ Id = 5, CarId = 2, FillUpDate = new DateTime(2018, 04, 13), Odometer = 1456, Amount = 63.39m, VolumePrice = 14.50m, PartialFillUp = false, Note = "Third fillup for Volvo" },
             };
 
       DistanceUnits = new List<DistanceData> {
