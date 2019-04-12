@@ -1,6 +1,7 @@
 ﻿using Csla;
 using FuelLog.Dal;
 using FuelLog.Dal.Dto;
+using FuelLog.Library.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -163,6 +164,7 @@ namespace FuelLog.Library {
       }
     }
 
+    //delegate double ConsumptionOp(FillupList list);
     private void Child_Fetch(CarDto item) {
       Id = item.Id;
       Make = item.Make;
@@ -194,10 +196,13 @@ namespace FuelLog.Library {
 
         TotalDistance = $"{totalDistance} {DistanceUnit.ShortName}";
 
-        var firstAmount = decimal.Parse(Regex.Match(first.Amount, @"\d+.+\d").Value);
-        var sumAmount = Fillups.Sum(con => decimal.Parse(Regex.Match(con.Amount, @"\d+.+\d").Value));
-        var avg = Math.Round((lastOdo - firstOdo) / (sumAmount - firstAmount), 2);
+        //var firstAmount = decimal.Parse(Regex.Match(first.Amount, @"\d+.+\d").Value);
+        //var sumAmount = Fillups.Sum(con => decimal.Parse(Regex.Match(con.Amount, @"\d+.+\d").Value));
+        //var avg = Math.Round((lastOdo - firstOdo) / (sumAmount - firstAmount), 2);
 
+        //ConsumptionOp consumptionOp = ConsumptionCalcService.KmPerLiter;
+        Func<FillupList, double> ff = ConsumptionCalcService.KmPerLiter;
+        var avg = ff(Fillups);
         AverageConsumption = $"{avg} {ConsumptionUnit.Name}";
       }
 
