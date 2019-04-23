@@ -21,5 +21,18 @@ namespace FuelLog.Library.Services {
     public static void Calculate<T> (T[] values, Func<T, T> units) {
 
     }
+    public void LiterPer100Km(CarInfo car) {
+
+    }
+
+    public void MilesPerUSGallon(CarInfo car) { }
+
+    public void MilesPerImpGallon(CarInfo car) { }
+
+    public void KmPerLiter(CarInfo car) { }
+
+    public T CalculateConsumption<T>(CarInfo car) where T : class {
+      return T;
+    }
   }
 }
