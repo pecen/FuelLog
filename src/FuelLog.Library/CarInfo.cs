@@ -164,7 +164,7 @@ namespace FuelLog.Library {
       }
     }
 
-    //delegate double ConsumptionOp(FillupList list);
+    delegate double ConsumptionOp(FillupList list);
     private void Child_Fetch(CarDto item) {
       Id = item.Id;
       Make = item.Make;
@@ -201,9 +201,16 @@ namespace FuelLog.Library {
         //var avg = Math.Round((lastOdo - firstOdo) / (sumAmount - firstAmount), 2);
 
         //ConsumptionOp consumptionOp = ConsumptionCalcService.KmPerLiter;
+        ConsumptionOp op = delegate (FillupList fff) {
+          return ConsumptionCalcService.KmPerLiter(fff);
+        };
+
         Func<FillupList, double> ff = ConsumptionCalcService.KmPerLiter;
         var avg = ff(Fillups);
         AverageConsumption = $"{avg} {ConsumptionUnit.Name}";
+
+        decimal[] values = { 1.2m, 2.4m, 3.6m };
+        //var fff = ConsumptionCalcService.Calculate(values, ConsumptionCalcService.KmPerLiter);
       }
 
       //AverageConsumption = $"{item.AverageConsumption.ToString()} {ConsumptionUnit.Name}";

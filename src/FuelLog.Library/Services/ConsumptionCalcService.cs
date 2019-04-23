@@ -17,5 +17,9 @@ namespace FuelLog.Library.Services {
       var sumAmount = fillups.Sum(con => decimal.Parse(Regex.Match(con.Amount, @"\d+.+\d").Value));
       return (double)Math.Round((lastOdo - firstOdo) / (sumAmount - firstAmount), 2);
     }
+
+    public static void Calculate<T> (T[] values, Func<T, T> units) {
+
+    }
   }
 }
