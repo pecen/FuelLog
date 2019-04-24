@@ -1,10 +1,41 @@
-﻿using System;
+﻿using FuelLog.Library.Enums;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace FuelLog.Library.Services {
   public class ConsumptionCalcService {
+    #region Properties
+
+    public IDictionary<string, ConsumptionOps> Ops {
+      get {
+        return new Dictionary<string, ConsumptionOps> {
+          ["KmPerL"] = ConsumptionOps.KmPerLiter
+        };
+      }
+    }
+
+    //public IDictionary<string, string> APICalls {
+    //  get {
+    //    return new Dictionary<string, string> {
+    //      [EnumUtilities.GetEnumDescription(ApiRequests.GetAllRooms)] = "api/connector/v1/spaces/getAll",
+    //      [EnumUtilities.GetEnumDescription(ApiRequests.SearchCustomers)] = "api/connector/v1/customers/search",
+    //      [EnumUtilities.GetEnumDescription(ApiRequests.AddOrder)] = "api/connector/v1/orders/add",
+    //      [EnumUtilities.GetEnumDescription(ApiRequests.GetServices)] = "api/connector/v1/services/getAll",
+    //      [EnumUtilities.GetEnumDescription(ApiRequests.GetReservations)] = "api/connector/v1/reservations/getAll",
+    //      [EnumUtilities.GetEnumDescription(ApiRequests.GetAccountingCategories)] = "api/connector/v1/accountingCategories/getAll",
+    //      [EnumUtilities.GetEnumDescription(ApiRequests.AddOutletBill)] = "api/connector/v1/outletbills/add",
+    //      [EnumUtilities.GetEnumDescription(ApiRequests.GetAllOutlets)] = "api/connector/v1/outlets/getAll"
+    //    };
+    //  }
+    //}
+
+    #endregion
+
     // TODO: Add the different consumption calculations here
+
     public static double KmPerLiter(FillupList fillups) {
       var f = fillups.OrderBy(a => a.FillupDate);
 
@@ -32,7 +63,7 @@ namespace FuelLog.Library.Services {
     public void KmPerLiter(CarInfo car) { }
 
     public T CalculateConsumption<T>(CarInfo car) where T : class {
-      return T;
+      return default(T);
     }
   }
 }
