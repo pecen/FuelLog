@@ -12,7 +12,10 @@ namespace FuelLog.Library.Services {
 
     public ConsumptionCalcService() {
       _ops = new Dictionary<string, ConsumptionOps> {
-        ["KmPerL"] = ConsumptionOps.KmPerLiter
+        [ConsumptionOps.KmPerLiter.GetEnumDescription()] = ConsumptionOps.KmPerLiter,
+        [ConsumptionOps.LiterPer100Km.GetEnumDescription()] = ConsumptionOps.LiterPer100Km, 
+        [ConsumptionOps.LiterPer10Km.GetEnumDescription()] = ConsumptionOps.LiterPer10Km,
+        [ConsumptionOps.LiterPerKm.GetEnumDescription()] = ConsumptionOps.LiterPerKm
       };
     }
 
@@ -20,10 +23,12 @@ namespace FuelLog.Library.Services {
 
     public IDictionary<string, ConsumptionOps> Ops {
       get {
-        return new Dictionary<string, ConsumptionOps> {
-          [ConsumptionOps.KmPerLiter.GetEnumDescription()] = ConsumptionOps.KmPerLiter,
-          [ConsumptionOps.KmPerLiter.GetEnumDescription()] = ConsumptionOps.LiterPer100Km
-        };
+        return _ops;
+
+        //return new Dictionary<string, ConsumptionOps> {
+        //  [ConsumptionOps.KmPerLiter.GetEnumDescription()] = ConsumptionOps.KmPerLiter,
+        //  [ConsumptionOps.KmPerLiter.GetEnumDescription()] = ConsumptionOps.LiterPer100Km
+        //};
       }
     }
 
