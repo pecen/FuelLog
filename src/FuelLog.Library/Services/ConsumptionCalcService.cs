@@ -1,4 +1,5 @@
-﻿using FuelLog.Library.Enums;
+﻿using FuelLog.Core.Utilities;
+using FuelLog.Library.Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,11 +20,10 @@ namespace FuelLog.Library.Services {
 
     public IDictionary<string, ConsumptionOps> Ops {
       get {
-        return _ops;
-
-        //return new Dictionary<string, ConsumptionOps> {
-        //  ["KmPerL"] = ConsumptionOps.KmPerLiter
-        //};
+        return new Dictionary<string, ConsumptionOps> {
+          [ConsumptionOps.KmPerLiter.GetEnumDescription()] = ConsumptionOps.KmPerLiter,
+          [ConsumptionOps.KmPerLiter.GetEnumDescription()] = ConsumptionOps.LiterPer100Km
+        };
       }
     }
 
