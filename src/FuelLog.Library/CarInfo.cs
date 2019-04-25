@@ -201,9 +201,9 @@ namespace FuelLog.Library {
         //var avg = Math.Round((lastOdo - firstOdo) / (sumAmount - firstAmount), 2);
 
         //ConsumptionOp consumptionOp = ConsumptionCalcService.KmPerLiter;
-        ConsumptionOp op = delegate (FillupList fff) {
-          return ConsumptionCalcService.KmPerLiter(fff);
-        };
+        //ConsumptionOp op = delegate (FillupList fff) {
+        //  return ConsumptionCalcService.KmPerLiter(fff);
+        //};
 
         Func<FillupList, double> ff = ConsumptionCalcService.KmPerLiter;
         var avg = ff(Fillups);
