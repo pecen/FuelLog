@@ -9,13 +9,11 @@ using System.Text.RegularExpressions;
 
 namespace FuelLog.Library.Services {
   public class ConsumptionCalcService {
-    private static readonly string _kmPerLiter;
-
     public ConsumptionCalcService() {
-      _kmPerLiter = ConsumptionOps.KmPerLiter.GetEnumDescription();
+      //_kmPerLiter = ConsumptionOps.KmPerLiter.GetEnumDescription();
 
       Ops = new Dictionary<string, ConsumptionOps> {
-        [_kmPerLiter] = ConsumptionOps.KmPerLiter,
+        [ConsumptionOps.KmPerLiter.GetEnumDescription()] = ConsumptionOps.KmPerLiter,
         [ConsumptionOps.LiterPer100Km.GetEnumDescription()] = ConsumptionOps.LiterPer100Km, 
         [ConsumptionOps.LiterPer10Km.GetEnumDescription()] = ConsumptionOps.LiterPer10Km,
         [ConsumptionOps.LiterPerKm.GetEnumDescription()] = ConsumptionOps.LiterPerKm
@@ -30,7 +28,7 @@ namespace FuelLog.Library.Services {
 
     // TODO: Add the different consumption calculations here
 
-    [Description(_kmPerLiter)]
+    [Description("km/liter")]
     public static double KmPerLiter(FillupList fillups) {
       var f = fillups.OrderBy(a => a.FillupDate);
 
