@@ -7,13 +7,23 @@ using System.Text.RegularExpressions;
 
 namespace FuelLog.Library.Services {
   public class ConsumptionCalcService {
+    private readonly IDictionary<string, ConsumptionOps> _ops;
+
+    public ConsumptionCalcService() {
+      _ops = new Dictionary<string, ConsumptionOps> {
+        ["KmPerL"] = ConsumptionOps.KmPerLiter
+      };
+    }
+
     #region Properties
 
     public IDictionary<string, ConsumptionOps> Ops {
       get {
-        return new Dictionary<string, ConsumptionOps> {
-          ["KmPerL"] = ConsumptionOps.KmPerLiter
-        };
+        return _ops;
+
+        //return new Dictionary<string, ConsumptionOps> {
+        //  ["KmPerL"] = ConsumptionOps.KmPerLiter
+        //};
       }
     }
 
