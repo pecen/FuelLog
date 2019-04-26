@@ -52,7 +52,7 @@
     <Compile Include="ConsumptionList.cs" />
     <Compile Include="DistanceInfo.cs" />
     <Compile Include="DistanceList.cs" />
-    <Compile Include="Enums\ConsumptionOps.cs" />
+    <Compile Include="Enums\ConsumptionUnits.cs" />
     <Compile Include="FillupInfo.cs" />
     <Compile Include="FillupList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
