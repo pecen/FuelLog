@@ -23,11 +23,11 @@ namespace FuelLog.Library {
       set { LoadProperty(NameProperty, value); }
     }
 
-    public static readonly PropertyInfo<string> ShortNameProperty = RegisterProperty<string>(c => c.ShortName);
-    public string ShortName {
-      get { return GetProperty(ShortNameProperty); }
-      set { LoadProperty(ShortNameProperty, value); }
-    }
+    //public static readonly PropertyInfo<string> ShortNameProperty = RegisterProperty<string>(c => c.ShortName);
+    //public string ShortName {
+    //  get { return GetProperty(ShortNameProperty); }
+    //  set { LoadProperty(ShortNameProperty, value); }
+    //}
 
     #endregion
 

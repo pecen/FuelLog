@@ -1,5 +1,6 @@
 ﻿using Csla;
 using FuelLog.Dal;
+using FuelLog.Library.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,9 @@ namespace FuelLog.Library {
     #region Factory Methods
 
     public static ConsumptionList GetConsumptionList() {
-      return DataPortal.Fetch<ConsumptionList>();
+      return Enum.GetValues(typeof(ConsumptionUnits)).Cast<Enum>().Select((e) => new ConsumptionInfo { Id = e, Name = e.Description() }).ToList();
+
+      //return DataPortal.Fetch<ConsumptionList>();
     }
 
     #endregion

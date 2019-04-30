@@ -71,7 +71,9 @@
     <Compile Include="Commands\GetCarsCommand.cs" />
     <Compile Include="Commands\GetFillupsCommand.cs" />
     <Compile Include="Commands\SaveCarCommand.cs" />
+    <Compile Include="Converters\EnumToCollectionConverter.cs" />
     <Compile Include="Converters\NameToContentConverter.cs" />
+    <Compile Include="Enums\ConsumptionUnits.cs" />
     <Compile Include="FuelLogModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
