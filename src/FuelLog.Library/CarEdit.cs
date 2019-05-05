@@ -1,6 +1,7 @@
 ﻿using Csla;
 using FuelLog.Dal;
 using FuelLog.Dal.Dto;
+using FuelLog.Library.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,8 +62,14 @@ namespace FuelLog.Library
       set { SetProperty(VolumeUnitProperty, value); }
     }
 
-    public static readonly PropertyInfo<int> ConsumptionUnitProperty = RegisterProperty<int>(c => c.ConsumptionUnit);
-    public int ConsumptionUnit {
+    //public static readonly PropertyInfo<int> ConsumptionUnitProperty = RegisterProperty<int>(c => c.ConsumptionUnit);
+    //public int ConsumptionUnit {
+    //  get { return GetProperty(ConsumptionUnitProperty); }
+    //  set { SetProperty(ConsumptionUnitProperty, value); }
+    //}
+
+    public static readonly PropertyInfo<ConsumptionUnits> ConsumptionUnitProperty = RegisterProperty<ConsumptionUnits>(c => c.ConsumptionUnit);
+    public ConsumptionUnits ConsumptionUnit {
       get { return GetProperty(ConsumptionUnitProperty); }
       set { SetProperty(ConsumptionUnitProperty, value); }
     }
@@ -112,7 +119,8 @@ namespace FuelLog.Library
         Note = car.Note,
         DistanceUnit = car.DistanceUnit.Id,
         VolumeUnit = car.VolumeUnit.Id,
-        ConsumptionUnit = car.ConsumptionUnit.Id,
+        //ConsumptionUnit = car.ConsumptionUnit.Id,
+        ConsumptionUnit = car.ConsumptionUnit,
         DateAdded = car.DateAdded,
         LastModified = car.LastModified,
         TotalDistance = int.Parse(Regex.Match(car.TotalDistance, @"\d+").Value),
@@ -148,7 +156,7 @@ namespace FuelLog.Library
             Model = Model,
             LicensePlate = LicensePlate,
             Note = Note,
-            ConsumptionUnitId = ConsumptionUnit,
+            ConsumptionUnitId = (int)ConsumptionUnit,
             DistanceUnitId = DistanceUnit,
             VolumeUnitId = VolumeUnit,
             DateAdded = DateAdded,
@@ -172,7 +180,7 @@ namespace FuelLog.Library
             Model = Model,
             LicensePlate = LicensePlate,
             Note = Note,
-            ConsumptionUnitId = ConsumptionUnit,
+            ConsumptionUnitId = (int)ConsumptionUnit,
             DistanceUnitId = DistanceUnit,
             VolumeUnitId = VolumeUnit,
             LastModified = DateTime.Now

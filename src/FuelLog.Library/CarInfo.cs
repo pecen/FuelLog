@@ -1,6 +1,8 @@
 ﻿using Csla;
+using FuelLog.Core.Utilities;
 using FuelLog.Dal;
 using FuelLog.Dal.Dto;
+using FuelLog.Library.Enums;
 using FuelLog.Library.Services;
 using System;
 using System.Collections.Generic;
@@ -61,14 +63,21 @@ namespace FuelLog.Library {
       set { LoadProperty(VolumeProperty, value); }
     }
 
-    public static readonly PropertyInfo<ConsumptionInfo> ConsumptionUnitProperty = RegisterProperty<ConsumptionInfo>(c => c.ConsumptionUnit);
-    public ConsumptionInfo ConsumptionUnit {
+    public static readonly PropertyInfo<ConsumptionUnits> ConsumptionUnitProperty = RegisterProperty<ConsumptionUnits>(c => c.ConsumptionUnit);
+    public ConsumptionUnits ConsumptionUnit {
       get { return GetProperty(ConsumptionUnitProperty); }
       set { LoadProperty(ConsumptionUnitProperty, value); }
     }
 
+    //public static readonly PropertyInfo<ConsumptionInfo> ConsumptionUnitProperty = RegisterProperty<ConsumptionInfo>(c => c.ConsumptionUnit);
+    //public ConsumptionInfo ConsumptionUnit {
+    //  get { return GetProperty(ConsumptionUnitProperty); }
+    //  set { LoadProperty(ConsumptionUnitProperty, value); }
+    //}
+
     public string ChosenUnits {
-      get { return DistanceUnit.ShortName + ", " + VolumeUnit.ShortName + ", " + ConsumptionUnit.Name; }
+      //get { return DistanceUnit.ShortName + ", " + VolumeUnit.ShortName + ", " + ConsumptionUnit.Name; }
+      get { return DistanceUnit.ShortName + ", " + VolumeUnit.ShortName + ", " + ConsumptionUnit.GetEnumDescription(); }
     }
 
     public static readonly PropertyInfo<string> TotalFillupsProperty = RegisterProperty<string>(c => c.TotalFillups);
@@ -135,8 +144,9 @@ namespace FuelLog.Library {
         DistanceUnit = distanceUnit,
         VolumeUnit = VolumeList.GetVolumeList()
           .FirstOrDefault(v => v.Id == car.VolumeUnit),
-        ConsumptionUnit = ConsumptionList.GetConsumptionList()
-          .FirstOrDefault(c => c.Id == car.ConsumptionUnit),
+        //ConsumptionUnit = ConsumptionList.GetConsumptionList()
+        //  .FirstOrDefault(c => c.Id == car.ConsumptionUnit),
+        ConsumptionUnit = car.ConsumptionUnit,
         //DistanceUnit = car.DistanceUnit,
         //VolumeUnit = car.VolumeUnit,
         //ConsumptionUnit = car.ConsumptionUnit,
@@ -177,9 +187,10 @@ namespace FuelLog.Library {
       VolumeUnit = VolumeList.GetVolumeList()
         .Where(v => v.Id == item.VolumeUnitId)
         .FirstOrDefault();
-      ConsumptionUnit = ConsumptionList.GetConsumptionList()
-        .Where(c => c.Id == item.ConsumptionUnitId)
-        .FirstOrDefault();
+      //ConsumptionUnit = ConsumptionList.GetConsumptionList()
+      //  .Where(c => c.Id == item.ConsumptionUnitId)
+      //  .FirstOrDefault();
+      ConsumptionUnit = (ConsumptionUnits)item.ConsumptionUnitId;
       Fillups = DataPortal.FetchChild<FillupList>(item.Id);
       TotalFillups = $"{Fillups.Count()} Fillup{(Fillups.Count() > 1 ? "s" : string.Empty)}";
 
@@ -207,7 +218,8 @@ namespace FuelLog.Library {
 
         Func<FillupList, double> ff = ConsumptionCalcService.KmPerLiter;
         var avg = ff(Fillups);
-        AverageConsumption = $"{avg} {ConsumptionUnit.Name}";
+        //AverageConsumption = $"{avg} {ConsumptionUnit.Name}";
+        AverageConsumption = $"{avg} {ConsumptionUnit.GetEnumDescription()}";
 
         decimal[] values = { 1.2m, 2.4m, 3.6m };
         //var fff = ConsumptionCalcService.Calculate(values, ConsumptionCalcService.KmPerLiter);

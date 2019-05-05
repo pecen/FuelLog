@@ -1,4 +1,5 @@
 ﻿using FuelLog.Library;
+using FuelLog.Library.Enums;
 using FuelLog.UI.Wpf.Module.Commands;
 using FuelLog.UI.Wpf.Module.Enums;
 using Prism.Commands;
@@ -35,8 +36,16 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       }
     }
 
-    private ConsumptionInfo _selectedConsumption;
-    public ConsumptionInfo SelectedConsumption {
+    //private ConsumptionInfo _selectedConsumption;
+    //public ConsumptionInfo SelectedConsumption {
+    //  get { return _selectedConsumption; }
+    //  set {
+    //    SetProperty(ref _selectedConsumption, value);
+    //  }
+    //}
+
+    private ConsumptionUnits _selectedConsumption;
+    public ConsumptionUnits SelectedConsumption {
       get { return _selectedConsumption; }
       set {
         SetProperty(ref _selectedConsumption, value);
@@ -92,7 +101,8 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
       SelectedDistance = DistanceUnits.FirstOrDefault(); //DistanceUnits.Where(d => d.Id == Id).FirstOrDefault(); 
       SelectedVolume = VolumeUnits.FirstOrDefault();
-      SelectedConsumption = ConsumptionUnits.FirstOrDefault();
+      //SelectedConsumption = ConsumptionUnits.FirstOrDefault();
+      SelectedConsumption = ConsumptionUnits.Where(c => c.Id == 0).FirstOrDefault().
     }
 
     private void EditCar(CarInfo car) {
@@ -103,7 +113,8 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       Note = car.Note;
       SelectedDistance = DistanceUnits.FirstOrDefault(d => d.Id == car.DistanceUnit.Id);  
       SelectedVolume = VolumeUnits.FirstOrDefault(v => v.Id == car.VolumeUnit.Id);
-      SelectedConsumption = ConsumptionUnits.FirstOrDefault(c => c.Id == car.ConsumptionUnit.Id);
+      //SelectedConsumption = ConsumptionUnits.FirstOrDefault(c => c.Id == car.ConsumptionUnit.Id);
+      SelectedConsumption = ConsumptionUnits.FirstOrDefault(c => c.Id == (int)car.ConsumptionUnit);
     }
 
     private void Cancel(string uri) {

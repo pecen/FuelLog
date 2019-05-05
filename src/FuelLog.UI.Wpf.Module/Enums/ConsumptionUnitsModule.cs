@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FuelLog.Library.Enums {
-  public enum ConsumptionUnits {
+  public enum ConsumptionUnitsModule {
     [Description("l/100km")]
     LiterPer100Km,
 
