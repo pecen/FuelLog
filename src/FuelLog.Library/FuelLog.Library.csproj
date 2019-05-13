@@ -53,10 +53,13 @@
     <Compile Include="DistanceInfo.cs" />
     <Compile Include="DistanceList.cs" />
     <Compile Include="Enums\ConsumptionUnits.cs" />
+    <Compile Include="Enums\UnitCategories.cs" />
     <Compile Include="FillupInfo.cs" />
     <Compile Include="FillupList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConsumptionCalcService.cs" />
+    <Compile Include="UnitInfo.cs" />
+    <Compile Include="UnitList.cs" />
     <Compile Include="VolumeInfo.cs" />
     <Compile Include="VolumeList.cs" />
   </ItemGroup>

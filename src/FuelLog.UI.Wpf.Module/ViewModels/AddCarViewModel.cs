@@ -7,6 +7,7 @@ using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,20 +17,39 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     private readonly IEventAggregator _eventAggregator;
     private readonly IRegionManager _regionManager;
 
-    public ObservableCollection<DistanceInfo> DistanceUnits { get; set; }
-    public ObservableCollection<VolumeInfo> VolumeUnits { get; set; }
-    public ObservableCollection<ConsumptionInfo> ConsumptionUnits { get; set; }
+    //public ObservableCollection<DistanceInfo> DistanceUnits { get; set; }
+    //public ObservableCollection<VolumeInfo> VolumeUnits { get; set; }
+    //public ObservableCollection<ConsumptionUnits> ConsumptionUnits { get; set; }
+    public ObservableCollection<UnitInfo> DistanceUnits { get; set; }
+    public ObservableCollection<UnitInfo> VolumeUnits { get; set; }
+    public ObservableCollection<UnitInfo> ConsumptionUnits { get; set; }
 
-    private DistanceInfo _selectedDistance;
-    public DistanceInfo SelectedDistance {
+    //private DistanceInfo _selectedDistance;
+    //public DistanceInfo SelectedDistance {
+    //  get { return _selectedDistance; }
+    //  set {
+    //    SetProperty(ref _selectedDistance, value);
+    //  }
+    //}
+
+    //private VolumeInfo _selectedVolume;
+    //public VolumeInfo SelectedVolume {
+    //  get { return _selectedVolume; }
+    //  set {
+    //    SetProperty(ref _selectedVolume, value);
+    //  }
+    //}
+
+    private UnitInfo _selectedDistance;
+    public UnitInfo SelectedDistance {
       get { return _selectedDistance; }
       set {
         SetProperty(ref _selectedDistance, value);
       }
     }
 
-    private VolumeInfo _selectedVolume;
-    public VolumeInfo SelectedVolume {
+    private UnitInfo _selectedVolume;
+    public UnitInfo SelectedVolume {
       get { return _selectedVolume; }
       set {
         SetProperty(ref _selectedVolume, value);
@@ -95,14 +115,22 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
       _eventAggregator.GetEvent<EditCarCommand>().Subscribe(EditCar);
 
-      DistanceUnits = DistanceList.GetDistanceList();
-      VolumeUnits = VolumeList.GetVolumeList();
-      ConsumptionUnits = ConsumptionList.GetConsumptionList();
+      //DistanceUnits = DistanceList.GetDistanceList();
+      //VolumeUnits = VolumeList.GetVolumeList();
+      //var cu = Enum.GetValues(typeof(FuelLog.Library.Enums.ConsumptionUnits)); // ConsumptionUnits; // ConsumptionList.GetConsumptionList();
+      //ConsumptionUnits.AddRange(cu);
+
+      //DistanceUnits = UnitList.GetUnitList<DistanceList>();
+      //VolumeUnits = UnitList.GetUnitList<VolumeList>();
+      //ConsumptionUnits = UnitList.GetUnitList<ConsumptionList>();
+
+      DistanceUnits = UnitList.GetUnitList(UnitCategories.Distance);
+      VolumeUnits = UnitList.GetUnitList(UnitCategories.Volume);
 
       SelectedDistance = DistanceUnits.FirstOrDefault(); //DistanceUnits.Where(d => d.Id == Id).FirstOrDefault(); 
       SelectedVolume = VolumeUnits.FirstOrDefault();
       //SelectedConsumption = ConsumptionUnits.FirstOrDefault();
-      SelectedConsumption = ConsumptionUnits.Where(c => c.Id == 0).FirstOrDefault().
+      //SelectedConsumption = ConsumptionUnits.Where(c => c.Id == 0).FirstOrDefault().
     }
 
     private void EditCar(CarInfo car) {
@@ -114,7 +142,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       SelectedDistance = DistanceUnits.FirstOrDefault(d => d.Id == car.DistanceUnit.Id);  
       SelectedVolume = VolumeUnits.FirstOrDefault(v => v.Id == car.VolumeUnit.Id);
       //SelectedConsumption = ConsumptionUnits.FirstOrDefault(c => c.Id == car.ConsumptionUnit.Id);
-      SelectedConsumption = ConsumptionUnits.FirstOrDefault(c => c.Id == (int)car.ConsumptionUnit);
+      //SelectedConsumption = ConsumptionUnits.FirstOrDefault(c => c.Id == (int)car.ConsumptionUnit);
     }
 
     private void Cancel(string uri) {
@@ -139,7 +167,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       car.TotalFillups = 0;
       car.DistanceUnit = SelectedDistance.Id;
       car.VolumeUnit = SelectedVolume.Id;
-      car.ConsumptionUnit = SelectedConsumption.Id;
+      //car.ConsumptionUnit = SelectedConsumption.Id;
       car = car.Save();
 
       _eventAggregator
@@ -162,9 +190,9 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       Model = string.Empty;
       Plate = string.Empty;
       Note = string.Empty;
-      SelectedDistance = DistanceUnits.FirstOrDefault(); 
-      SelectedVolume = VolumeUnits.FirstOrDefault();
-      SelectedConsumption = ConsumptionUnits.FirstOrDefault();
+      //SelectedDistance = DistanceUnits.FirstOrDefault(); 
+      //SelectedVolume = VolumeUnits.FirstOrDefault();
+      //SelectedConsumption = ConsumptionUnits.FirstOrDefault();
     }
   }
 }
