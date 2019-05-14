@@ -139,7 +139,8 @@ namespace FuelLog.Library {
     #endregion
 
     public static explicit operator CarInfo(CarEdit car) {
-      var distanceUnit = DistanceList.GetDistanceList()
+      //var distanceUnit = DistanceList.GetDistanceList()
+      var distanceUnit = UnitList.GetUnitList(UnitCategories.Distance)
         .FirstOrDefault(d => d.Id == car.DistanceUnit);
       return new CarInfo {
         Id = car.Id,
