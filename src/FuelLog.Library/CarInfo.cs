@@ -63,8 +63,14 @@ namespace FuelLog.Library {
       set { LoadProperty(DistanceUnitProperty, value); }
     }
 
-    public static readonly PropertyInfo<VolumeInfo> VolumeProperty = RegisterProperty<VolumeInfo>(c => c.VolumeUnit);
-    public VolumeInfo VolumeUnit {
+    //public static readonly PropertyInfo<VolumeInfo> VolumeProperty = RegisterProperty<VolumeInfo>(c => c.VolumeUnit);
+    //public VolumeInfo VolumeUnit {
+    //  get { return GetProperty(VolumeProperty); }
+    //  set { LoadProperty(VolumeProperty, value); }
+    //}
+
+    public static readonly PropertyInfo<UnitInfo> VolumeProperty = RegisterProperty<UnitInfo>(c => c.VolumeUnit);
+    public UnitInfo VolumeUnit {
       get { return GetProperty(VolumeProperty); }
       set { LoadProperty(VolumeProperty, value); }
     }
@@ -142,6 +148,7 @@ namespace FuelLog.Library {
       //var distanceUnit = DistanceList.GetDistanceList()
       var distanceUnit = UnitList.GetUnitList(UnitCategories.Distance)
         .FirstOrDefault(d => d.Id == car.DistanceUnit);
+
       return new CarInfo {
         Id = car.Id,
         Make = car.Make,
@@ -200,6 +207,9 @@ namespace FuelLog.Library {
 
       DistanceUnit = UnitList.GetUnitList(UnitCategories.Distance)
         .Where(d => d.Id == item.DistanceUnitId)
+        .FirstOrDefault();
+      VolumeUnit = UnitList.GetUnitList(UnitCategories.Volume)
+        .Where(v => v.Id == item.VolumeUnitId)
         .FirstOrDefault();
       ConsumptionUnit = (ConsumptionUnits)item.ConsumptionUnitId;
       Fillups = DataPortal.FetchChild<FillupList>(item.Id);

@@ -50,6 +50,24 @@ namespace FuelLog.Library
       set { SetProperty(NoteProperty, value); }
     }
 
+    //public static readonly PropertyInfo<int> DistanceUnitProperty = RegisterProperty<int>(c => c.DistanceUnit);
+    //public int DistanceUnit {
+    //  get { return GetProperty(DistanceUnitProperty); }
+    //  set { SetProperty(DistanceUnitProperty, value); }
+    //}
+
+    //public static readonly PropertyInfo<int> VolumeUnitProperty = RegisterProperty<int>(c => c.VolumeUnit);
+    //public int VolumeUnit {
+    //  get { return GetProperty(VolumeUnitProperty); }
+    //  set { SetProperty(VolumeUnitProperty, value); }
+    //}
+
+    //public static readonly PropertyInfo<int> ConsumptionUnitProperty = RegisterProperty<int>(c => c.ConsumptionUnit);
+    //public int ConsumptionUnit {
+    //  get { return GetProperty(ConsumptionUnitProperty); }
+    //  set { SetProperty(ConsumptionUnitProperty, value); }
+    //}
+
     public static readonly PropertyInfo<int> DistanceUnitProperty = RegisterProperty<int>(c => c.DistanceUnit);
     public int DistanceUnit {
       get { return GetProperty(DistanceUnitProperty); }
@@ -61,12 +79,6 @@ namespace FuelLog.Library
       get { return GetProperty(VolumeUnitProperty); }
       set { SetProperty(VolumeUnitProperty, value); }
     }
-
-    //public static readonly PropertyInfo<int> ConsumptionUnitProperty = RegisterProperty<int>(c => c.ConsumptionUnit);
-    //public int ConsumptionUnit {
-    //  get { return GetProperty(ConsumptionUnitProperty); }
-    //  set { SetProperty(ConsumptionUnitProperty, value); }
-    //}
 
     public static readonly PropertyInfo<ConsumptionUnits> ConsumptionUnitProperty = RegisterProperty<ConsumptionUnits>(c => c.ConsumptionUnit);
     public ConsumptionUnits ConsumptionUnit {
