@@ -53,7 +53,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     //}
 
     private void AddCar(string uri) {
-      _regionManager.RequestNavigate("ContentRegion", uri);
+      _regionManager.RequestNavigate(Regions.ContentRegion.ToString(), uri);
     }
 
     private void CarListReceived(CarList obj) {

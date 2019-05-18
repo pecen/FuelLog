@@ -74,6 +74,7 @@
     <Compile Include="Converters\EnumToCollectionConverter.cs" />
     <Compile Include="Converters\NameToContentConverter.cs" />
     <Compile Include="Enums\ConsumptionUnitsModule.cs" />
+    <Compile Include="Enums\Regions.cs" />
     <Compile Include="FuelLogModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
