@@ -16,6 +16,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels
 
     // Making this one virtual to be able to override in the child classes
     public virtual void OnNavigatedFrom(NavigationContext navigationContext) {
+      
     }
 
     public virtual void OnNavigatedTo(NavigationContext navigationContext) {

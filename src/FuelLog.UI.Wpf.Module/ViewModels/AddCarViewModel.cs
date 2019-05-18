@@ -177,8 +177,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       car.Model = Model;
       car.LicensePlate = Plate;
       car.Note = Note;
-      car.DateAdded = DateTime.Now;
-      car.LastModified = DateTime.Now;
+      car.LastModified = car.DateAdded = DateTime.Now;
       car.TotalFillups = 0;
       car.DistanceUnit = SelectedDistance.Id;
       car.VolumeUnit = SelectedVolume.Id;
@@ -191,13 +190,13 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       //.Publish(car);
 
       _regionManager.RequestNavigate("ContentRegion", "CarList");
-      //ClearFields();
+      ClearFields();
     }
 
     public override void OnNavigatedTo(NavigationContext navigationContext) {
       base.OnNavigatedTo(navigationContext);
 
-      ClearFields();
+      //ClearFields();
     }
 
     private void ClearFields() {
