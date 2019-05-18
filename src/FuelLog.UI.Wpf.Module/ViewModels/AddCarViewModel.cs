@@ -1,4 +1,5 @@
-﻿using FuelLog.Library;
+﻿using FuelLog.Core.Utilities;
+using FuelLog.Library;
 using FuelLog.Library.Enums;
 using FuelLog.UI.Wpf.Module.Commands;
 using FuelLog.UI.Wpf.Module.Enums;
@@ -24,7 +25,8 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     //public ObservableCollection<ConsumptionUnits> ConsumptionUnits { get; set; }
     public ObservableCollection<UnitInfo> DistanceUnits { get; set; }
     public ObservableCollection<UnitInfo> VolumeUnits { get; set; }
-    public ObservableCollection<UnitInfo> ConsumptionUnits { get; set; }
+    //public ObservableCollection<UnitInfo> ConsumptionUnits { get; set; }
+    public ObservableCollection<ConsumptionUnitType> ConsumptionUnits { get; set; }
 
     //private DistanceInfo _selectedDistance;
     //public DistanceInfo SelectedDistance {
@@ -58,8 +60,8 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       }
     }
 
-    private UnitInfo _selectedConsumption;
-    public UnitInfo SelectedConsumption {
+    private ConsumptionUnitType _selectedConsumption;
+    public ConsumptionUnitType SelectedConsumption {
       get { return _selectedConsumption; }
       set { SetProperty(ref _selectedConsumption, value); }
     }
@@ -134,12 +136,14 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       //VolumeUnits = UnitList.GetUnitList<VolumeList>();
       //ConsumptionUnits = UnitList.GetUnitList<ConsumptionList>();
         
-      DistanceUnits = UnitList.GetUnitList(UnitCategories.Distance);
-      VolumeUnits = UnitList.GetUnitList(UnitCategories.Volume);
-      ConsumptionUnits = UnitList.GetUnitList(UnitCategories.Consumption);
+      DistanceUnits = UnitList.GetUnitList(UnitCategoriey.Distance);
+      VolumeUnits = UnitList.GetUnitList(UnitCategoriey.Volume);
+      //ConsumptionUnits = UnitList.GetUnitList(UnitCategories.Consumption);
+      ConsumptionUnits = new ObservableCollection<ConsumptionUnitType>(Enum.GetValues(typeof(ConsumptionUnitType)).Cast<ConsumptionUnitType>());
 
       SelectedDistance = DistanceUnits.FirstOrDefault(); //DistanceUnits.Where(d => d.Id == Id).FirstOrDefault(); 
       SelectedVolume = VolumeUnits.FirstOrDefault();
+      SelectedConsumption = ConsumptionUnitType.LiterPerKm;
       //SelectedConsumption = ConsumptionUnits.FirstOrDefault();
       //SelectedConsumption = ConsumptionUnits.Where(c => c.Id == 0).FirstOrDefault().
     }
@@ -203,7 +207,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       Note = string.Empty;
       SelectedDistance = DistanceUnits.FirstOrDefault();
       SelectedVolume = VolumeUnits.FirstOrDefault();
-      SelectedConsumption = ConsumptionUnits.FirstOrDefault();
+      //SelectedConsumption = ConsumptionUnits.FirstOrDefault();
     }
   }
 }

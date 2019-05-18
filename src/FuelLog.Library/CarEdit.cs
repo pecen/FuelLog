@@ -80,8 +80,8 @@ namespace FuelLog.Library
       set { SetProperty(VolumeUnitProperty, value); }
     }
 
-    public static readonly PropertyInfo<ConsumptionUnits> ConsumptionUnitProperty = RegisterProperty<ConsumptionUnits>(c => c.ConsumptionUnit);
-    public ConsumptionUnits ConsumptionUnit {
+    public static readonly PropertyInfo<ConsumptionUnitType> ConsumptionUnitProperty = RegisterProperty<ConsumptionUnitType>(c => c.ConsumptionUnit);
+    public ConsumptionUnitType ConsumptionUnit {
       get { return GetProperty(ConsumptionUnitProperty); }
       set { SetProperty(ConsumptionUnitProperty, value); }
     }
@@ -96,11 +96,11 @@ namespace FuelLog.Library
       set { SetProperty(TotalFillupsProperty, value); }
     }
 
-    public static readonly PropertyInfo<int> TotalDistanceProperty = RegisterProperty<int>(c => c.TotalDistance);
-    public int TotalDistance {
-      get { return GetProperty(TotalDistanceProperty); }
-      set { SetProperty(TotalDistanceProperty, value); }
-    }
+    //public static readonly PropertyInfo<int> TotalDistanceProperty = RegisterProperty<int>(c => c.TotalDistance);
+    //public int TotalDistance {
+    //  get { return GetProperty(TotalDistanceProperty); }
+    //  set { SetProperty(TotalDistanceProperty, value); }
+    //}
 
     //public static readonly PropertyInfo<string> AverageConsumptionProperty = RegisterProperty<string>(c => c.AverageConsumption);
     //public string AverageConsumption {
@@ -131,11 +131,10 @@ namespace FuelLog.Library
         Note = car.Note,
         DistanceUnit = car.DistanceUnit.Id,
         VolumeUnit = car.VolumeUnit.Id,
-        //ConsumptionUnit = car.ConsumptionUnit.Id,
         ConsumptionUnit = car.ConsumptionUnit,
         DateAdded = car.DateAdded,
         LastModified = car.LastModified,
-        TotalDistance = int.Parse(Regex.Match(car.TotalDistance, @"\d+").Value),
+        //TotalDistance = int.Parse(Regex.Match(car.TotalDistance, @"\d+").Value),
         TotalFillups = int.Parse(Regex.Match(car.TotalFillups, @"\d+").Value)
       };
     }

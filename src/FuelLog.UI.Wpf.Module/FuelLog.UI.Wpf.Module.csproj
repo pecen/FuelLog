@@ -119,6 +119,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FuelLog.Core\FuelLog.Core.csproj">
+      <Project>{052BF7B8-C10B-4317-AA8D-8AF2DE5A815A}</Project>
+      <Name>FuelLog.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FuelLog.Library\FuelLog.Library.csproj">
       <Project>{CE6737B8-D587-4F4A-9FDC-1945D9E681A1}</Project>
       <Name>FuelLog.Library</Name>
