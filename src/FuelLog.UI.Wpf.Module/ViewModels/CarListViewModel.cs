@@ -1,15 +1,13 @@
 ﻿using FuelLog.Library;
 using FuelLog.UI.Wpf.Module.Commands;
 using FuelLog.UI.Wpf.Module.Enums;
-using FuelLog.UI.Wpf.Module.UserControls;
 using Prism.Commands;
 using Prism.Events;
-using Prism.Mvvm;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
+
+// The following using is if we would use ICommand
+//using System.Windows.Input;
 
 namespace FuelLog.UI.Wpf.Module.ViewModels {
   public class CarListViewModel : ViewModelBase {
@@ -34,12 +32,18 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
     public DelegateCommand<string> AddCarCommand { get; set; }
 
+    // A different way of doing navigation
+    //public ICommand AddCarCommand { get; set; }
+
     public CarListViewModel(IEventAggregator eventAggregator, IRegionManager regionManager) {
       _eventAggregator = eventAggregator;
       _regionManager = regionManager;
 
       //GetCarsCommand = new DelegateCommand(Execute);
       AddCarCommand = new DelegateCommand<string>(AddCar);
+
+      // A different way of doing navigation
+      //AddCarCommand = new DelegateCommand(() => AddCar("ContentPage"));
 
       Title = TabHeaders.Cars.ToString();
 
