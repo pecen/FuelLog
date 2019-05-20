@@ -40,7 +40,9 @@ namespace FuelLog.Library {
 
     public static readonly PropertyInfo<string> LicensePlateProperty = RegisterProperty<string>(c => c.LicensePlate);
     public string LicensePlate {
-      get => !string.IsNullOrEmpty(Note) ? $"{GetProperty(LicensePlateProperty)} | {GetProperty(NoteProperty)}" : GetProperty(LicensePlateProperty);
+      get { return GetProperty(LicensePlateProperty); }
+      //get => !string.IsNullOrEmpty(Note) ? $"{GetProperty(LicensePlateProperty)} | {GetProperty(NoteProperty)}" : GetProperty(LicensePlateProperty);
+
       set { LoadProperty(LicensePlateProperty, value); }
     }
 
