@@ -45,18 +45,12 @@
   <ItemGroup>
     <Compile Include="DalFactory.cs" />
     <Compile Include="Dto\CarDto.cs" />
-    <Compile Include="Dto\ConsumptionDto.cs" />
-    <Compile Include="Dto\DistanceDto.cs" />
     <Compile Include="Dto\FillupDto.cs" />
     <Compile Include="Dto\UnitDto.cs" />
-    <Compile Include="Dto\VolumeDto.cs" />
     <Compile Include="ICarDal.cs" />
-    <Compile Include="IConsumptionDal.cs" />
     <Compile Include="IDalManager.cs" />
-    <Compile Include="IDistanceDal.cs" />
     <Compile Include="IFillupDal.cs" />
     <Compile Include="IUnitDal.cs" />
-    <Compile Include="IVolumeDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

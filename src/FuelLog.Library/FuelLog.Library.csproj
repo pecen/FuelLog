@@ -48,10 +48,6 @@
     <Compile Include="CarEdit.cs" />
     <Compile Include="CarInfo.cs" />
     <Compile Include="CarList.cs" />
-    <Compile Include="ConsumptionInfo.cs" />
-    <Compile Include="ConsumptionList.cs" />
-    <Compile Include="DistanceInfo.cs" />
-    <Compile Include="DistanceList.cs" />
     <Compile Include="Enums\ConsumptionUnitType.cs" />
     <Compile Include="Enums\UnitCategory.cs" />
     <Compile Include="FillupInfo.cs" />
@@ -60,8 +56,6 @@
     <Compile Include="Services\ConsumptionCalcService.cs" />
     <Compile Include="UnitInfo.cs" />
     <Compile Include="UnitList.cs" />
-    <Compile Include="VolumeInfo.cs" />
-    <Compile Include="VolumeList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
