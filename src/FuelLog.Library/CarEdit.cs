@@ -56,23 +56,17 @@ namespace FuelLog.Library
     //  set { SetProperty(DistanceUnitProperty, value); }
     //}
 
-    //public static readonly PropertyInfo<int> VolumeUnitProperty = RegisterProperty<int>(c => c.VolumeUnit);
-    //public int VolumeUnit {
-    //  get { return GetProperty(VolumeUnitProperty); }
-    //  set { SetProperty(VolumeUnitProperty, value); }
-    //}
-
-    //public static readonly PropertyInfo<int> ConsumptionUnitProperty = RegisterProperty<int>(c => c.ConsumptionUnit);
-    //public int ConsumptionUnit {
-    //  get { return GetProperty(ConsumptionUnitProperty); }
-    //  set { SetProperty(ConsumptionUnitProperty, value); }
-    //}
-
     public static readonly PropertyInfo<int> DistanceUnitProperty = RegisterProperty<int>(c => c.DistanceUnit);
     public int DistanceUnit {
       get { return GetProperty(DistanceUnitProperty); }
       set { SetProperty(DistanceUnitProperty, value); }
     }
+
+    //public static readonly PropertyInfo<int> VolumeUnitProperty = RegisterProperty<int>(c => c.VolumeUnit);
+    //public int VolumeUnit {
+    //  get { return GetProperty(VolumeUnitProperty); }
+    //  set { SetProperty(VolumeUnitProperty, value); }
+    //}
 
     public static readonly PropertyInfo<int> VolumeUnitProperty = RegisterProperty<int>(c => c.VolumeUnit);
     public int VolumeUnit {
@@ -80,11 +74,17 @@ namespace FuelLog.Library
       set { SetProperty(VolumeUnitProperty, value); }
     }
 
-    public static readonly PropertyInfo<ConsumptionUnitType> ConsumptionUnitProperty = RegisterProperty<ConsumptionUnitType>(c => c.ConsumptionUnit);
-    public ConsumptionUnitType ConsumptionUnit {
+    public static readonly PropertyInfo<int> ConsumptionUnitProperty = RegisterProperty<int>(c => c.ConsumptionUnit);
+    public int ConsumptionUnit {
       get { return GetProperty(ConsumptionUnitProperty); }
       set { SetProperty(ConsumptionUnitProperty, value); }
     }
+
+    //public static readonly PropertyInfo<ConsumptionUnitType> ConsumptionUnitProperty = RegisterProperty<ConsumptionUnitType>(c => c.ConsumptionUnit);
+    //public ConsumptionUnitType ConsumptionUnit {
+    //  get { return GetProperty(ConsumptionUnitProperty); }
+    //  set { SetProperty(ConsumptionUnitProperty, value); }
+    //}
 
     //public string ChosenUnits {
     //  get { return DistanceUnitId + ", " + VolumeUnitId + ", " + ConsumptionUnitId; }
@@ -131,7 +131,7 @@ namespace FuelLog.Library
         Note = car.Note,
         DistanceUnit = car.DistanceUnit.Id,
         VolumeUnit = car.VolumeUnit.Id,
-        ConsumptionUnit = car.ConsumptionUnit,
+        ConsumptionUnit = car.ConsumptionUnit.Id,
         DateAdded = car.DateAdded,
         LastModified = car.LastModified,
         //TotalDistance = int.Parse(Regex.Match(car.TotalDistance, @"\d+").Value),
