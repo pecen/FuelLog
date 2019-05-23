@@ -17,7 +17,7 @@ namespace FuelLog.Library {
       return DataPortal.Fetch<T>();
     }
 
-    public static UnitList GetUnitList(UnitCategoriey category)
+    public static UnitList GetUnitList(UnitCategory category)
     {
       return DataPortal.Fetch<UnitList>(category);
     }
@@ -26,7 +26,7 @@ namespace FuelLog.Library {
 
     #region Data Access
 
-    private void DataPortal_Fetch(UnitCategoriey category)
+    private void DataPortal_Fetch(UnitCategory category)
     {
       var rlce = RaiseListChangedEvents;
       RaiseListChangedEvents = false;

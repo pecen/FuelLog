@@ -148,7 +148,7 @@ namespace FuelLog.Library {
 
     public static explicit operator CarInfo(CarEdit car) {
       //var distanceUnit = DistanceList.GetDistanceList()
-      var distanceUnit = UnitList.GetUnitList(UnitCategoriey.Distance)
+      var distanceUnit = UnitList.GetUnitList(UnitCategory.Distance)
         .FirstOrDefault(d => d.Id == car.DistanceUnit);
 
       return new CarInfo {
@@ -207,10 +207,10 @@ namespace FuelLog.Library {
       //  .Where(c => c.Id == item.ConsumptionUnitId)
       //  .FirstOrDefault();
 
-      DistanceUnit = UnitList.GetUnitList(UnitCategoriey.Distance)
+      DistanceUnit = UnitList.GetUnitList(UnitCategory.Distance)
         .Where(d => d.Id == item.DistanceUnitId)
         .FirstOrDefault();
-      VolumeUnit = UnitList.GetUnitList(UnitCategoriey.Volume)
+      VolumeUnit = UnitList.GetUnitList(UnitCategory.Volume)
         .Where(v => v.Id == item.VolumeUnitId)
         .FirstOrDefault();
       ConsumptionUnit = (ConsumptionUnitType)item.ConsumptionUnitId;

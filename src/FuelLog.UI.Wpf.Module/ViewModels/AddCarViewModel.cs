@@ -3,6 +3,7 @@ using FuelLog.Library;
 using FuelLog.Library.Enums;
 using FuelLog.UI.Wpf.Module.Commands;
 using FuelLog.UI.Wpf.Module.Enums;
+//using FuelLog.UI.Wpf.Module.Views;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
@@ -135,9 +136,9 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       //DistanceUnits = UnitList.GetUnitList<DistanceList>();
       //VolumeUnits = UnitList.GetUnitList<VolumeList>();
       //ConsumptionUnits = UnitList.GetUnitList<ConsumptionList>();
-        
-      DistanceUnits = UnitList.GetUnitList(UnitCategoriey.Distance);
-      VolumeUnits = UnitList.GetUnitList(UnitCategoriey.Volume);
+
+      DistanceUnits = UnitList.GetUnitList(UnitCategory.Distance);
+      VolumeUnits = UnitList.GetUnitList(UnitCategory.Volume);
       //ConsumptionUnits = UnitList.GetUnitList(UnitCategories.Consumption);
       ConsumptionUnits = new ObservableCollection<ConsumptionUnitType>(Enum.GetValues(typeof(ConsumptionUnitType)).Cast<ConsumptionUnitType>());
 
@@ -154,10 +155,11 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       Model = car.Model;
       Plate = car.LicensePlate;
       Note = car.Note;
-      SelectedDistance = DistanceUnits.FirstOrDefault(d => d.Id == car.DistanceUnit.Id);  
+      SelectedDistance = DistanceUnits.FirstOrDefault(d => d.Id == car.DistanceUnit.Id);
       SelectedVolume = VolumeUnits.FirstOrDefault(v => v.Id == car.VolumeUnit.Id);
       //SelectedConsumption = ConsumptionUnits.FirstOrDefault(c => c.Id == car.ConsumptionUnit.Id);
-      //SelectedConsumption = ConsumptionUnits.FirstOrDefault(c => c.Id == (int)car.ConsumptionUnit);
+      //SelectedConsumption = ConsumptionUnits.FirstOrDefault(c => .Id == (int)car.ConsumptionUnit);
+      SelectedConsumption = car.ConsumptionUnit;
     }
 
     private void Cancel(string uri) {
@@ -189,7 +191,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
         .Publish(CarList.GetCars());
       //.Publish(car);
 
-      _regionManager.RequestNavigate("ContentRegion", "CarList");
+      _regionManager.RequestNavigate(Regions.ContentRegion.ToString(), "CarList");
       ClearFields();
     }
 
@@ -197,6 +199,14 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       base.OnNavigatedTo(navigationContext);
 
       //ClearFields();
+    }
+
+    public override void OnNavigatedFrom(NavigationContext navigationContext) {
+      base.OnNavigatedFrom(navigationContext);
+      //   var views = _regionManager.Regions[Regions.ContentRegion.ToString()].Views.ToList();
+      //   Views.AddCar view2 = views.SingleOrDefault(v => v.GetType().Name ==
+      //"AddCar") as Views.AddCar;
+      //   _regionManager.Regions[Regions.ContentRegion.ToString()].Remove(view2);
     }
 
     private void ClearFields() {
