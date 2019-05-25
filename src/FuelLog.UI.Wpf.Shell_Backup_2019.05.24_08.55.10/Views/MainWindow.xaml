@@ -1,0 +1,43 @@
+﻿<Window
+  x:Class="FuelLog.UI.Wpf.Shell.Views.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:fuellog="clr-namespace:FuelLog.UI.Wpf.Module.UserControls;assembly=FuelLog.UI.Wpf.Module"
+  xmlns:prism="http://prismlibrary.com/"
+  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+  Title="{Binding Title}"
+  Width="342"
+  Height="491"
+  prism:ViewModelLocator.AutoWireViewModel="True"
+  WindowStartupLocation="CenterScreen">
+
+  <Window.Resources>
+    <Style TargetType="telerik:RadTabItem">
+      <Setter Property="Header" Value="{Binding DataContext.Title}" />
+    </Style>
+    <Style x:Name="HeaderButtons" TargetType="telerik:RadButton">
+      <Setter Property="Width" Value="40" />
+      <Setter Property="Margin" Value="5" />
+      <Setter Property="Command" Value="{Binding NavigateCommand}" />
+    </Style>
+  </Window.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <StackPanel Orientation="Horizontal">
+      <telerik:RadButton CommandParameter="CarList" Content="Cars" />
+      <telerik:RadButton CommandParameter="Fillups" Content="Fillups" />
+    </StackPanel>
+    <!--<telerik:RadTabControl prism:RegionManager.RegionName="{Binding TabRegion}" />-->
+    <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{Binding ContentRegion}" />
+    <!--<telerik:RadTabControl prism:RegionManager.RegionName="{Binding TabRegion}">
+      <telerik:RadTabItem Name="CarList">
+        <ContentControl prism:RegionManager.RegionName="{Binding ContentRegion}" />
+      </telerik:RadTabItem>
+    </telerik:RadTabControl>-->
+    <!--<ContentControl prism:RegionManager.RegionName="{Binding ContentRegion}" />-->
+  </Grid>
+</Window>
