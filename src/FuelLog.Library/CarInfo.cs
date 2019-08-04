@@ -205,9 +205,13 @@ namespace FuelLog.Library {
         .FirstOrDefault(c => c.Id == item.ConsumptionUnitId);
 
       Fillups = DataPortal.FetchChild<FillupList>(item.Id);
-      TotalFillups = $"{Fillups.Count()} Fillup{(Fillups.Count() > 1 ? "s" : string.Empty)}";
+      var count = Fillups.Count();
 
-      if (Fillups.Count() > 1) {
+      // Ex. 0 Fillups, 23 Fillups, or 1 Fillup, 
+      // TotalFillups = $"{count} Fillup{(count == 0 || count > 1 ? "s" : string.Empty)}";
+      TotalFillups = $"{count} Fillup{(count == 1 ? string.Empty : "s")}";
+
+      if (count > 1) {
         var f = Fillups.OrderBy(a => a.FillupDate);
 
         var first = f.First(); // Fillups.OrderBy(a => a.FillupDate).First();
