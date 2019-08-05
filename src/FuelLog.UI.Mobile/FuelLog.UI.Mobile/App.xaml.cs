@@ -26,6 +26,12 @@ namespace FuelLog.UI.Mobile {
     protected override void RegisterTypes(IContainerRegistry containerRegistry) {
       containerRegistry.RegisterForNavigation<NavigationPage>();
       containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+      containerRegistry.RegisterForNavigation<FillupsPage, FillupsPageViewModel>();
+      containerRegistry.RegisterForNavigation<CostsPage, CostsPageViewModel>();
+      containerRegistry.RegisterForNavigation<CalcPage, CalcPageViewModel>();
+      containerRegistry.RegisterForNavigation<StatsPage, StatsPageViewModel>();
+      containerRegistry.RegisterForNavigation<VehiclesPage, VehiclesPageViewModel>();
+      containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>();
     }
   }
 }

@@ -1,11 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FuelLog.UI.Mobile.Views.MainPage"
-             Title="{Binding Title}">
+<TabbedPage
+  x:Class="FuelLog.UI.Mobile.Views.MainPage"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:views="clr-namespace:FuelLog.UI.Mobile.Views"
+  Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
-    </StackLayout>
+  <TabbedPage.ToolbarItems>
+    <ToolbarItem
+      Command="{Binding NavigateCommand}"
+      Icon="icon_settings.png"
+      Order="Primary"
+      Text="Settings" />
+  </TabbedPage.ToolbarItems>
 
-</ContentPage>
+  <TabbedPage.Children>
+    <views:VehiclesPage Title="Vehicles" Icon="icon_trending.png" />
+    <views:FillupsPage Title="Fill-ups" Icon="icon_world.png" />
+    <views:CostsPage Title="Costs" Icon="icon_technology.png" />
+    <views:StatsPage Title="Stats" Icon="icon_trending.png" />
+    <views:CalcPage Title="Calc" Icon="icon_world.png" />
+  </TabbedPage.Children>
+
+</TabbedPage>
