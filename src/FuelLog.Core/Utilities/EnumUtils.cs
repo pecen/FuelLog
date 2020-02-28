@@ -7,10 +7,8 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace FuelLog.Core.Utilities
-{
-    public static class EnumUtils
-    {
+namespace FuelLog.Core.Utilities {
+  public static class EnumUtils {
     /// <summary>
     /// Returns all values defined in enumerator type except values with Browsable(false) attribute.
     /// </summary>
@@ -39,45 +37,19 @@ namespace FuelLog.Core.Utilities
     }
 
     /// <summary>
-    /// Gets value stored in the Description attribute of the given enumerator value.
-    /// </summary>
-    /// <param name="value">Enumerator value.</param>
-    /// <returns>Description stored in attribute.</returns>
-    public static string GetEnumDescription(this Enum value) {
-      if (value != null) {
-        DescriptionAttribute attr = GetAttribute<DescriptionAttribute>(value);
-        if (attr != null) {
-          return attr.Description;
-        }
-      }
-
-      return string.Empty;
-    }
-
-    /// <summary>
     /// Checks if given enumerator value has Browsable attribute and it's set to False;
     /// else returns True.
     /// </summary>
     /// <param name="value">Enumerator value.</param>
     /// <returns>true if member is browsable; otherwise, returns false.</returns>
     public static bool GetEnumBrowsable(Enum value) {
-      BrowsableAttribute attr = GetAttribute<BrowsableAttribute>(value);
+      BrowsableAttribute attr = value.GetAttribute<BrowsableAttribute>(); //EnumExtensions.GetAttribute<BrowsableAttribute>(value);
       if (attr != null) {
         return attr.Browsable;
       }
       else {
         return true;
       }
-    }
-
-    /// <summary>
-    /// Generic method getting attribute object of the given type from enumerated value.
-    /// </summary>
-    /// <typeparam name="TAttributeType">Attribute type.</typeparam>
-    /// <param name="enumValue">Enumerated value.</param>
-    /// <returns>Attribute object.</returns>
-    public static TAttributeType GetAttribute<TAttributeType>(this Enum enumValue) where TAttributeType : Attribute {
-      return (TAttributeType)GetEnumAttribute(enumValue, typeof(TAttributeType));
     }
 
     /// <summary>
@@ -158,7 +130,7 @@ namespace FuelLog.Core.Utilities
       Dictionary<string, TEnum> descriptionsDictionary = new Dictionary<string, TEnum>();
 
       foreach (TEnum value in Enum.GetValues(typeof(TEnum))) {
-        string description = GetEnumDescription(value as Enum);
+        string description = (value as Enum).GetEnumDescription();
 
         if (!string.IsNullOrEmpty(description)) {
           if (descriptionsDictionary.ContainsKey(description)) {
@@ -277,21 +249,12 @@ namespace FuelLog.Core.Utilities
     /// <returns></returns>
     public static TEnum? GetEnumValueByDescription<TEnum>(string text) where TEnum : struct {
       foreach (TEnum value in Enum.GetValues(typeof(TEnum))) {
-        if (GetEnumDescription(value as Enum) == text) {
+        if ((value as Enum).GetEnumDescription() == text) {
           return value;
         }
       }
 
       return null;
-    }
-
-    /// <summary>
-    /// Gets the enum value description.
-    /// </summary>
-    /// <param name="enumValue">The enum value.</param>
-    /// <returns></returns>
-    public static string GetEnumValueDescription(this Enum enumValue) {
-      return enumValue.GetEnumAttributeValue<DescriptionAttribute>().Description;
     }
   }
 }
