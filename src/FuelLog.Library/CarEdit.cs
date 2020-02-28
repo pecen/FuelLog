@@ -170,7 +170,7 @@ namespace FuelLog.Library
             ConsumptionUnitId = (int)ConsumptionUnit,
             DistanceUnitId = DistanceUnit,
             VolumeUnitId = VolumeUnit,
-            DateAdded = DateAdded,
+            CreationDate = DateAdded,
             LastModified = LastModified,
             //TotalDistance = TotalDistance,
             //TotalFillups = 0

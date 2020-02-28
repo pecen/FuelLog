@@ -2,31 +2,28 @@
 using FuelLog.Dal;
 using FuelLog.Library.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FuelLog.Library {
   [Serializable]
   public class UnitList : ReadOnlyListBase<UnitList, UnitInfo> {
     #region Factory Methods
 
-    public static T GetUnitList<T>()
+    public static T GetUnitList<T>() where T : class
     {
       return DataPortal.Fetch<T>();
     }
 
-    public static UnitList GetUnitList(UnitCategory category)
-    {
-      return DataPortal.Fetch<UnitList>(category);
-    }
+    //public static UnitList GetUnitList(UnitCategory category)
+    //{
+    //  return DataPortal.Fetch<UnitList>(category);
+    //}
 
     #endregion
 
     #region Data Access
 
-    private void DataPortal_Fetch(UnitCategory category)
+    [Fetch]
+    private void Fetch(UnitCategory category)
     {
       var rlce = RaiseListChangedEvents;
       RaiseListChangedEvents = false;

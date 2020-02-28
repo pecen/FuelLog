@@ -138,14 +138,15 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       //VolumeUnits = VolumeList.GetVolumeList();
       //var cu = Enum.GetValues(typeof(FuelLog.Library.Enums.ConsumptionUnits)); // ConsumptionUnits; // ConsumptionList.GetConsumptionList();
       //ConsumptionUnits.AddRange(cu);
+      
+      DistanceUnits = UnitList.GetUnitList<DistanceList>();
+      VolumeUnits = UnitList.GetUnitList<VolumeList>();
+      ConsumptionUnits = UnitList.GetUnitList<ConsumptionList>();
 
-      //DistanceUnits = UnitList.GetUnitList<DistanceList>();
-      //VolumeUnits = UnitList.GetUnitList<VolumeList>();
-      //ConsumptionUnits = UnitList.GetUnitList<ConsumptionList>();
+      //DistanceUnits = UnitList.GetUnitList(UnitCategory.Distance);
+      //VolumeUnits = UnitList.GetUnitList(UnitCategory.Volume);
+      //ConsumptionUnits = UnitList.GetUnitList(UnitCategory.Consumption);
 
-      DistanceUnits = UnitList.GetUnitList(UnitCategory.Distance);
-      VolumeUnits = UnitList.GetUnitList(UnitCategory.Volume);
-      ConsumptionUnits = UnitList.GetUnitList(UnitCategory.Consumption);
       //ConsumptionUnits = new ObservableCollection<ConsumptionUnitType>(Enum.GetValues(typeof(ConsumptionUnitType)).Cast<ConsumptionUnitType>());
 
       SelectedDistance = DistanceUnits.FirstOrDefault(); //DistanceUnits.Where(d => d.Id == Id).FirstOrDefault(); 
@@ -189,7 +190,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       car.TotalFillups = 0;
       car.DistanceUnit = SelectedDistance.Id;
       car.VolumeUnit = SelectedVolume.Id;
-      //car.ConsumptionUnit = SelectedConsumption.Id;
+      car.ConsumptionUnit = SelectedConsumption.Id;
       car = car.Save();
 
       _eventAggregator
