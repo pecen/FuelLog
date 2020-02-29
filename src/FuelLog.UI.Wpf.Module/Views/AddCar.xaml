@@ -139,7 +139,7 @@
       SelectedItem="{Binding SelectedConsumption, Mode=TwoWay}">
       <ComboBox.ItemTemplate>
         <DataTemplate>
-          <!-- Use the following commented out code if an enum is the source for the values -->
+          <!--  Use the following commented out code if an enum is the source for the values  -->
           <!--<TextBlock Text="{Binding Converter={StaticResource EnumToCollectionConverter}}" />-->
           <TextBlock Text="{Binding Name}" />
         </DataTemplate>

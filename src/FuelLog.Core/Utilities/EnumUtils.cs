@@ -130,7 +130,7 @@ namespace FuelLog.Core.Utilities {
       Dictionary<string, TEnum> descriptionsDictionary = new Dictionary<string, TEnum>();
 
       foreach (TEnum value in Enum.GetValues(typeof(TEnum))) {
-        string description = (value as Enum).GetEnumDescription();
+        string description = (value as Enum).GetDescription();
 
         if (!string.IsNullOrEmpty(description)) {
           if (descriptionsDictionary.ContainsKey(description)) {
@@ -249,7 +249,7 @@ namespace FuelLog.Core.Utilities {
     /// <returns></returns>
     public static TEnum? GetEnumValueByDescription<TEnum>(string text) where TEnum : struct {
       foreach (TEnum value in Enum.GetValues(typeof(TEnum))) {
-        if ((value as Enum).GetEnumDescription() == text) {
+        if ((value as Enum).GetDescription() == text) {
           return value;
         }
       }

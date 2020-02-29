@@ -146,6 +146,16 @@ namespace FuelLog.Library {
 
     #endregion
 
+    #region Factory Methods
+
+    public static CarInfo NewCar() {
+      return DataPortal.Create<CarInfo>();
+    }
+
+    public static CarInfo GetCar(int carId) {
+      return DataPortal.Fetch<CarInfo>(carId);
+    }
+
     public static explicit operator CarInfo(CarEdit car) {
       var distanceUnit = UnitList.GetUnitList(UnitCategory.Distance)
         .FirstOrDefault(d => d.Id == car.DistanceUnit);
@@ -156,33 +166,35 @@ namespace FuelLog.Library {
       var consumptionUnit = UnitList.GetUnitList(UnitCategory.Consumption)
         .FirstOrDefault(c => c.Id == car.ConsumptionUnit);
 
-      return new CarInfo {
-        Id = car.Id,
-        Make = car.Make,
-        Model = car.Model,
-        LicensePlate = car.LicensePlate,
-        Note = car.Note,
-        DistanceUnit = distanceUnit,
-        VolumeUnit = volumeUnit,
-        ConsumptionUnit = consumptionUnit,
-        DateAdded = car.DateAdded,
-        LastModified = car.LastModified,
-        //TotalDistance = $"{car.TotalDistance} {distanceUnit}",
-        //TotalFillups = $"{car.TotalFillups} Fillups"
-      };
-    }
+      var carInfo = NewCar();
+      carInfo.Id = car.Id;
+      carInfo.Make = car.Make;
+      carInfo.Model = car.Model;
+      carInfo.LicensePlate = car.LicensePlate;
+      carInfo.Note = car.Note;
+      carInfo.DistanceUnit = distanceUnit;
+      carInfo.VolumeUnit = volumeUnit;
+      carInfo.ConsumptionUnit = consumptionUnit;
+      carInfo.DateAdded = car.DateAdded;
+      carInfo.LastModified = car.LastModified;
+      //carInfo.TotalDistance = $"{car.TotalDistance} {distanceUnit}";
+      //carInfo.TotalFillups = $"{car.TotalFillups} Fillups"
 
-    #region Factory Methods
-
-    public static CarInfo GetCar(int carId) {
-      return DataPortal.Fetch<CarInfo>(carId);
+      return carInfo;
     }
 
     #endregion
 
     #region Data Access
 
-    private void DataPortal_Fetch(int id) {
+    [Create]
+    [RunLocal]
+    private void Create() {
+      // Do initiating stuff here
+    }
+
+    [Fetch]
+    private void Fetch(int id) {
       using (var dalManager = DalFactory.GetManager()) {
         var dal = dalManager.GetProvider<ICarDal>();
         var data = dal.Fetch(id);
@@ -190,6 +202,8 @@ namespace FuelLog.Library {
     }
 
     delegate double ConsumptionOp(FillupList list);
+
+    [FetchChild]
     private void Child_Fetch(CarDto item) {
       Id = item.Id;
       Make = item.Make;

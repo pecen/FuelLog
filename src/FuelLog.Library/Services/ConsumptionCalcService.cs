@@ -1,4 +1,5 @@
-﻿using FuelLog.Core.Utilities;
+﻿using FuelLog.Core.Extensions;
+using FuelLog.Core.Utilities;
 using FuelLog.Library.Enums;
 using System;
 using System.Collections;
@@ -13,10 +14,10 @@ namespace FuelLog.Library.Services {
       //_kmPerLiter = ConsumptionOps.KmPerLiter.GetEnumDescription();
 
       Ops = new Dictionary<string, ConsumptionUnitType> {
-        [ConsumptionUnitType.KmPerLiter.GetEnumDescription()] = ConsumptionUnitType.KmPerLiter,
-        [ConsumptionUnitType.LiterPer100Km.GetEnumDescription()] = ConsumptionUnitType.LiterPer100Km, 
-        [ConsumptionUnitType.LiterPer10Km.GetEnumDescription()] = ConsumptionUnitType.LiterPer10Km,
-        [ConsumptionUnitType.LiterPerKm.GetEnumDescription()] = ConsumptionUnitType.LiterPerKm
+        [ConsumptionUnitType.KmPerLiter.GetDescription()] = ConsumptionUnitType.KmPerLiter,
+        [ConsumptionUnitType.LiterPer100Km.GetDescription()] = ConsumptionUnitType.LiterPer100Km, 
+        [ConsumptionUnitType.LiterPer10Km.GetDescription()] = ConsumptionUnitType.LiterPer10Km,
+        [ConsumptionUnitType.LiterPerKm.GetDescription()] = ConsumptionUnitType.LiterPerKm
       };
     }
 

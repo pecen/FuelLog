@@ -122,22 +122,22 @@ namespace FuelLog.Library
 
     #endregion
 
-    public static explicit operator CarEdit(CarInfo car) {
-      return new CarEdit {
-        Id = car.Id,
-        Make = car.Make,
-        Model = car.Model,
-        LicensePlate = car.LicensePlate,
-        Note = car.Note,
-        DistanceUnit = car.DistanceUnit.Id,
-        VolumeUnit = car.VolumeUnit.Id,
-        ConsumptionUnit = car.ConsumptionUnit.Id,
-        DateAdded = car.DateAdded,
-        LastModified = car.LastModified,
-        //TotalDistance = int.Parse(Regex.Match(car.TotalDistance, @"\d+").Value),
-        TotalFillups = int.Parse(Regex.Match(car.TotalFillups, @"\d+").Value)
-      };
-    }
+    //public static explicit operator CarEdit(CarInfo car) {
+    //  return new CarEdit {
+    //    Id = car.Id,
+    //    Make = car.Make,
+    //    Model = car.Model,
+    //    LicensePlate = car.LicensePlate,
+    //    Note = car.Note,
+    //    DistanceUnit = car.DistanceUnit.Id,
+    //    VolumeUnit = car.VolumeUnit.Id,
+    //    ConsumptionUnit = car.ConsumptionUnit.Id,
+    //    DateAdded = car.DateAdded,
+    //    LastModified = car.LastModified,
+    //    //TotalDistance = int.Parse(Regex.Match(car.TotalDistance, @"\d+").Value),
+    //    TotalFillups = int.Parse(Regex.Match(car.TotalFillups, @"\d+").Value)
+    //  };
+    //}
 
     #region Factory Methods
 

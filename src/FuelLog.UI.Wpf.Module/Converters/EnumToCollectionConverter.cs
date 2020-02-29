@@ -25,9 +25,9 @@ namespace FuelLog.UI.Wpf.Module.Converters {
 
   public class EnumToCollectionConverter : IValueConverter {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-      if (value is ConsumptionUnitType description) {
-        return EnumUtils.GetEnumDescription(description);
-      }
+      //if (value is ConsumptionUnitType description) {
+      //  return description.GetDescription(description);
+      //}
 
       return null;
     }

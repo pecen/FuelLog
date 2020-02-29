@@ -5,8 +5,6 @@ using FuelLog.DalEf.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FuelLog.DalEf {
   public class CarDal : ICarDal {

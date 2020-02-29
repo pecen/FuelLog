@@ -10,7 +10,7 @@ namespace FuelLog.Core.Extensions {
     /// </summary>
     /// <param name="value">Enumerator value.</param>
     /// <returns>Description stored in attribute.</returns>
-    public static string GetEnumDescription(this Enum value) {
+    public static string GetDescription(this Enum value) {
       if (value != null) {
         DescriptionAttribute attr = GetAttribute<DescriptionAttribute>(value);
         if (attr != null) {
