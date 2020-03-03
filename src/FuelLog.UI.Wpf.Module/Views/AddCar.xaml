@@ -6,9 +6,9 @@
   xmlns:prism="http://prismlibrary.com/"
   xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
   prism:ViewModelLocator.AutoWireViewModel="True">
-  <UserControl.Resources>
+  <!--<UserControl.Resources>
     <converters:EnumToCollectionConverter x:Key="EnumToCollectionConverter" />
-  </UserControl.Resources>
+  </UserControl.Resources>-->
   <Grid Background="#808080">
     <Grid.Resources>
       <Style TargetType="telerik:RadWatermarkTextBox">
@@ -103,13 +103,13 @@
       Grid.Row="4"
       Grid.Column="1"
       Margin="5,15,5,5"
-      ItemsSource="{Binding DistanceUnits}"
-      SelectedItem="{Binding SelectedDistance}">
-      <ComboBox.ItemTemplate>
+      ItemsSource="{Binding DistanceUnitList}"
+      SelectedItem="{Binding SelectedDistanceUnit}">
+      <!--<ComboBox.ItemTemplate>
         <DataTemplate>
           <TextBlock Text="{Binding Name}" />
         </DataTemplate>
-      </ComboBox.ItemTemplate>
+      </ComboBox.ItemTemplate>-->
     </ComboBox>
     <Label
       Grid.Row="5"
@@ -119,13 +119,13 @@
       Grid.Row="5"
       Grid.Column="1"
       Margin="5,5,5,5"
-      ItemsSource="{Binding VolumeUnits}"
-      SelectedItem="{Binding SelectedVolume}">
-      <ComboBox.ItemTemplate>
+      ItemsSource="{Binding VolumeUnitList}"
+      SelectedItem="{Binding SelectedVolumeUnit}">
+      <!--<ComboBox.ItemTemplate>
         <DataTemplate>
           <TextBlock Text="{Binding Name}" />
         </DataTemplate>
-      </ComboBox.ItemTemplate>
+      </ComboBox.ItemTemplate>-->
     </ComboBox>
     <Label
       Grid.Row="6"
@@ -135,15 +135,17 @@
       Grid.Row="6"
       Grid.Column="1"
       Margin="5,5,5,5"
-      ItemsSource="{Binding ConsumptionUnits}"
-      SelectedItem="{Binding SelectedConsumption, Mode=TwoWay}">
-      <ComboBox.ItemTemplate>
+      ItemsSource="{Binding ConsumptionUnitList}"
+      SelectedItem="{Binding SelectedConsumptionUnit}">
+      <!--<ComboBox.ItemTemplate>
         <DataTemplate>
-          <!--  Use the following commented out code if an enum is the source for the values  -->
-          <!--<TextBlock Text="{Binding Converter={StaticResource EnumToCollectionConverter}}" />-->
+      -->
+      <!--  Use the following commented out code if an enum is the source for the values  -->
+      <!--<TextBlock Text="{Binding Converter={StaticResource EnumToCollectionConverter}}" />-->
+      <!--
           <TextBlock Text="{Binding Name}" />
         </DataTemplate>
-      </ComboBox.ItemTemplate>
+      </ComboBox.ItemTemplate>-->
     </ComboBox>
     <Label
       Grid.Row="7"

@@ -90,8 +90,10 @@
     <Compile Include="CarEdit.cs" />
     <Compile Include="CarInfo.cs" />
     <Compile Include="CarList.cs" />
-    <Compile Include="Enums\ConsumptionUnitType.cs" />
+    <Compile Include="Enums\ConsumptionUnits.cs" />
+    <Compile Include="Enums\DistanceUnits.cs" />
     <Compile Include="Enums\UnitCategory.cs" />
+    <Compile Include="Enums\VolumeUnits.cs" />
     <Compile Include="FillupInfo.cs" />
     <Compile Include="FillupList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

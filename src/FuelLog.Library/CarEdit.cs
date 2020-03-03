@@ -2,6 +2,7 @@
 using FuelLog.Dal;
 using FuelLog.Dal.Dto;
 using FuelLog.Library.Enums;
+using FuelLog.UI.Wpf.Module.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,8 +57,8 @@ namespace FuelLog.Library
     //  set { SetProperty(DistanceUnitProperty, value); }
     //}
 
-    public static readonly PropertyInfo<int> DistanceUnitProperty = RegisterProperty<int>(c => c.DistanceUnit);
-    public int DistanceUnit {
+    public static readonly PropertyInfo<DistanceUnits> DistanceUnitProperty = RegisterProperty<DistanceUnits>(c => c.DistanceUnit);
+    public DistanceUnits DistanceUnit {
       get { return GetProperty(DistanceUnitProperty); }
       set { SetProperty(DistanceUnitProperty, value); }
     }
@@ -68,14 +69,14 @@ namespace FuelLog.Library
     //  set { SetProperty(VolumeUnitProperty, value); }
     //}
 
-    public static readonly PropertyInfo<int> VolumeUnitProperty = RegisterProperty<int>(c => c.VolumeUnit);
-    public int VolumeUnit {
+    public static readonly PropertyInfo<VolumeUnits> VolumeUnitProperty = RegisterProperty<VolumeUnits>(c => c.VolumeUnit);
+    public VolumeUnits VolumeUnit {
       get { return GetProperty(VolumeUnitProperty); }
       set { SetProperty(VolumeUnitProperty, value); }
     }
 
-    public static readonly PropertyInfo<int> ConsumptionUnitProperty = RegisterProperty<int>(c => c.ConsumptionUnit);
-    public int ConsumptionUnit {
+    public static readonly PropertyInfo<ConsumptionUnits> ConsumptionUnitProperty = RegisterProperty<ConsumptionUnits>(c => c.ConsumptionUnit);
+    public ConsumptionUnits ConsumptionUnit {
       get { return GetProperty(ConsumptionUnitProperty); }
       set { SetProperty(ConsumptionUnitProperty, value); }
     }
@@ -122,7 +123,7 @@ namespace FuelLog.Library
 
     #endregion
 
-    //public static explicit operator CarEdit(CarInfo car) {
+    //public static implicit operator CarEdit(CarInfo car) {
     //  return new CarEdit {
     //    Id = car.Id,
     //    Make = car.Make,
@@ -167,9 +168,9 @@ namespace FuelLog.Library
             Model = Model,
             LicensePlate = LicensePlate,
             Note = Note,
-            ConsumptionUnitId = (int)ConsumptionUnit,
-            DistanceUnitId = DistanceUnit,
-            VolumeUnitId = VolumeUnit,
+            DistanceUnit = (int)DistanceUnit,
+            VolumeUnit = (int)VolumeUnit,
+            ConsumptionUnit = (int)ConsumptionUnit,
             CreationDate = DateAdded,
             LastModified = LastModified,
             //TotalDistance = TotalDistance,
@@ -191,9 +192,9 @@ namespace FuelLog.Library
             Model = Model,
             LicensePlate = LicensePlate,
             Note = Note,
-            ConsumptionUnitId = (int)ConsumptionUnit,
-            DistanceUnitId = DistanceUnit,
-            VolumeUnitId = VolumeUnit,
+            DistanceUnit = (int)DistanceUnit,
+            VolumeUnit = (int)VolumeUnit,
+            ConsumptionUnit = (int)ConsumptionUnit,
             LastModified = DateTime.Now
           };
           dal.Update(data);

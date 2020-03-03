@@ -106,7 +106,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -122,6 +124,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FuelLog.DalEf\FuelLog.DalEf.csproj">
+      <Project>{f53298a5-824f-4313-b68b-497012ae6579}</Project>
+      <Name>FuelLog.DalEf</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FuelLog.DalMock\FuelLog.DalMock.csproj">
       <Project>{e729945c-1f53-42ac-9ada-26aba05429a2}</Project>
       <Name>FuelLog.DalMock</Name>

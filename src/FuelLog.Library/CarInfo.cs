@@ -4,6 +4,7 @@ using FuelLog.Dal;
 using FuelLog.Dal.Dto;
 using FuelLog.Library.Enums;
 using FuelLog.Library.Services;
+using FuelLog.UI.Wpf.Module.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,8 +60,8 @@ namespace FuelLog.Library {
     //  set { LoadProperty(DistanceUnitProperty, value); }
     //}
 
-    public static readonly PropertyInfo<UnitInfo> DistanceUnitProperty = RegisterProperty<UnitInfo>(c => c.DistanceUnit);
-    public UnitInfo DistanceUnit {
+    public static readonly PropertyInfo<DistanceUnits> DistanceUnitProperty = RegisterProperty<DistanceUnits>(c => c.DistanceUnit);
+    public DistanceUnits DistanceUnit {
       get { return GetProperty(DistanceUnitProperty); }
       set { LoadProperty(DistanceUnitProperty, value); }
     }
@@ -71,8 +72,8 @@ namespace FuelLog.Library {
     //  set { LoadProperty(VolumeProperty, value); }
     //}
 
-    public static readonly PropertyInfo<UnitInfo> VolumeProperty = RegisterProperty<UnitInfo>(c => c.VolumeUnit);
-    public UnitInfo VolumeUnit {
+    public static readonly PropertyInfo<VolumeUnits> VolumeProperty = RegisterProperty<VolumeUnits>(c => c.VolumeUnit);
+    public VolumeUnits VolumeUnit {
       get { return GetProperty(VolumeProperty); }
       set { LoadProperty(VolumeProperty, value); }
     }
@@ -83,16 +84,18 @@ namespace FuelLog.Library {
     //  set { LoadProperty(ConsumptionUnitProperty, value); }
     //}
 
-    public static readonly PropertyInfo<UnitInfo> ConsumptionUnitProperty = RegisterProperty<UnitInfo>(c => c.ConsumptionUnit);
-    public UnitInfo ConsumptionUnit {
+    public static readonly PropertyInfo<ConsumptionUnits> ConsumptionUnitProperty = RegisterProperty<ConsumptionUnits>(c => c.ConsumptionUnit);
+    public ConsumptionUnits ConsumptionUnit {
       get { return GetProperty(ConsumptionUnitProperty); }
       set { LoadProperty(ConsumptionUnitProperty, value); }
     }
 
-    public string ChosenUnits {
-      get { return DistanceUnit.ShortName + ", " + VolumeUnit.ShortName + ", " + ConsumptionUnit.Name; }
-      //get { return DistanceUnit.ShortName + ", " + VolumeUnit.ShortName + ", " + ConsumptionUnit.GetEnumDescription(); }
-    }
+    // To be implemented
+    //
+    //public string ChosenUnits {
+    //  get { return DistanceUnit.ShortName + ", " + VolumeUnit.ShortName + ", " + ConsumptionUnit.Name; }
+    //  //get { return DistanceUnit.ShortName + ", " + VolumeUnit.ShortName + ", " + ConsumptionUnit.GetEnumDescription(); }
+    //}
 
     public static readonly PropertyInfo<string> TotalFillupsProperty = RegisterProperty<string>(c => c.TotalFillups);
     public string TotalFillups {
@@ -157,14 +160,14 @@ namespace FuelLog.Library {
     }
 
     public static explicit operator CarInfo(CarEdit car) {
-      var distanceUnit = UnitList.GetUnitList(UnitCategory.Distance)
-        .FirstOrDefault(d => d.Id == car.DistanceUnit);
+      //var distanceUnit = UnitList.GetUnitList(UnitCategory.Distance)
+      //  .FirstOrDefault(d => d.Id == car.DistanceUnit);
 
-      var volumeUnit = UnitList.GetUnitList(UnitCategory.Volume)
-        .FirstOrDefault(v => v.Id == car.VolumeUnit);
+      //var volumeUnit = UnitList.GetUnitList(UnitCategory.Volume)
+      //  .FirstOrDefault(v => v.Id == car.VolumeUnit);
 
-      var consumptionUnit = UnitList.GetUnitList(UnitCategory.Consumption)
-        .FirstOrDefault(c => c.Id == car.ConsumptionUnit);
+      //var consumptionUnit = UnitList.GetUnitList(UnitCategory.Consumption)
+      //  .FirstOrDefault(c => c.Id == car.ConsumptionUnit);
 
       var carInfo = NewCar();
       carInfo.Id = car.Id;
@@ -172,9 +175,9 @@ namespace FuelLog.Library {
       carInfo.Model = car.Model;
       carInfo.LicensePlate = car.LicensePlate;
       carInfo.Note = car.Note;
-      carInfo.DistanceUnit = distanceUnit;
-      carInfo.VolumeUnit = volumeUnit;
-      carInfo.ConsumptionUnit = consumptionUnit;
+      carInfo.DistanceUnit = car.DistanceUnit;
+      carInfo.VolumeUnit = car.VolumeUnit;
+      carInfo.ConsumptionUnit = car.ConsumptionUnit;
       carInfo.DateAdded = car.DateAdded;
       carInfo.LastModified = car.LastModified;
       //carInfo.TotalDistance = $"{car.TotalDistance} {distanceUnit}";
@@ -211,57 +214,57 @@ namespace FuelLog.Library {
       LicensePlate = item.LicensePlate;
       Note = item.Note;
 
-      DistanceUnit = UnitList.GetUnitList(UnitCategory.Distance)
-        .FirstOrDefault(d => d.Id == item.DistanceUnitId);
-      VolumeUnit = UnitList.GetUnitList(UnitCategory.Volume)
-        .FirstOrDefault(v => v.Id == item.VolumeUnitId);
-      ConsumptionUnit = UnitList.GetUnitList(UnitCategory.Consumption)
-        .FirstOrDefault(c => c.Id == item.ConsumptionUnitId);
+      //DistanceUnit = UnitList.GetUnitList(UnitCategory.Distance)
+      //  .FirstOrDefault(d => d.Id == item.DistanceUnitId);
+      //VolumeUnit = UnitList.GetUnitList(UnitCategory.Volume)
+      //  .FirstOrDefault(v => v.Id == item.VolumeUnitId);
+      //ConsumptionUnit = UnitList.GetUnitList(UnitCategory.Consumption)
+      //  .FirstOrDefault(c => c.Id == item.ConsumptionUnitId);
 
-      Fillups = DataPortal.FetchChild<FillupList>(item.Id);
-      var count = Fillups.Count();
+      //Fillups = DataPortal.FetchChild<FillupList>(item.Id);
+      //var count = Fillups.Count();
 
-      // Ex. 0 Fillups, 23 Fillups, or 1 Fillup, 
-      // TotalFillups = $"{count} Fillup{(count == 0 || count > 1 ? "s" : string.Empty)}";
-      TotalFillups = $"{count} Fillup{(count == 1 ? string.Empty : "s")}";
+      //// Ex. 0 Fillups, 23 Fillups, or 1 Fillup, 
+      //// TotalFillups = $"{count} Fillup{(count == 0 || count > 1 ? "s" : string.Empty)}";
+      //TotalFillups = $"{count} Fillup{(count == 1 ? string.Empty : "s")}";
 
-      if (count > 1) {
-        var f = Fillups.OrderBy(a => a.FillupDate);
+      //if (count > 1) {
+      //  var f = Fillups.OrderBy(a => a.FillupDate);
 
-        var first = f.First(); // Fillups.OrderBy(a => a.FillupDate).First();
-        var last = f.Last(); // Fillups.OrderBy(a => a.FillupDate).Last();
-        var firstOdo = int.Parse(Regex.Match(first.Odometer, @"\d+").Value);
-        var lastOdo = int.Parse(Regex.Match(last.Odometer, @"\d+").Value);
-        var totalDistance = lastOdo - firstOdo;
-        //var totalDistance = int.Parse(Regex.Match(last.Odometer, @"\d+").Value) 
-        //  - int.Parse(Regex.Match(first.Odometer, @"\d+").Value);
+      //  var first = f.First(); // Fillups.OrderBy(a => a.FillupDate).First();
+      //  var last = f.Last(); // Fillups.OrderBy(a => a.FillupDate).Last();
+      //  var firstOdo = int.Parse(Regex.Match(first.Odometer, @"\d+").Value);
+      //  var lastOdo = int.Parse(Regex.Match(last.Odometer, @"\d+").Value);
+      //  var totalDistance = lastOdo - firstOdo;
+      //  //var totalDistance = int.Parse(Regex.Match(last.Odometer, @"\d+").Value) 
+      //  //  - int.Parse(Regex.Match(first.Odometer, @"\d+").Value);
 
-        TotalDistance = $"{totalDistance} {DistanceUnit.ShortName}";
+      //  TotalDistance = $"{totalDistance} {DistanceUnit.ShortName}";
 
-        //var firstAmount = decimal.Parse(Regex.Match(first.Amount, @"\d+.+\d").Value);
-        //var sumAmount = Fillups.Sum(con => decimal.Parse(Regex.Match(con.Amount, @"\d+.+\d").Value));
-        //var avg = Math.Round((lastOdo - firstOdo) / (sumAmount - firstAmount), 2);
+      //  //var firstAmount = decimal.Parse(Regex.Match(first.Amount, @"\d+.+\d").Value);
+      //  //var sumAmount = Fillups.Sum(con => decimal.Parse(Regex.Match(con.Amount, @"\d+.+\d").Value));
+      //  //var avg = Math.Round((lastOdo - firstOdo) / (sumAmount - firstAmount), 2);
 
-        //ConsumptionOp consumptionOp = ConsumptionCalcService.KmPerLiter;
-        //ConsumptionOp op = delegate (FillupList fff) {
-        //  return ConsumptionCalcService.KmPerLiter(fff);
-        //};
+      //  //ConsumptionOp consumptionOp = ConsumptionCalcService.KmPerLiter;
+      //  //ConsumptionOp op = delegate (FillupList fff) {
+      //  //  return ConsumptionCalcService.KmPerLiter(fff);
+      //  //};
 
-        Func<FillupList, double> ff = ConsumptionCalcService.KmPerLiter;
-        var avg = ff(Fillups);
-        AverageConsumption = $"{avg} {ConsumptionUnit.Name}";
-        //AverageConsumption = $"{avg} {ConsumptionUnit.GetEnumDescription()}";
+      //  Func<FillupList, double> ff = ConsumptionCalcService.KmPerLiter;
+      //  var avg = ff(Fillups);
+      //  AverageConsumption = $"{avg} {ConsumptionUnit.Name}";
+      //  //AverageConsumption = $"{avg} {ConsumptionUnit.GetEnumDescription()}";
 
-        decimal[] values = { 1.2m, 2.4m, 3.6m };
-        //var fff = ConsumptionCalcService.Calculate(values, ConsumptionCalcService.KmPerLiter);
-      }
+      //  decimal[] values = { 1.2m, 2.4m, 3.6m };
+      //  //var fff = ConsumptionCalcService.Calculate(values, ConsumptionCalcService.KmPerLiter);
+      //}
 
-      //AverageConsumption = $"{item.AverageConsumption.ToString()} {ConsumptionUnit.Name}";
+      ////AverageConsumption = $"{item.AverageConsumption.ToString()} {ConsumptionUnit.Name}";
 
-      //var unit = DistanceList.GetDistanceList().Where(d => d.Id == item.DistanceUnitId).FirstOrDefault().Name;
-      //var d = DataPortal.FetchChild<DistanceInfo>();
-      //CarSettings = DataPortal.FetchChild<CarSettingsInfo>(Id);
-      //CarStatistics = DataPortal.FetchChild<CarStatisticsInfo>(Id);
+      ////var unit = DistanceList.GetDistanceList().Where(d => d.Id == item.DistanceUnitId).FirstOrDefault().Name;
+      ////var d = DataPortal.FetchChild<DistanceInfo>();
+      ////CarSettings = DataPortal.FetchChild<CarSettingsInfo>(Id);
+      ////CarStatistics = DataPortal.FetchChild<CarStatisticsInfo>(Id);
     }
 
     #endregion
