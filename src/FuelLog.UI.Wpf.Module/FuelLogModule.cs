@@ -10,9 +10,11 @@ using Unity;
 namespace FuelLog.UI.Wpf.Module {
   public class FuelLogModule : IModule {
     private IRegionManager _regionManager;
+    private IUnityContainer _container;
 
     public FuelLogModule(IRegionManager regionManager, IUnityContainer container) {
       _regionManager = regionManager;
+      _container = container;
     }
 
     public void OnInitialized(IContainerProvider containerProvider) {
