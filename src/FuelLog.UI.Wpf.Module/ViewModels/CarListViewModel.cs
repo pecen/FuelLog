@@ -14,7 +14,11 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     private IEventAggregator _eventAggregator;
     private readonly IRegionManager _regionManager;
 
-    public ObservableCollection<CarInfo> CarItems { get; set; }
+    private ObservableCollection<CarInfo> _cars;
+    public ObservableCollection<CarInfo> Cars {
+      get { return _cars; }
+      set { SetProperty(ref _cars, value); }
+    }
 
     private CarInfo _selectedCar;
     public CarInfo SelectedCar {
@@ -61,8 +65,8 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     }
 
     private void CarListReceived(CarList obj) {
-      CarItems = obj;
-      RaisePropertyChanged(nameof(CarItems));
+      Cars = obj;
+      RaisePropertyChanged(nameof(Cars));
     }
   }
 }
