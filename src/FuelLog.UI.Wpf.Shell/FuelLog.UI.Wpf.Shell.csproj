@@ -73,6 +73,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\MainWindowBigViewModel.cs" />
+    <Compile Include="Views\MainWindowBig.xaml.cs">
+      <DependentUpon>MainWindowBig.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -87,6 +91,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MainWindowBig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -124,6 +132,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FuelLog.Core\FuelLog.Core.csproj">
+      <Project>{052BF7B8-C10B-4317-AA8D-8AF2DE5A815A}</Project>
+      <Name>FuelLog.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FuelLog.DalEf\FuelLog.DalEf.csproj">
       <Project>{f53298a5-824f-4313-b68b-497012ae6579}</Project>
       <Name>FuelLog.DalEf</Name>

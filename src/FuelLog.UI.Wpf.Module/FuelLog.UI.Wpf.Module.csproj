@@ -76,10 +76,26 @@
     <Compile Include="Commands\GetCarsCommand.cs" />
     <Compile Include="Commands\GetFillupsCommand.cs" />
     <Compile Include="Commands\SaveCarCommand.cs" />
+    <Compile Include="Converters\BoolToButtonTextConverter.cs" />
+    <Compile Include="Converters\BoolToButtonToolTipTextConverter.cs" />
+    <Compile Include="Converters\BoolToEnabledConverter.cs" />
+    <Compile Include="Converters\BoolToGreyForegroundConverter.cs" />
+    <Compile Include="Converters\BoolToItalicConverter.cs" />
+    <Compile Include="Converters\BoolToNotesHeightConverter.cs" />
+    <Compile Include="Converters\EmptyStringToTooltipConverter.cs" />
     <Compile Include="Converters\EnumToCollectionConverter.cs" />
+    <Compile Include="Converters\IsNotCheckedToVisibilityConverter.cs" />
     <Compile Include="Converters\NameToContentConverter.cs" />
+    <Compile Include="Converters\RemovePathFromFilenameConverter.cs" />
+    <Compile Include="Enums\ButtonNames.cs" />
     <Compile Include="Enums\Regions.cs" />
+    <Compile Include="Enums\ToolTipTexts.cs" />
     <Compile Include="FuelLogModule.cs" />
+    <Compile Include="Properties\AddCar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddCar.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -93,11 +109,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Enums\TabHeaders.cs" />
+    <Compile Include="Enums\Titles.cs" />
     <Compile Include="UserControls\FillupItem.xaml.cs">
       <DependentUpon>FillupItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AddCarViewModel.cs" />
+    <Compile Include="ViewModels\AddCarViewModel_old.cs" />
     <Compile Include="ViewModels\CarListViewModel.cs" />
     <Compile Include="ViewModels\FillupsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -107,12 +124,19 @@
     <Compile Include="Views\AddCar.xaml.cs">
       <DependentUpon>AddCar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddCar_old.xaml.cs">
+      <DependentUpon>AddCar_old.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CarList.xaml.cs">
       <DependentUpon>CarList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Fillups.xaml.cs">
       <DependentUpon>Fillups.xaml</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Properties\AddCar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddCar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -143,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddCar_old.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

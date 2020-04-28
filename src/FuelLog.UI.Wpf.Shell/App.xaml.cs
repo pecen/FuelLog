@@ -5,15 +5,17 @@ using FuelLog.UI.Wpf.Shell.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Mvvm;
+using Prism.Unity;
 using System.Windows;
 
 namespace FuelLog.UI.Wpf.Shell {
   /// <summary>
   /// Interaction logic for App.xaml
   /// </summary>
-  public partial class App {
+  public partial class App : PrismApplication {
     protected override Window CreateShell() {
-      return Container.Resolve<MainWindow>();
+      //return Container.Resolve<MainWindow>();
+      return Container.Resolve<MainWindowBig>();
     }
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry) {
@@ -25,10 +27,10 @@ namespace FuelLog.UI.Wpf.Shell {
       moduleCatalog.AddModule<FuelLogModule>();
     }
 
-    protected override void ConfigureViewModelLocator() {
-      base.ConfigureViewModelLocator();
+    //protected override void ConfigureViewModelLocator() {
+    //  base.ConfigureViewModelLocator();
 
-      //ViewModelLocationProvider.Register<CarItem, CarItemViewModel>();
-    }
+    //  //ViewModelLocationProvider.Register<CarItem, CarItemViewModel>();
+    //}
   }
 }

@@ -49,7 +49,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       // A different way of doing navigation
       //AddCarCommand = new DelegateCommand(() => AddCar("ContentPage"));
 
-      Title = TabHeaders.Cars.ToString();
+      Title = Titles.Cars.ToString();
 
       _eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
       _eventAggregator.GetEvent<SaveCarCommand>().Subscribe(CarListReceived);  //NewCarReceived);

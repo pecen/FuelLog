@@ -30,7 +30,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     }
 
     public FillupsViewModel(IEventAggregator eventAggregator) {
-      Title = TabHeaders.Fillups.ToString();
+      Title = Titles.Fillups.ToString();
 
       _eventAggregator = eventAggregator;
 

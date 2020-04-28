@@ -9,24 +9,27 @@ using Unity;
 
 namespace FuelLog.UI.Wpf.Module {
   public class FuelLogModule : IModule {
-    private IRegionManager _regionManager;
-    private IUnityContainer _container;
+    //private IRegionManager _regionManager;
 
     public FuelLogModule(IRegionManager regionManager, IUnityContainer container) {
-      _regionManager = regionManager;
-      _container = container;
+      //_regionManager = regionManager;
     }
 
     public void OnInitialized(IContainerProvider containerProvider) {
-      _regionManager.RegisterViewWithRegion(Regions.ContentRegion.ToString(), typeof(CarList));
-      _regionManager.RegisterViewWithRegion(Regions.ContentRegion.ToString(), typeof(Fillups));
-      _regionManager.RegisterViewWithRegion(Regions.ContentRegion.ToString(), typeof(AddCar));
+      var regionManager = containerProvider.Resolve<IRegionManager>();
+
+      //_regionManager.RegisterViewWithRegion(Regions.ContentRegion.ToString(), typeof(CarList));
+      //_regionManager.RegisterViewWithRegion(Regions.ContentRegion.ToString(), typeof(Fillups));
+      //_regionManager.RegisterViewWithRegion(Regions.ContentRegion.ToString(), typeof(AddCar));
+
+      regionManager.RegisterViewWithRegion(Regions.TabRegion.ToString(), typeof(AddCar));
+      //regionManager.RegisterViewWithRegion(Regions.TabRegion.ToString(), typeof(CarList));
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry) {
-      containerRegistry.RegisterForNavigation<CarList>(nameof(CarList));
-      containerRegistry.RegisterForNavigation<Fillups>(nameof(Fillups));
-      containerRegistry.RegisterForNavigation<AddCar>(nameof(AddCar));
+      //containerRegistry.RegisterForNavigation<CarList>(nameof(CarList));
+      //containerRegistry.RegisterForNavigation<Fillups>(nameof(Fillups));
+      //containerRegistry.RegisterForNavigation<AddCar>(nameof(AddCar));
     }
   }
 }
