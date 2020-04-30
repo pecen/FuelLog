@@ -1,72 +1,55 @@
-﻿using FuelLog.Library;
-using FuelLog.UI.Wpf.Module.Commands;
+﻿using FuelLog.Core.Extensions;
 using FuelLog.UI.Wpf.Module.Enums;
 using Prism.Commands;
 using Prism.Events;
-using Prism.Regions;
+using Prism.Mvvm;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
-// The following using is if we would use ICommand
-//using System.Windows.Input;
+using System.Linq;
 
 namespace FuelLog.UI.Wpf.Module.ViewModels {
   public class CarListViewModel : ViewModelBase {
-    private IEventAggregator _eventAggregator;
-    private readonly IRegionManager _regionManager;
+    private readonly IEventAggregator _eventAggregator;
 
-    private ObservableCollection<CarInfo> _cars;
-    public ObservableCollection<CarInfo> Cars {
-      get { return _cars; }
-      set { SetProperty(ref _cars, value); }
+    #region Properties
+
+    public DelegateCommand SearchCommand { get; set; }
+
+    private ObservableCollection<string> _columns;
+    public ObservableCollection<string> Columns {
+      get { return _columns; }
+      set { SetProperty(ref _columns, value); }
     }
 
-    private CarInfo _selectedCar;
-    public CarInfo SelectedCar {
-      get { return _selectedCar; }
-      set {
-        SetProperty(ref _selectedCar, value);
-        _eventAggregator.GetEvent<EditCarCommand>().Publish(_selectedCar);
-        _regionManager.RequestNavigate(Regions.ContentRegion.ToString(), "AddCar");
-      }
+    private int _selectedColumns;
+    public int SelectedColumn {
+      get { return _selectedColumns; }
+      set { SetProperty(ref _selectedColumns, value); }
     }
 
-    // This one is used only if there should be like an update button
-    // to bind to
-    //public DelegateCommand GetCarsCommand { get; set; }
+    private string _searchText;
+    public string SearchText {
+      get { return _searchText; }
+      set { SetProperty(ref _searchText, value); }
+    }
 
-    public DelegateCommand<string> AddCarCommand { get; set; }
+    #endregion
 
-    // A different way of doing navigation
-    //public ICommand AddCarCommand { get; set; }
-
-    public CarListViewModel(IEventAggregator eventAggregator, IRegionManager regionManager) {
+    public CarListViewModel(IEventAggregator eventAggregator) {
       _eventAggregator = eventAggregator;
-      _regionManager = regionManager;
 
-      //GetCarsCommand = new DelegateCommand(Execute);
-      AddCarCommand = new DelegateCommand<string>(AddCar);
+      Title = Titles.CarList.GetDescription();
 
-      // A different way of doing navigation
-      //AddCarCommand = new DelegateCommand(() => AddCar("ContentPage"));
+      Columns = new ObservableCollection<string>();
 
-      Title = Titles.Cars.ToString();
+      Columns.GetEnumValues<FilterableColumns>();
 
-      _eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
-      _eventAggregator.GetEvent<SaveCarCommand>().Subscribe(CarListReceived);  //NewCarReceived);
+      SearchCommand = new DelegateCommand(GetFilteredCarList);
     }
 
-    //private void NewCarReceived(CarEdit obj) {
-    //  _eventAggregator.GetEvent<GetCarsCommand>().Publish(CarList.GetCars());
-    //  RaisePropertyChanged(nameof(CarItems));
-    //}
-
-    private void AddCar(string uri) {
-      _regionManager.RequestNavigate(Regions.ContentRegion.ToString(), uri);
-    }
-
-    private void CarListReceived(CarList obj) {
-      Cars = obj;
-      RaisePropertyChanged(nameof(Cars));
+    private void GetFilteredCarList() {
+      throw new NotImplementedException();
     }
   }
 }

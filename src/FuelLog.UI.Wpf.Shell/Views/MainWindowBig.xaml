@@ -5,8 +5,8 @@
   xmlns:prism="http://prismlibrary.com/"
   Width="525"
   Height="425"
-  WindowStartupLocation="CenterScreen"
-  prism:ViewModelLocator.AutoWireViewModel="True">
+  prism:ViewModelLocator.AutoWireViewModel="True"
+  WindowStartupLocation="CenterScreen">
   <Window.Resources>
     <Style TargetType="TabItem">
       <Setter Property="Header" Value="{Binding DataContext.Title}" />

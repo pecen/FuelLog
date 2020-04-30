@@ -24,6 +24,7 @@ namespace FuelLog.UI.Wpf.Module {
       //_regionManager.RegisterViewWithRegion(Regions.ContentRegion.ToString(), typeof(AddCar));
 
       regionManager.RegisterViewWithRegion(Regions.TabRegion.ToString(), typeof(AddCar));
+      regionManager.RegisterViewWithRegion(Regions.TabRegion.ToString(), typeof(CarList));
       //regionManager.RegisterViewWithRegion(Regions.TabRegion.ToString(), typeof(CarList));
     }
 
