@@ -14,6 +14,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
     #region Properties
 
+    public DelegateCommand DeleteComponentsCommand { get; set; }
     public DelegateCommand SearchCommand { get; set; }
 
     private ObservableCollection<string> _columns;
@@ -34,6 +35,12 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       set { SetProperty(ref _searchText, value); }
     }
 
+    private bool _hasCheckedItem;
+    private bool HasCheckedItem {
+      get => _hasCheckedItem;
+      set { SetProperty(ref _hasCheckedItem, value); }
+    }
+
     #endregion
 
     public CarListViewModel(IEventAggregator eventAggregator) {
@@ -45,7 +52,17 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
       Columns.GetEnumValues<FilterableColumns>();
 
+      DeleteComponentsCommand = new DelegateCommand(Execute, CanExecute)
+        .ObservesProperty(() => HasCheckedItem);
       SearchCommand = new DelegateCommand(GetFilteredCarList);
+    }
+
+    private bool CanExecute() {
+      throw new NotImplementedException();
+    }
+
+    private void Execute() {
+      throw new NotImplementedException();
     }
 
     private void GetFilteredCarList() {
