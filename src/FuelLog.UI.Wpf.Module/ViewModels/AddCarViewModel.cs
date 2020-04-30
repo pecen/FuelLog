@@ -1,23 +1,39 @@
 ﻿using FuelLog.Core.Extensions;
 using FuelLog.Library.Enums;
+using FuelLog.UI.Wpf.Module.Commands;
 using FuelLog.UI.Wpf.Module.Enums;
+using FuelLog.UI.Wpf.Module.Services;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 
 namespace FuelLog.UI.Wpf.Module.ViewModels {
   public class AddCarViewModel : ViewModelBase {
     private readonly IEventAggregator _eventAggregator;
+    private readonly IPathProvider _pathProvider;
 
     private readonly string _header = "Fill in the information below and press ";
 
     #region Properties
 
+    public string FilenameToolTip { get; } = "Type in a valid filename (*.Xml), or click the button to the right to select file.";
+
+    public DelegateCommand GetFilenameCommand { get; set; }
     public DelegateCommand SaveCarCommand { get; set; }
+
+    private Stream XmlStream { get; set; }
+
+    public string FullPath {
+      get => !string.IsNullOrEmpty(FilePath)
+        || !string.IsNullOrEmpty(Filename)
+        ? $@"{FilePath}\{Filename}"
+        : string.Empty;
+    }
 
     public string PageHeader {
       get { return _header + BtnName; }
@@ -31,11 +47,20 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       }
     }
 
-    private string _fileName;
-    public string FileName {
-      get { return _fileName; }
+    private string _filePath;
+    public string FilePath {
+      get { return _filePath; }
       set {
-        SetProperty(ref _fileName, value);
+        SetProperty(ref _filePath, value);
+      }
+    }
+
+    private string _filename;
+    public string Filename {
+      get { return _filename; }
+      set {
+        SetProperty(ref _filename, value);
+        RaisePropertyChanged(nameof(FullPath));
       }
     }
 
@@ -125,8 +150,9 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
     #endregion
 
-    public AddCarViewModel(IEventAggregator eventAggregator) {
+    public AddCarViewModel(IEventAggregator eventAggregator, IPathProvider pathProvider) {
       _eventAggregator = eventAggregator;
+      _pathProvider = pathProvider;
 
       Title = Titles.AddCar.GetDescription();
       CarExists = false;
@@ -139,13 +165,33 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       VolumeList.GetEnumValues<VolumeUnits>();
       ConsumptionList.GetEnumValues<ConsumptionUnits>();
 
+      GetFilenameCommand = new DelegateCommand(GetFilename);
       SaveCarCommand = new DelegateCommand(Execute, CanExecute)
         .ObservesProperty(() => Make)
-        .ObservesProperty(() => Model);
+        .ObservesProperty(() => Model)
+        .ObservesProperty(() => Filename)
+        .ObservesProperty(() => ImportCarsIsChecked);
+
+      _eventAggregator.GetEvent<GetFilenameCommand>().Subscribe(FilenameReceived);
+    }
+
+    private void FilenameReceived(string obj) {
+      FilePath = Path.GetDirectoryName(obj);
+      Filename = Path.GetFileName(obj);
+    }
+
+    private void GetFilename() {
+      XmlStream = _pathProvider.FilePathService() ?? XmlStream;
     }
 
     private bool CanExecute() {
-      return !string.IsNullOrEmpty(Make)
+      if (ImportCarsIsChecked
+        && File.Exists(FullPath)) {
+        return true;
+      }
+
+      return ImportCarsIsNotChecked 
+        && !string.IsNullOrEmpty(Make)
         && !string.IsNullOrEmpty(Model);
     }
 

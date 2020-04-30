@@ -1,5 +1,6 @@
 ﻿//using FuelLog.UI.Wpf.Module.UserControls;
 using FuelLog.UI.Wpf.Module.Enums;
+using FuelLog.UI.Wpf.Module.Services;
 using FuelLog.UI.Wpf.Module.UserControls;
 using FuelLog.UI.Wpf.Module.Views;
 using Prism.Ioc;
@@ -30,6 +31,8 @@ namespace FuelLog.UI.Wpf.Module {
       //containerRegistry.RegisterForNavigation<CarList>(nameof(CarList));
       //containerRegistry.RegisterForNavigation<Fillups>(nameof(Fillups));
       //containerRegistry.RegisterForNavigation<AddCar>(nameof(AddCar));
+
+      containerRegistry.RegisterSingleton<IPathProvider, PathProvider>();
     }
   }
 }

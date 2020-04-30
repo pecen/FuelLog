@@ -16,17 +16,19 @@
     <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
     <converters:BoolToItalicConverter x:Key="BoolToItalic" />
     <converters:EmptyStringToTooltipConverter x:Key="EmptyStringToTooltipConverter" />
-    <converters:RemovePathFromFilenameConverter x:Key="RemovePathFromFilenameConverter" />
     <converters:IsNotCheckedToVisibilityConverter x:Key="IsNotCheckedToVisibilityConverter" />
     <converters:BoolToNotesHeightConverter x:Key="BoolToNotesHeightConverter" />
     <converters:BoolToButtonTextConverter x:Key="BoolToButtonTextConverter" />
     <converters:BoolToButtonToolTipTextConverter x:Key="BoolToButtonToolTipTextConverter" />
     <converters:BoolToGreyForegroundConverter x:Key="BoolToGreyForeground" />
     <converters:BoolToEnabledConverter x:Key="BoolToEnabledConverter" />
+    <converters:BoolToDisabledConverter x:Key="BoolToDisabledConverter" />
+    <converters:BoolToBlackForegroundConverter x:Key="BoolToBlackForegroundConverter" />
+    <converters:BoolToNormalFontConverter x:Key="BoolToNormalFontConverter" />
   </UserControl.Resources>
   <Grid>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="20*" />
       <ColumnDefinition Width="50*" />
       <ColumnDefinition Width="7*" />
       <ColumnDefinition Width="Auto" />
@@ -77,6 +79,7 @@
       Text="{x:Static properties:AddCar.Filename}"
       Visibility="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BooleanToVisibilityConverter}}" />-->
 
+    <!--  ConverterParameter should be true when ImportCarsCheckbox is checked  -->
     <TextBlock
       Grid.Row="2"
       Margin="5,5,0,5"
@@ -91,32 +94,36 @@
       Grid.Column="1"
       Margin="0,5,-8,5"
       FontStyle="{Binding SourceComponentExists, Converter={StaticResource BoolToItalicConverter}, UpdateSourceTrigger=PropertyChanged}"
-      Text="{Binding FileName, Converter={StaticResource RemovePathFromFilenameConverter}, UpdateSourceTrigger=PropertyChanged}"
+      Text="{Binding Filename, Converter={StaticResource RemovePathFromFilenameConverter}, UpdateSourceTrigger=PropertyChanged}"
       Visibility="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BooleanToVisibilityConverter}}">
       <TextBox.ToolTip>
         <MultiBinding Converter="{StaticResource EmptyStringToTooltipConverter}">
-          <Binding Path="FileName" />
+          <Binding Path="Filename" />
           <Binding Path="FileNameToolTip" />
         </MultiBinding>
       </TextBox.ToolTip>
-      --><!--<i:Interaction.Triggers>
+    -->
+    <!--<i:Interaction.Triggers>
         <i:EventTrigger EventName="TextChanged">
           <i:InvokeCommandAction Command="{Binding PublishedCommand}" />
         </i:EventTrigger>
-      </i:Interaction.Triggers>--><!--
+      </i:Interaction.Triggers>-->
+    <!--
     </TextBox>-->
 
+    <!--  ConverterParameter should be true when ImportCarsCheckbox is checked  -->
     <TextBox
       Grid.Row="2"
       Grid.Column="1"
       Margin="0,5,-8,5"
-      FontStyle="{Binding SourceComponentExists, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
-      Text="{Binding FileName, Converter={StaticResource RemovePathFromFilenameConverter}, UpdateSourceTrigger=PropertyChanged}"
-      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToEnabledConverter}}">
+      FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
+      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToEnabledConverter}}"
+      Text="{Binding Filename, UpdateSourceTrigger=PropertyChanged}">
+      <!--  Text="{Binding Filename, Converter={StaticResource RemovePathFromFilenameConverter}, UpdateSourceTrigger=PropertyChanged}">  -->
       <TextBox.ToolTip>
         <MultiBinding Converter="{StaticResource EmptyStringToTooltipConverter}">
-          <Binding Path="FileName" />
-          <Binding Path="FileNameToolTip" />
+          <Binding Path="FullPath" />
+          <Binding Path="FilenameToolTip" />
         </MultiBinding>
       </TextBox.ToolTip>
       <!--<i:Interaction.Triggers>
@@ -126,6 +133,7 @@
       </i:Interaction.Triggers>-->
     </TextBox>
 
+    <!--  ConverterParameter should be true when ImportCarsCheckbox is checked  -->
     <Button
       Grid.Row="2"
       Grid.Column="2"
@@ -136,9 +144,8 @@
       VerticalAlignment="Stretch"
       Command="{Binding GetFilenameCommand}"
       Content="{x:Static properties:AddCar.OpenFileDialogButton}"
-      ToolTip="{x:Static properties:AddCar.OpenFileDialogButtonToolTip}"
-      Visibility="{Binding ImportCarsIsChecked, Converter={StaticResource BooleanToVisibility}}"
-      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToEnabledConverter}}" />
+      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToEnabledConverter}}"
+      ToolTip="{x:Static properties:AddCar.OpenFileDialogButtonToolTip}" />
 
     <CheckBox
       x:Name="importChkbox"
@@ -155,25 +162,27 @@
       Margin="5,5,0,5"
       HorizontalAlignment="Left"
       VerticalAlignment="Center"
-      Text="{x:Static properties:AddCar.Make}"
-      Visibility="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource IsNotCheckedToVisibilityConverter}}" />
+      FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToNormalFontConverter}}"
+      Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToBlackForegroundConverter}}"
+      Text="{x:Static properties:AddCar.Make}" />
 
     <TextBox
       Grid.Row="3"
       Grid.Column="1"
       Grid.ColumnSpan="2"
       Margin="0,5,0,5"
-      FontStyle="{Binding SourceComponentExists, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
-      Text="{Binding Make, UpdateSourceTrigger=PropertyChanged}"
-      Visibility="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource IsNotCheckedToVisibilityConverter}}" />
+      FontStyle="{Binding CarExists, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
+      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToDisabledConverter}}"
+      Text="{Binding Make, UpdateSourceTrigger=PropertyChanged}" />
 
     <TextBlock
       Grid.Row="4"
       Margin="5,5,0,5"
       HorizontalAlignment="Left"
       VerticalAlignment="Center"
-      Text="{x:Static properties:AddCar.Model}"
-      Visibility="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource IsNotCheckedToVisibilityConverter}}" />
+      FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToNormalFontConverter}}"
+      Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToBlackForegroundConverter}}"
+      Text="{x:Static properties:AddCar.Model}" />
 
     <TextBox
       Grid.Row="4"
@@ -181,16 +190,17 @@
       Grid.ColumnSpan="2"
       Margin="0,5,0,5"
       FontStyle="{Binding SourceComponentExists, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
-      Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}"
-      Visibility="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource IsNotCheckedToVisibilityConverter}}" />
+      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToDisabledConverter}}"
+      Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}" />
 
     <TextBlock
       Grid.Row="5"
       Margin="5,5,0,5"
       HorizontalAlignment="Left"
       VerticalAlignment="Center"
-      Text="{x:Static properties:AddCar.Plate}"
-      Visibility="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource IsNotCheckedToVisibilityConverter}}" />
+      FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToNormalFontConverter}}"
+      Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToBlackForegroundConverter}}"
+      Text="{x:Static properties:AddCar.Plate}" />
 
     <TextBox
       Grid.Row="5"
@@ -198,8 +208,8 @@
       Grid.ColumnSpan="2"
       Margin="0,5,0,5"
       FontStyle="{Binding SourceComponentExists, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
-      Text="{Binding Plate, UpdateSourceTrigger=PropertyChanged}"
-      Visibility="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource IsNotCheckedToVisibilityConverter}}" />
+      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToDisabledConverter}}"
+      Text="{Binding Plate, UpdateSourceTrigger=PropertyChanged}" />
 
     <TextBlock
       Grid.Row="6"
@@ -251,8 +261,9 @@
       Margin="5,5,0,5"
       HorizontalAlignment="Left"
       VerticalAlignment="Top"
-      Text="{x:Static properties:AddCar.Notes}"
-      Visibility="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource IsNotCheckedToVisibilityConverter}}" />
+      FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToNormalFontConverter}}"
+      Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToBlackForegroundConverter}}"
+      Text="{x:Static properties:AddCar.Notes}" />
 
     <TextBox
       Grid.Row="9"
@@ -260,8 +271,8 @@
       Grid.ColumnSpan="2"
       Height="{Binding CarExists, Converter={StaticResource BoolToNotesHeightConverter}, UpdateSourceTrigger=PropertyChanged}"
       Margin="0,5,0,5"
-      Text="{Binding Notes, UpdateSourceTrigger=PropertyChanged}"
-      Visibility="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource IsNotCheckedToVisibilityConverter}}" />
+      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToDisabledConverter}}"
+      Text="{Binding Notes, UpdateSourceTrigger=PropertyChanged}" />
 
     <Button
       Grid.Row="3"

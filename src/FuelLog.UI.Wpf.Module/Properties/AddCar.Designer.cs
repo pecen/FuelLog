@@ -97,6 +97,15 @@ namespace FuelLog.UI.Wpf.Module.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type in a valid filename (*.Xml), or click the button to the right to select file..
+        /// </summary>
+        public static string FilenameToolTip {
+            get {
+                return ResourceManager.GetString("FilenameToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import.
         /// </summary>
         public static string ImportCarsCheckbox {

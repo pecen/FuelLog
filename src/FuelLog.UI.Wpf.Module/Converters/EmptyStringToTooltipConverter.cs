@@ -8,7 +8,7 @@ namespace FuelLog.UI.Wpf.Module.Converters {
     public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture) {
       var value = values[0] as string;
 
-      if (string.IsNullOrEmpty(value) || !Path.IsPathRooted(value)) {
+      if (string.IsNullOrEmpty(value) || !File.Exists(value)) { //!Path.IsPathRooted(value)) {
         return values[1] as string;
       }
 
@@ -19,4 +19,19 @@ namespace FuelLog.UI.Wpf.Module.Converters {
       throw new NotImplementedException();
     }
   }
+  //public class EmptyStringToTooltipConverter : IValueConverter {
+  //  public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+  //    var tooltip = value as string;
+
+  //    if (string.IsNullOrEmpty(tooltip) || !Path.IsPathRooted(tooltip)) {
+  //      return parameter as string;
+  //    }
+
+  //    return value;
+  //  }
+
+  //  public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+  //    throw new NotImplementedException();
+  //  }
+  //}
 }

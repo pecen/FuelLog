@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -74,20 +75,26 @@
     <Compile Include="Commands\AddCarCommand.cs" />
     <Compile Include="Commands\EditCarCommand.cs" />
     <Compile Include="Commands\GetCarsCommand.cs" />
+    <Compile Include="Commands\GetDbCommand.cs" />
+    <Compile Include="Commands\GetFilenameCommand.cs" />
+    <Compile Include="Commands\GetFilePathCommand.cs" />
     <Compile Include="Commands\GetFillupsCommand.cs" />
     <Compile Include="Commands\SaveCarCommand.cs" />
+    <Compile Include="Converters\BoolToBlackForegroundConverter.cs" />
     <Compile Include="Converters\BoolToButtonTextConverter.cs" />
     <Compile Include="Converters\BoolToButtonToolTipTextConverter.cs" />
+    <Compile Include="Converters\BoolToDisabledConverter.cs" />
     <Compile Include="Converters\BoolToEnabledConverter.cs" />
     <Compile Include="Converters\BoolToGreyForegroundConverter.cs" />
     <Compile Include="Converters\BoolToItalicConverter.cs" />
+    <Compile Include="Converters\BoolToNormalFontConverter.cs" />
     <Compile Include="Converters\BoolToNotesHeightConverter.cs" />
     <Compile Include="Converters\EmptyStringToTooltipConverter.cs" />
     <Compile Include="Converters\EnumToCollectionConverter.cs" />
     <Compile Include="Converters\IsNotCheckedToVisibilityConverter.cs" />
     <Compile Include="Converters\NameToContentConverter.cs" />
-    <Compile Include="Converters\RemovePathFromFilenameConverter.cs" />
     <Compile Include="Enums\ButtonNames.cs" />
+    <Compile Include="Enums\ConnectionString.cs" />
     <Compile Include="Enums\Regions.cs" />
     <Compile Include="Enums\ToolTipTexts.cs" />
     <Compile Include="FuelLogModule.cs" />
@@ -110,6 +117,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Enums\Titles.cs" />
+    <Compile Include="Services\IPathProvider.cs" />
+    <Compile Include="Services\PathProvider.cs" />
     <Compile Include="UserControls\FillupItem.xaml.cs">
       <DependentUpon>FillupItem.xaml</DependentUpon>
     </Compile>
@@ -187,6 +196,9 @@
     <PackageReference Include="Csla">
       <Version>5.1.0</Version>
     </PackageReference>
+    <PackageReference Include="DataConnectionDialog">
+      <Version>1.2.0</Version>
+    </PackageReference>
     <PackageReference Include="Prism.Core">
       <Version>7.2.0.1422</Version>
     </PackageReference>
@@ -194,6 +206,9 @@
       <Version>7.2.0.1422</Version>
     </PackageReference>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
+    <PackageReference Include="winapicp">
+      <Version>1.1.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

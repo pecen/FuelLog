@@ -129,6 +129,9 @@
   <data name="Filename" xml:space="preserve">
     <value>Filename</value>
   </data>
+  <data name="FilenameToolTip" xml:space="preserve">
+    <value>Type in a valid filename (*.Xml), or click the button to the right to select file.</value>
+  </data>
   <data name="ImportCarsCheckbox" xml:space="preserve">
     <value>Import</value>
   </data>
