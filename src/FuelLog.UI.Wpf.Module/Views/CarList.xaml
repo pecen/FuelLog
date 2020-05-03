@@ -10,8 +10,8 @@
   xmlns:prism="http://prismlibrary.com/"
   xmlns:properties="clr-namespace:FuelLog.UI.Wpf.Module.Properties"
   xmlns:views="clr-namespace:FuelLog.UI.Wpf.Module.Views"
-  prism:ViewModelLocator.AutoWireViewModel="True"
   d:DesignHeight="300"
+  prism:ViewModelLocator.AutoWireViewModel="True"
   mc:Ignorable="d">
   <UserControl.Resources>
     <ResourceDictionary>
@@ -81,37 +81,37 @@
       </StackPanel>
     </Grid>
     <DataGrid
-        x:Name="componentGrid"
-        Grid.Row="1"
-        AutoGenerateColumns="False"
-        CanUserAddRows="False"
-        HorizontalScrollBarVisibility="Auto"
-        ItemsSource="{Binding Cars, UpdateSourceTrigger=PropertyChanged}"
-        SelectedItem="{Binding SelectedItem}">
-        <DataGrid.Columns>
-          <DataGridCheckBoxColumn Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}">
-            <DataGridCheckBoxColumn.HeaderTemplate>
-              <DataTemplate>
-                <CheckBox
-                  Content="{x:Static properties:CarList.SelectAll}"
-                  IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=views:CarList}, Path=DataContext.AllSelected}"
-                  ToolTip="{x:Static properties:CarList.CheckboxInfo}" />
-              </DataTemplate>
-            </DataGridCheckBoxColumn.HeaderTemplate>
-          </DataGridCheckBoxColumn>
-          <DataGridTextColumn Binding="{Binding Id}" Header="{x:Static properties:CarList.CarId}" />
-          <DataGridTextColumn Binding="{Binding Make}" Header="{x:Static properties:CarList.Make}" />
-          <DataGridTextColumn Binding="{Binding Model}" Header="{x:Static properties:CarList.Model}" />
-          <DataGridTextColumn Binding="{Binding LicensePlate}" Header="{x:Static properties:CarList.LicensePlate}" />
-          <DataGridTextColumn Binding="{Binding Note}" Header="{x:Static properties:CarList.Note}" />
-          <DataGridTextColumn Binding="{Binding DistanceUnit, Converter={StaticResource IntToEnumValueConverter}, ConverterParameter={x:Type enums:DistanceUnits}}" Header="{x:Static properties:CarList.DistanceUnit}" />
-          <DataGridTextColumn Binding="{Binding VolumeUnit, Converter={StaticResource IntToEnumValueConverter}, ConverterParameter={x:Type enums:VolumeUnits}}" Header="{x:Static properties:CarList.VolumeUnit}" />
-          <DataGridTextColumn Binding="{Binding ConsumptionUnit, Converter={StaticResource IntToEnumValueConverter}, ConverterParameter={x:Type enums:ConsumptionUnits}}" Header="{x:Static properties:CarList.ConsumptionUnit}" />
-          <DataGridTextColumn Binding="{Binding TotalFillups}" Header="{x:Static properties:CarList.TotalFillups}" />
-          <DataGridTextColumn Binding="{Binding TotalDistance}" Header="{x:Static properties:CarList.TotalDistance}" />
-          <DataGridTextColumn Binding="{Binding AverageConsumption}" Header="{x:Static properties:CarList.AverageConsumption}" />
-          <DataGridTextColumn Binding="{Binding DateAdded}" Header="{x:Static properties:CarList.DateAdded}" />
-        </DataGrid.Columns>
-      </DataGrid>
+      x:Name="componentGrid"
+      Grid.Row="1"
+      AutoGenerateColumns="False"
+      CanUserAddRows="False"
+      HorizontalScrollBarVisibility="Auto"
+      ItemsSource="{Binding Cars, UpdateSourceTrigger=PropertyChanged}"
+      SelectedItem="{Binding SelectedItem}">
+      <DataGrid.Columns>
+        <DataGridCheckBoxColumn Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}">
+          <DataGridCheckBoxColumn.HeaderTemplate>
+            <DataTemplate>
+              <CheckBox
+                Content="{x:Static properties:CarList.SelectAll}"
+                IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=views:CarList}, Path=DataContext.AllSelected}"
+                ToolTip="{x:Static properties:CarList.CheckboxInfo}" />
+            </DataTemplate>
+          </DataGridCheckBoxColumn.HeaderTemplate>
+        </DataGridCheckBoxColumn>
+        <DataGridTextColumn Binding="{Binding Id}" Header="{x:Static properties:CarList.CarId}" />
+        <DataGridTextColumn Binding="{Binding Make}" Header="{x:Static properties:CarList.Make}" />
+        <DataGridTextColumn Binding="{Binding Model}" Header="{x:Static properties:CarList.Model}" />
+        <DataGridTextColumn Binding="{Binding LicensePlate}" Header="{x:Static properties:CarList.LicensePlate}" />
+        <DataGridTextColumn Binding="{Binding Note}" Header="{x:Static properties:CarList.Note}" />
+        <DataGridTextColumn Binding="{Binding DistanceUnit, Converter={StaticResource IntToEnumValueConverter}, ConverterParameter={x:Type enums:DistanceUnits}}" Header="{x:Static properties:CarList.DistanceUnit}" />
+        <DataGridTextColumn Binding="{Binding VolumeUnit, Converter={StaticResource IntToEnumValueConverter}, ConverterParameter={x:Type enums:VolumeUnits}}" Header="{x:Static properties:CarList.VolumeUnit}" />
+        <DataGridTextColumn Binding="{Binding ConsumptionUnit, Converter={StaticResource IntToEnumValueConverter}, ConverterParameter={x:Type enums:ConsumptionUnits}}" Header="{x:Static properties:CarList.ConsumptionUnit}" />
+        <DataGridTextColumn Binding="{Binding TotalFillups}" Header="{x:Static properties:CarList.TotalFillups}" />
+        <DataGridTextColumn Binding="{Binding TotalDistance}" Header="{x:Static properties:CarList.TotalDistance}" />
+        <DataGridTextColumn Binding="{Binding AverageConsumption}" Header="{x:Static properties:CarList.AverageConsumption}" />
+        <DataGridTextColumn Binding="{Binding DateAdded}" Header="{x:Static properties:CarList.DateAdded}" />
+      </DataGrid.Columns>
+    </DataGrid>
   </Grid>
 </UserControl>

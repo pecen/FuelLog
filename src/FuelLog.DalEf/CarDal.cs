@@ -34,7 +34,10 @@ namespace FuelLog.DalEf {
                        Make = r.Make,
                        Model = r.Model,
                        LicensePlate = r.LicensePlate,
-                       Note = r.Note, 
+                       Note = r.Note,
+                       DistanceUnit = r.DistanceUnit,
+                       VolumeUnit = r.VolumeUnit,
+                       ConsumptionUnit = r.ConsumptionUnit,
                        CreationDate = r.CreationDate,
                        LastModified = r.LastModified
                      };
