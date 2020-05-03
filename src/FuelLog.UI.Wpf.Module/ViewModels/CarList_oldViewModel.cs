@@ -52,7 +52,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       Title = Titles.Cars.ToString();
 
       _eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
-      _eventAggregator.GetEvent<SaveCarCommand>().Subscribe(CarListReceived);  //NewCarReceived);
+      _eventAggregator.GetEvent<SaveCarCommand_old>().Subscribe(CarListReceived);  //NewCarReceived);
     }
 
     //private void NewCarReceived(CarEdit obj) {

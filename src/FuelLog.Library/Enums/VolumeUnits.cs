@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FuelLog.UI.Wpf.Module.Enums {
+namespace FuelLog.Library.Enums {
   public enum VolumeUnits {
     [Description("Litres (l)")]
     Litres,

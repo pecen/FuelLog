@@ -11,7 +11,15 @@ namespace FuelLog.DalEf {
     private readonly string _dbName = "Server";
 
     public void Delete(int id) {
-      throw new NotImplementedException();
+      using (var ctx = DbContextManager<FuelLogDbContext>.GetManager(_dbName)) {
+        var data = (from r in ctx.DbContext.Cars
+                    where r.Id == id
+                    select r).FirstOrDefault();
+        if (data != null) {
+          ctx.DbContext.Cars.Remove(data);
+          ctx.DbContext.SaveChanges();
+        }
+      }
     }
 
     public bool Exists(string licensePlate) {
@@ -49,6 +57,9 @@ namespace FuelLog.DalEf {
           Model = data.Model,
           LicensePlate = data.LicensePlate,
           Note = data.Note,
+          DistanceUnit = data.DistanceUnit,
+          VolumeUnit = data.VolumeUnit,
+          ConsumptionUnit = data.ConsumptionUnit,
           CreationDate = data.CreationDate,
           LastModified = data.LastModified
         };

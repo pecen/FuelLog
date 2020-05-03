@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace FuelLog.UI.Wpf.Module.Commands
 {
-  public class SaveCarCommand : PubSubEvent<CarEdit> {
+  public class SaveCarCommand_old : PubSubEvent<CarList> {
   }
 }

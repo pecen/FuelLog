@@ -11,6 +11,9 @@ namespace FuelLog.DalEf.Entities {
     public string Model { get; set; }
     public string LicensePlate { get; set; }
     public string Note { get; set; }
+    public int DistanceUnit { get; set; }
+    public int VolumeUnit { get; set; }
+    public int ConsumptionUnit { get; set; }
     public DateTimeOffset CreationDate { get; set; }
     public DateTimeOffset LastModified { get; set; }
   }

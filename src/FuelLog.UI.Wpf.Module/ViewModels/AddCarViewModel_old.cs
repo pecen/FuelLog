@@ -241,7 +241,7 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       car = car.Save();
 
       _eventAggregator
-        .GetEvent<SaveCarCommand>()
+        .GetEvent<SaveCarCommand_old>()
         .Publish(CarList.GetCars());
       //.Publish(car);
 

@@ -1,4 +1,5 @@
 ﻿using FuelLog.Core.Extensions;
+using FuelLog.Library;
 using FuelLog.Library.Enums;
 using FuelLog.UI.Wpf.Module.Commands;
 using FuelLog.UI.Wpf.Module.Enums;
@@ -196,7 +197,24 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     }
 
     private void Execute() {
-      throw new NotImplementedException();
+      var car = CarEdit.NewCar();
+
+      car.Make = Make;
+      car.Model = Model;
+      car.LicensePlate = Plate;
+      car.Note = Notes;
+      car.DistanceUnit = (DistanceUnits)SelectedDistance;
+      car.VolumeUnit = (VolumeUnits)SelectedVolume;
+      car.ConsumptionUnit = (ConsumptionUnits)SelectedConsumption;
+      car.LastModified = car.DateAdded = DateTime.Now;
+
+      car = car.Save();
+
+      //_eventAggregator
+      //  .GetEvent<SaveCarCommand>()
+      //  .Publish(car);
+
+      _eventAggregator.GetEvent<GetCarsCommand>().Publish(CarList.GetCars());
     }
   }
 }

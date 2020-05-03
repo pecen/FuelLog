@@ -117,13 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AverageConsumption" xml:space="preserve">
+    <value>Average Consumption</value>
+  </data>
+  <data name="CarId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="CheckboxInfo" xml:space="preserve">
+    <value>Check this box to mark all Cars for deletion</value>
+  </data>
+  <data name="ConsumptionUnit" xml:space="preserve">
+    <value>Consumption Unit</value>
+  </data>
+  <data name="DateAdded" xml:space="preserve">
+    <value>Date Added</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="DeleteInfo" xml:space="preserve">
     <value>Delete the selected cars in the grid</value>
   </data>
+  <data name="DistanceUnit" xml:space="preserve">
+    <value>Distance Unit</value>
+  </data>
+  <data name="LicensePlate" xml:space="preserve">
+    <value>License Plate</value>
+  </data>
+  <data name="Make" xml:space="preserve">
+    <value>Make</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
   <data name="SearchCar" xml:space="preserve">
     <value>Search Car:</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="TotalDistance" xml:space="preserve">
+    <value>Total Distance</value>
+  </data>
+  <data name="TotalFillups" xml:space="preserve">
+    <value>Total Fillups</value>
+  </data>
+  <data name="VolumeUnit" xml:space="preserve">
+    <value>Volume Unit</value>
   </data>
 </root>

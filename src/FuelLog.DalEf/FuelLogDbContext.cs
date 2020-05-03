@@ -1,10 +1,6 @@
 ﻿using FuelLog.DalEf.Entities;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace FuelLog.DalEf {
   public class FuelLogDbContext : DbContext {
@@ -23,7 +19,7 @@ namespace FuelLog.DalEf {
       // in the database will be named Students, Courses, Enrollments and so on, as opposed to having 
       // the table names as Student, Course, and Enrollment. Developers disagree about whether table names
       // should be pluralized or not. If one chooses to use Non-Pluralized, then uncomment the below row. 
-      //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+      modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
     }
   }
 }

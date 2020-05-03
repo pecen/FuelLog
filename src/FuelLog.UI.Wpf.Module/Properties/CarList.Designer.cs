@@ -22,7 +22,7 @@ namespace FuelLog.UI.Wpf.Module.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class CarList {
+    public class CarList {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace FuelLog.UI.Wpf.Module.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FuelLog.UI.Wpf.Module.Properties.CarList", typeof(CarList).Assembly);
@@ -51,7 +51,7 @@ namespace FuelLog.UI.Wpf.Module.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,54 @@ namespace FuelLog.UI.Wpf.Module.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Average Consumption.
+        /// </summary>
+        public static string AverageConsumption {
+            get {
+                return ResourceManager.GetString("AverageConsumption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        public static string CarId {
+            get {
+                return ResourceManager.GetString("CarId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check this box to mark all Cars for deletion.
+        /// </summary>
+        public static string CheckboxInfo {
+            get {
+                return ResourceManager.GetString("CheckboxInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Consumption Unit.
+        /// </summary>
+        public static string ConsumptionUnit {
+            get {
+                return ResourceManager.GetString("ConsumptionUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date Added.
+        /// </summary>
+        public static string DateAdded {
+            get {
+                return ResourceManager.GetString("DateAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
-        internal static string Delete {
+        public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
             }
@@ -72,18 +117,99 @@ namespace FuelLog.UI.Wpf.Module.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Delete the selected cars in the grid.
         /// </summary>
-        internal static string DeleteInfo {
+        public static string DeleteInfo {
             get {
                 return ResourceManager.GetString("DeleteInfo", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Distance Unit.
+        /// </summary>
+        public static string DistanceUnit {
+            get {
+                return ResourceManager.GetString("DistanceUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to License Plate.
+        /// </summary>
+        public static string LicensePlate {
+            get {
+                return ResourceManager.GetString("LicensePlate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make.
+        /// </summary>
+        public static string Make {
+            get {
+                return ResourceManager.GetString("Make", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Model.
+        /// </summary>
+        public static string Model {
+            get {
+                return ResourceManager.GetString("Model", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note.
+        /// </summary>
+        public static string Note {
+            get {
+                return ResourceManager.GetString("Note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search Car:.
         /// </summary>
-        internal static string SearchCar {
+        public static string SearchCar {
             get {
                 return ResourceManager.GetString("SearchCar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select All.
+        /// </summary>
+        public static string SelectAll {
+            get {
+                return ResourceManager.GetString("SelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Distance.
+        /// </summary>
+        public static string TotalDistance {
+            get {
+                return ResourceManager.GetString("TotalDistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Fillups.
+        /// </summary>
+        public static string TotalFillups {
+            get {
+                return ResourceManager.GetString("TotalFillups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume Unit.
+        /// </summary>
+        public static string VolumeUnit {
+            get {
+                return ResourceManager.GetString("VolumeUnit", resourceCulture);
             }
         }
     }

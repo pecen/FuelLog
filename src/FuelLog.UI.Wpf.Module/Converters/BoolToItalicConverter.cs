@@ -7,8 +7,8 @@ namespace FuelLog.UI.Wpf.Module.Converters {
   public class BoolToItalicConverter : IValueConverter {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
       return (bool)value
-       ? FontStyles.Normal
-       : FontStyles.Italic;
+       ? FontStyles.Italic
+       : FontStyles.Normal;
       //var isChecked = (bool)value;
       //var isNormal = (string)parameter == "true" ? true : false;
 

@@ -4,9 +4,9 @@ using FuelLog.Dal;
 using FuelLog.Dal.Dto;
 using FuelLog.Library.Enums;
 using FuelLog.Library.Services;
-using FuelLog.UI.Wpf.Module.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -14,7 +14,21 @@ using System.Threading.Tasks;
 
 namespace FuelLog.Library {
   [Serializable]
-  public class CarInfo : ReadOnlyBase<CarInfo> {
+  public class CarInfo : ReadOnlyBase<CarInfo>, INotifyPropertyChanged {
+    #region IsChecked
+
+    private bool _isChecked;
+    public bool IsChecked {
+      get => _isChecked;
+      set {
+        if (value == _isChecked) return;
+        _isChecked = value;
+        OnPropertyChanged(nameof(IsChecked));
+      }
+    }
+
+    #endregion
+
     #region Properties
 
     public static readonly PropertyInfo<int> IdProperty = RegisterProperty<int>(c => c.Id);
@@ -149,6 +163,24 @@ namespace FuelLog.Library {
 
     #endregion
 
+    public static implicit operator CarInfo(CarEdit car) {
+      var obj = NewCar();
+      obj.Id = car.Id;
+      obj.Make = car.Make;
+      obj.Model = car.Model;
+      obj.LicensePlate = car.LicensePlate;
+      obj.Note = car.Note;
+      obj.DistanceUnit = car.DistanceUnit;
+      obj.VolumeUnit = car.VolumeUnit;
+      obj.ConsumptionUnit = car.ConsumptionUnit;
+      obj.DateAdded = car.DateAdded;
+      obj.LastModified = car.LastModified;
+      //obj.TotalDistance = int.Parse(Regex.Match(car.TotalDistance, @"\d+").Value);
+      //obj.TotalFillups = int.Parse(Regex.Match(car.TotalFillups, @"\d+").Value);
+
+      return obj;
+    }
+
     #region Factory Methods
 
     public static CarInfo NewCar() {
@@ -159,32 +191,32 @@ namespace FuelLog.Library {
       return DataPortal.Fetch<CarInfo>(carId);
     }
 
-    public static explicit operator CarInfo(CarEdit car) {
-      //var distanceUnit = UnitList.GetUnitList(UnitCategory.Distance)
-      //  .FirstOrDefault(d => d.Id == car.DistanceUnit);
+    //public static explicit operator CarInfo(CarEdit car) {
+    //  //var distanceUnit = UnitList.GetUnitList(UnitCategory.Distance)
+    //  //  .FirstOrDefault(d => d.Id == car.DistanceUnit);
 
-      //var volumeUnit = UnitList.GetUnitList(UnitCategory.Volume)
-      //  .FirstOrDefault(v => v.Id == car.VolumeUnit);
+    //  //var volumeUnit = UnitList.GetUnitList(UnitCategory.Volume)
+    //  //  .FirstOrDefault(v => v.Id == car.VolumeUnit);
 
-      //var consumptionUnit = UnitList.GetUnitList(UnitCategory.Consumption)
-      //  .FirstOrDefault(c => c.Id == car.ConsumptionUnit);
+    //  //var consumptionUnit = UnitList.GetUnitList(UnitCategory.Consumption)
+    //  //  .FirstOrDefault(c => c.Id == car.ConsumptionUnit);
 
-      var carInfo = NewCar();
-      carInfo.Id = car.Id;
-      carInfo.Make = car.Make;
-      carInfo.Model = car.Model;
-      carInfo.LicensePlate = car.LicensePlate;
-      carInfo.Note = car.Note;
-      carInfo.DistanceUnit = car.DistanceUnit;
-      carInfo.VolumeUnit = car.VolumeUnit;
-      carInfo.ConsumptionUnit = car.ConsumptionUnit;
-      carInfo.DateAdded = car.DateAdded;
-      carInfo.LastModified = car.LastModified;
-      //carInfo.TotalDistance = $"{car.TotalDistance} {distanceUnit}";
-      //carInfo.TotalFillups = $"{car.TotalFillups} Fillups"
+    //  var carInfo = NewCar();
+    //  carInfo.Id = car.Id;
+    //  carInfo.Make = car.Make;
+    //  carInfo.Model = car.Model;
+    //  carInfo.LicensePlate = car.LicensePlate;
+    //  carInfo.Note = car.Note;
+    //  carInfo.DistanceUnit = car.DistanceUnit;
+    //  carInfo.VolumeUnit = car.VolumeUnit;
+    //  carInfo.ConsumptionUnit = car.ConsumptionUnit;
+    //  carInfo.DateAdded = car.DateAdded;
+    //  carInfo.LastModified = car.LastModified;
+    //  //carInfo.TotalDistance = $"{car.TotalDistance} {distanceUnit}";
+    //  //carInfo.TotalFillups = $"{car.TotalFillups} Fillups"
 
-      return carInfo;
-    }
+    //  return carInfo;
+    //}
 
     #endregion
 
@@ -213,6 +245,11 @@ namespace FuelLog.Library {
       Model = item.Model;
       LicensePlate = item.LicensePlate;
       Note = item.Note;
+      DistanceUnit = (DistanceUnits)item.DistanceUnit;
+      VolumeUnit = (VolumeUnits)item.VolumeUnit;
+      ConsumptionUnit = (ConsumptionUnits)item.ConsumptionUnit;
+      DateAdded = item.CreationDate;
+      LastModified = item.LastModified;
 
       //DistanceUnit = UnitList.GetUnitList(UnitCategory.Distance)
       //  .FirstOrDefault(d => d.Id == item.DistanceUnitId);

@@ -2,7 +2,6 @@
 using FuelLog.Dal;
 using FuelLog.Dal.Dto;
 using FuelLog.Library.Enums;
-using FuelLog.UI.Wpf.Module.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -123,22 +122,23 @@ namespace FuelLog.Library
 
     #endregion
 
-    //public static implicit operator CarEdit(CarInfo car) {
-    //  return new CarEdit {
-    //    Id = car.Id,
-    //    Make = car.Make,
-    //    Model = car.Model,
-    //    LicensePlate = car.LicensePlate,
-    //    Note = car.Note,
-    //    DistanceUnit = car.DistanceUnit.Id,
-    //    VolumeUnit = car.VolumeUnit.Id,
-    //    ConsumptionUnit = car.ConsumptionUnit.Id,
-    //    DateAdded = car.DateAdded,
-    //    LastModified = car.LastModified,
-    //    //TotalDistance = int.Parse(Regex.Match(car.TotalDistance, @"\d+").Value),
-    //    TotalFillups = int.Parse(Regex.Match(car.TotalFillups, @"\d+").Value)
-    //  };
-    //}
+    public static implicit operator CarEdit(CarInfo car) {
+      var obj = NewCar();
+      obj.Id = car.Id;
+      obj.Make = car.Make;
+      obj.Model = car.Model;
+      obj.LicensePlate = car.LicensePlate;
+      obj.Note = car.Note;
+      obj.DistanceUnit = car.DistanceUnit;
+      obj.VolumeUnit = car.VolumeUnit;
+      obj.ConsumptionUnit = car.ConsumptionUnit;
+      obj.DateAdded = car.DateAdded;
+      obj.LastModified = car.LastModified;
+      //obj.TotalDistance = int.Parse(Regex.Match(car.TotalDistance, @"\d+").Value);
+      obj.TotalFillups = int.Parse(Regex.Match(car.TotalFillups, @"\d+").Value);
+
+      return obj;
+    }
 
     #region Factory Methods
 
@@ -150,16 +150,20 @@ namespace FuelLog.Library
       return DataPortal.Fetch<CarEdit>(id);
     }
 
+    public static void DeleteCar(int id) {
+      DataPortal.Delete<CarEdit>(id);
+    }
+
     #endregion
 
     #region Data Access
 
     [RunLocal]
-    protected override void DataPortal_Create() {
-      base.DataPortal_Create();
-    }
+    [Create]
+    private void Create() { }
 
-    protected override void DataPortal_Insert() {
+    [Insert]
+    private void Insert() {
       using (var ctx = DalFactory.GetManager()) {
         var dal = ctx.GetProvider<ICarDal>();
         using (BypassPropertyChecks) {
@@ -182,7 +186,8 @@ namespace FuelLog.Library
       }
     }
 
-    protected override void DataPortal_Update() {
+    [Update]
+    private void Update() {
       using (var dalManager = DalFactory.GetManager()) {
         var dal = dalManager.GetProvider<ICarDal>();
         using (BypassPropertyChecks) {
@@ -202,13 +207,15 @@ namespace FuelLog.Library
       }
     }
 
-    protected override void DataPortal_DeleteSelf() {
+    [DeleteSelf]
+    private void DeleteSelf() {
       using (BypassPropertyChecks) {
-        DataPortal_Delete(Id);
+        Delete(Id);
       }
     }
 
-    private void DataPortal_Delete(int id) {
+    [Delete]
+    private void Delete(int id) {
       using (var dalManager = DalFactory.GetManager()) {
         var dal = dalManager.GetProvider<ICarDal>();
         dal.Delete(id);
