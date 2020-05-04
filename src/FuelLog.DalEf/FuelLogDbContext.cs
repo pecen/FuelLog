@@ -12,6 +12,7 @@ namespace FuelLog.DalEf {
     }
 
     public DbSet<Car> Cars { get; set; }
+    public DbSet<Fillup> Fillups { get; set; }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder) {
       // Regarding the row below: The modelBuilder.Conventions.Remove statement in the OnModelCreating 

@@ -7,9 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace FuelLog.DalEf {
-  public class CarDal : ICarDal {
-    private readonly string _dbName = "Server";
-
+  public class CarDal : DalBase, ICarDal {
     public void Delete(int id) {
       using (var ctx = DbContextManager<FuelLogDbContext>.GetManager(_dbName)) {
         var data = (from r in ctx.DbContext.Cars

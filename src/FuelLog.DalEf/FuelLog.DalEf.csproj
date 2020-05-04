@@ -138,8 +138,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarDal.cs" />
+    <Compile Include="DalBase.cs" />
     <Compile Include="DalManager.cs" />
     <Compile Include="Entities\Car.cs" />
+    <Compile Include="Entities\Fillup.cs" />
+    <Compile Include="FillupDal.cs" />
     <Compile Include="FuelLogDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

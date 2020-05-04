@@ -67,7 +67,6 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       SearchCommand = new DelegateCommand(GetFilteredCarList);
 
       _eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
-      _eventAggregator.GetEvent<GetCarsCommand>().Publish(CarList.GetCars());
 
       _allSelected = false;
       HasCheckedItem = false;
