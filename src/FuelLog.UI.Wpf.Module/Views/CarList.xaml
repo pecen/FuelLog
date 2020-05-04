@@ -110,7 +110,7 @@
         <DataGridTextColumn Binding="{Binding TotalFillups}" Header="{x:Static properties:CarList.TotalFillups}" />
         <DataGridTextColumn Binding="{Binding TotalDistance}" Header="{x:Static properties:CarList.TotalDistance}" />
         <DataGridTextColumn Binding="{Binding AverageConsumption}" Header="{x:Static properties:CarList.AverageConsumption}" />
-        <DataGridTextColumn Binding="{Binding DateAdded}" Header="{x:Static properties:CarList.DateAdded}" />
+        <DataGridTextColumn Binding="{Binding DateAdded, StringFormat=\{0:yy-MM-dd\}}" Header="{x:Static properties:CarList.DateAdded}" />
       </DataGrid.Columns>
     </DataGrid>
   </Grid>

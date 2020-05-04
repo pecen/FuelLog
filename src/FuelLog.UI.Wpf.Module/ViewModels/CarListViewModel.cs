@@ -88,17 +88,35 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
     private void Execute() {
       var count = Cars.Where(c => c.IsChecked).Count();
+      int successfulDeletes = 0;
+      int firstErrorId = 0;
 
       if (MessageBox.Show($"Are you sure you want to delete {(count > 1 ? "these cars" : "this car")}?",
         "Delete Car?",
         MessageBoxButton.YesNo,
         MessageBoxImage.Warning) == MessageBoxResult.Yes) {
 
-        foreach(var item in Cars) {
-          if (item.IsChecked) {
-            CarEdit.DeleteCar(item.Id);
+        try {
+          foreach (var item in Cars) {
+            if (item.IsChecked) {
+              CarEdit.DeleteCar(item.Id);
+            }
           }
         }
+        catch(Exception ex) {
+          string s = count == 0 || count > 1 ? "s" : string.Empty;
+          string extendedInfo = "The " + (count == 1 ? string.Empty : "first ") + "faulting Car has an id of " + firstErrorId;
+
+          string msg = $"Error when deleting Car{s}." + Environment.NewLine
+            + $"{successfulDeletes} Car{s} deleted."
+            + $"{(successfulDeletes == 0 ? "No Cars deleted" : Environment.NewLine + extendedInfo)}";
+
+          MessageBox.Show(ex.Message, msg, MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+        finally {
+          ClearFields();
+        }
+
 
         _eventAggregator.GetEvent<GetCarsCommand>().Publish(CarList.GetCars());
       }
@@ -106,6 +124,12 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
     private void GetFilteredCarList() {
       throw new NotImplementedException();
+    }
+
+    private void ClearFields() {
+      AllSelected = false;
+      SearchText = string.Empty;
+      //SelectedDistanceUnit = SelectedVolumeUnit = SelectedConsumptionUnit = -1;
     }
 
     #region SelectAll Functionality

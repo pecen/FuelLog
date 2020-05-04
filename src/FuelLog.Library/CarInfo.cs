@@ -248,7 +248,7 @@ namespace FuelLog.Library {
       DistanceUnit = (DistanceUnits)item.DistanceUnit;
       VolumeUnit = (VolumeUnits)item.VolumeUnit;
       ConsumptionUnit = (ConsumptionUnits)item.ConsumptionUnit;
-      DateAdded = item.CreationDate;
+      DateAdded = item.CreationDate.Date;
       LastModified = item.LastModified;
 
       //DistanceUnit = UnitList.GetUnitList(UnitCategory.Distance)

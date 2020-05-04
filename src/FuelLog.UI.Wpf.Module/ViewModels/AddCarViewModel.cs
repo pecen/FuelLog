@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Windows;
 
 namespace FuelLog.UI.Wpf.Module.ViewModels {
   public class AddCarViewModel : ViewModelBase {
@@ -197,20 +198,43 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
     }
 
     private void Execute() {
-      var car = CarEdit.NewCar();
+      try {
+        var car = CarEdit.NewCar();
 
-      car.Make = Make;
-      car.Model = Model;
-      car.LicensePlate = Plate;
-      car.Note = Notes;
-      car.DistanceUnit = (DistanceUnits)SelectedDistance;
-      car.VolumeUnit = (VolumeUnits)SelectedVolume;
-      car.ConsumptionUnit = (ConsumptionUnits)SelectedConsumption;
-      car.LastModified = car.DateAdded = DateTime.Now;
+        car.Make = Make;
+        car.Model = Model;
+        car.LicensePlate = Plate;
+        car.Note = Notes;
+        car.DistanceUnit = (DistanceUnits)SelectedDistance;
+        car.VolumeUnit = (VolumeUnits)SelectedVolume;
+        car.ConsumptionUnit = (ConsumptionUnits)SelectedConsumption;
+        car.LastModified = car.DateAdded = DateTime.Now;
 
-      car = car.Save();
+        car = car.Save();
+
+        MessageBox.Show("Car Saved!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+      }
+      catch(Exception ex) {
+        MessageBox.Show(ex.Message, "Error when saving car", MessageBoxButton.OK, MessageBoxImage.Error);
+      }
+      finally {
+        ClearValues();
+      }
 
       _eventAggregator.GetEvent<GetCarsCommand>().Publish(CarList.GetCars());
+    }
+
+    private void ClearValues() {
+      Filename = string.Empty;
+      FilePath = string.Empty;
+      XmlStream = null;
+      Make = string.Empty;
+      Model = string.Empty;
+      Plate = string.Empty;
+      Notes = string.Empty;
+      SelectedDistance = 0;
+      SelectedVolume = 0;
+      SelectedConsumption = 0;
     }
   }
 }
