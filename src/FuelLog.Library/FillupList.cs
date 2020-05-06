@@ -14,11 +14,13 @@ namespace FuelLog.Library {
       return DataPortal.Fetch<FillupList>(carId);
     }
 
+
     #endregion
 
     #region Data Access
 
-    private void DataPortal_Fetch(int carId) {
+    [Fetch]
+    private void Fetch(int carId) {
       var rlce = RaiseListChangedEvents;
       RaiseListChangedEvents = false;
       IsReadOnly = false;

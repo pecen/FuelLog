@@ -129,14 +129,14 @@ namespace FuelLog.Library {
       set { LoadProperty(AverageConsumptionProperty, value); }
     }
 
-    public static readonly PropertyInfo<DateTimeOffset> DateAddedProperty = RegisterProperty<DateTimeOffset>(c => c.DateAdded);
-    public DateTimeOffset DateAdded {
+    public static readonly PropertyInfo<DateTime> DateAddedProperty = RegisterProperty<DateTime>(c => c.DateAdded);
+    public DateTime DateAdded {
       get { return GetProperty(DateAddedProperty); }
       set { LoadProperty(DateAddedProperty, value); }
     }
 
-    public static readonly PropertyInfo<DateTimeOffset> LastModifiedProperty = RegisterProperty<DateTimeOffset>(c => c.LastModified);
-    public DateTimeOffset LastModified {
+    public static readonly PropertyInfo<DateTime> LastModifiedProperty = RegisterProperty<DateTime>(c => c.LastModified);
+    public DateTime LastModified {
       get { return GetProperty(LastModifiedProperty); }
       set { LoadProperty(LastModifiedProperty, value); }
     }
@@ -248,7 +248,7 @@ namespace FuelLog.Library {
       DistanceUnit = (DistanceUnits)item.DistanceUnit;
       VolumeUnit = (VolumeUnits)item.VolumeUnit;
       ConsumptionUnit = (ConsumptionUnits)item.ConsumptionUnit;
-      DateAdded = item.CreationDate.Date;
+      DateAdded = item.CreationDate;
       LastModified = item.LastModified;
 
       //DistanceUnit = UnitList.GetUnitList(UnitCategory.Distance)

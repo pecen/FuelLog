@@ -50,6 +50,7 @@
     <Compile Include="CarDal.cs" />
     <Compile Include="DalBase.cs" />
     <Compile Include="DalManager.cs" />
+    <Compile Include="FillupDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

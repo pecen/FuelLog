@@ -25,21 +25,20 @@ namespace FuelLog.DalSQLite {
       {
         var cm = ctx.Connection.CreateCommand();
         cm.CommandType = System.Data.CommandType.Text;
-        //cm.CommandText = "SELECT Car.Id, Car.Make, Car.Model, Car.LicensePlate, Car.Note, " +
-        //    "CarSettings.DistanceUnit, CarSettings.VolumeUnit, CarSettings.ConsumptionUnit " +
-        //    "FROM Car INNER JOIN CarSettings ON Car.Id = CarSettings.CarId";
-
         cm.CommandText = "SELECT Car.Id, Car.Make, Car.Model, Car.LicensePlate, Car.Note, " +
-            "CarSettings.DistanceUnit, CarSettings.VolumeUnit, CarSettings.ConsumptionUnit, " +
-            "(SELECT Count(*) From FillUp Where CarId = Car.Id) FillupCount, " +
-            "(SELECT (MAX(Odometer) - MIN(Odometer)) Distance FROM FillUp WHERE (CarId = Car.Id)), " +
+            "Car.DistanceUnit, Car.VolumeUnit, Car.ConsumptionUnit, " +
+            "(SELECT Count(*) From FillUp Where CarId = Car.Id) TotalFillups, " +
+            "(SELECT (MAX(Odometer) - MIN(Odometer)) FROM FillUp WHERE (CarId = Car.Id)) TotalDistance, " +
             "(SELECT (SUM(Amount) - (SELECT Amount From FillUp Where CarId = Car.Id Order By " +
             "Amount Desc Limit 1 )) / (MAX(Odometer) - MIN(Odometer)) AS AverageConsumption " +
-            "FROM FillUp WHERE CarId = Car.Id) ";
+            "FROM FillUp WHERE CarId = Car.Id) AverageConsumption, CreationDate, LastModified FROM Car";
 
         using (var dr = new SafeDataReader(cm.ExecuteReader())) {
-          while (dr.Read())
-            result.Add(new CarDto {
+          while (dr.Read()) {
+            var date = dr.GetString(11);
+            var modified = dr.GetString(12);
+
+            var car = new CarDto {
               Id = dr.GetInt32(0),
               Make = dr.GetString(1),
               Model = dr.GetString(2),
@@ -48,7 +47,21 @@ namespace FuelLog.DalSQLite {
               DistanceUnit = dr.GetInt32(5),
               VolumeUnit = dr.GetInt32(6),
               ConsumptionUnit = dr.GetInt32(7),
-            });
+              TotalFillups = dr.GetInt32(8),
+              TotalDistance = dr.GetInt32(9),
+              AverageConsumption = dr.GetDecimal(10)
+            };
+
+            if(DateTime.TryParse(date, out DateTime dateResult)) {
+              car.CreationDate = dateResult;
+            }
+
+            if(DateTime.TryParse(modified, out DateTime modifiedResult)) {
+              car.LastModified = modifiedResult;
+            }
+
+            result.Add(car);
+          }
         }
       }
 
