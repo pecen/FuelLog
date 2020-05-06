@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FuelLog.DalSQLite {
-  public class CarDal : ICarDal {
+  public class CarDal : DalBase, ICarDal {
     public void Delete(int id) {
       throw new NotImplementedException();
     }
@@ -21,7 +21,7 @@ namespace FuelLog.DalSQLite {
     public List<CarDto> Fetch() {
       var result = new List<CarDto>();
 
-      using (var ctx = ConnectionManager<SqliteConnection>.GetManager("FuelLogDb"))  //connectionString,false))
+      using (var ctx = ConnectionManager<SqliteConnection>.GetManager(_dbName))  //connectionString,false))
       {
         var cm = ctx.Connection.CreateCommand();
         cm.CommandType = System.Data.CommandType.Text;

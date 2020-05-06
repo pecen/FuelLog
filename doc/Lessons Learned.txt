@@ -1,0 +1,10 @@
+
+When SQLite.Dal-project was added I also added an earlier used FuelLog.db SQLite database, which was copied to the project folder. When I ran FuelLog an error was encountered where it said that it couldn't find one of the SQLite components. The error was hit when doing a Fetch on the line:
+
+using (var ctx = ConnectionManager<SqliteConnection>.GetManager(_dbName))
+
+The solution was to migrate packages.config in the project to PackageReferences, i.e. I right-clicked on the packages.config-file and in the context-menu selected "Migrate packages.config to PackageReference...." and clicked OK. 
+
+See also the following reference:
+
+https://docs.microsoft.com/en-us/nuget/consume-packages/migrate-packages-config-to-package-reference

@@ -13,6 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelLog.Dal", "FuelLog.Dal\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AE615DC5-AD19-4B80-8F90-25FA6A25E866}"
 	ProjectSection(SolutionItems) = preProject
+		..\doc\Lessons Learned.txt = ..\doc\Lessons Learned.txt
 		nuget.config = nuget.config
 	EndProjectSection
 EndProject
