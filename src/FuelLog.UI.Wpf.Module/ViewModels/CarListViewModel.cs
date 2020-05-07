@@ -87,8 +87,8 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
     private void Execute() {
       var count = Cars.Where(c => c.IsChecked).Count();
-      int successfulDeletes = 0;
-      int firstErrorId = 0;
+      //int successfulDeletes = 0;
+      //int firstErrorId = 0;
 
       if (MessageBox.Show($"Are you sure you want to delete {(count > 1 ? "these cars" : "this car")}?",
         "Delete Car?",
@@ -96,21 +96,53 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
         MessageBoxImage.Warning) == MessageBoxResult.Yes) {
 
         try {
-          foreach (var item in Cars) {
-            if (item.IsChecked) {
-              CarEdit.DeleteCar(item.Id);
+          var checkedCars = Cars
+            .Where(c => c.IsChecked)
+            .Select(i => i.Id)
+            .ToArray();
+
+          CarEdit.DeleteCars(checkedCars);
+          var failedDeletesCount = CarEdit.FailedDeletes.Count();
+
+          if (failedDeletesCount > 0) {
+            if (failedDeletesCount == 1) {
+              MessageBox.Show($"The car with the car id {CarEdit.FailedDeletes.FirstOrDefault()} was not deleted due to an error.", "Delete Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (failedDeletesCount == checkedCars.Count()) {
+              MessageBox.Show($"Delete of {(failedDeletesCount > 1 ? $"all the {failedDeletesCount} cars" : "the car")} failed. Nothing deleted.", "Delete Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else {
+              string s = string.Empty;
+              foreach (var carId in CarEdit.FailedDeletes) {
+                s += $"{carId}, ";
+              }
+              s = s.Remove(s.Length - 2);
+
+              MessageBox.Show($"Some cars were not deleted. The failed deletes have the following car id's: {s}", "Delete Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
           }
+
+          // I the below code is to be used, then uncomment the code in the catch as well. Also comment out the existing uncommented code in the catch. 
+          //foreach (var item in Cars) {
+          //  if (item.IsChecked) {
+          //    firstErrorId = item.Id;
+          //    CarEdit.DeleteCar(item.Id);
+          //    successfulDeletes += 1;
+          //  }
+          //}
         }
-        catch(Exception ex) {
-          string s = count == 0 || count > 1 ? "s" : string.Empty;
-          string extendedInfo = "The " + (count == 1 ? string.Empty : "first ") + "faulting Car has an id of " + firstErrorId;
+        catch (Exception ex) {
+          // The below commented out code goes along with the above commented code
+          //string s = count == 0 || count > 1 ? "s" : string.Empty;
+          //string extendedInfo = "The " + (count == 1 ? string.Empty : "first ") + "faulting Car has an id of " + firstErrorId;
 
-          string msg = $"Error when deleting Car{s}." + Environment.NewLine
-            + $"{successfulDeletes} Car{s} deleted."
-            + $"{(successfulDeletes == 0 ? "No Cars deleted" : Environment.NewLine + extendedInfo)}";
+          //string msg = $"Error when deleting Car{s}." + Environment.NewLine
+          //  + $"{successfulDeletes} Car{s} deleted."
+          //  + $"{(successfulDeletes == 0 ? "No Cars deleted" : Environment.NewLine + extendedInfo)}";
 
-          MessageBox.Show(ex.Message, msg, MessageBoxButton.OK, MessageBoxImage.Error);
+          //MessageBox.Show(ex.Message, msg, MessageBoxButton.OK, MessageBoxImage.Error);
+
+          MessageBox.Show($"Something went wrong when deleting. The error message is: {ex.Message}", "Delete Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         finally {
           ClearFields();

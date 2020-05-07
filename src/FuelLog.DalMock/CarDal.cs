@@ -123,5 +123,9 @@ namespace FuelLog.DalMock {
 
       return retval > 0;
     }
+
+    public IList<int> DeleteRange(int[] ids) {
+      throw new NotImplementedException();
+    }
   }
 }

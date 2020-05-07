@@ -13,7 +13,7 @@ namespace FuelLog.DalEf {
       throw new NotImplementedException();
     }
 
-    public void DeleteAllForCar(int carId) {
+    public void DeleteFillupsForCar(int carId) {
       throw new NotImplementedException();
     }
 

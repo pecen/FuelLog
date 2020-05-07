@@ -16,6 +16,8 @@ namespace FuelLog.Library
     {
     #region Properties
 
+    public static IList<int> FailedDeletes { get; set; }
+
     public static readonly PropertyInfo<int> IdProperty = RegisterProperty<int>(c => c.Id);
     public int Id {
       get { return GetProperty(IdProperty); }
@@ -151,7 +153,12 @@ namespace FuelLog.Library
     }
 
     public static void DeleteCar(int id) {
+      FailedDeletes = new List<int>();
       DataPortal.Delete<CarEdit>(id);
+    }
+
+    public static void DeleteCars(int[] ids) {
+      DataPortal.Delete<CarEdit>(ids);
     }
 
     #endregion
@@ -219,6 +226,14 @@ namespace FuelLog.Library
       using (var dalManager = DalFactory.GetManager()) {
         var dal = dalManager.GetProvider<ICarDal>();
         dal.Delete(id);
+      }
+    }
+
+    [Delete]
+    private void Delete(int[] ids) {
+      using (var dalManager = DalFactory.GetManager()) {
+        var dal = dalManager.GetProvider<ICarDal>();
+        FailedDeletes = dal.DeleteRange(ids);
       }
     }
 

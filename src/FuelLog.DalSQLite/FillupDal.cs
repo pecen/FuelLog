@@ -1,6 +1,7 @@
 ﻿using Csla.Data;
 using FuelLog.Dal;
 using FuelLog.Dal.Dto;
+using FuelLog.Dal.Exceptions;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,24 @@ namespace FuelLog.DalSQLite {
       throw new NotImplementedException();
     }
 
-    public void DeleteAllForCar(int carId) {
-      throw new NotImplementedException();
+    public void DeleteFillupsForCar(int carId) {
+      using (var ctx = ConnectionManager<SqliteConnection>.GetManager(_dbName)) {
+        using (var cm = ctx.Connection.CreateCommand()) {
+          cm.CommandType = System.Data.CommandType.Text;
+          cm.CommandText = "DELETE FROM FillUp WHERE CarId=@CarId";
+          cm.Parameters.AddWithValue("@CarId", carId);
+          try {
+            var rowsAffected = cm.ExecuteNonQuery();
+
+            if (rowsAffected == 0 && FetchForCar(carId).Count() > 0) {
+              throw new DataNotFoundException($"Unable to delete FillUps for Car with id {carId}");
+            }
+          }
+          catch {
+            throw new DataNotFoundException("DeleteFillupsForCar failed in FillupDal");
+          }
+        }
+      }
     }
 
     public FillupDto Fetch(int fillupId) {

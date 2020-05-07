@@ -48,6 +48,7 @@
     <Compile Include="Dto\CarDto.cs" />
     <Compile Include="Dto\FillupDto.cs" />
     <Compile Include="Dto\UnitDto.cs" />
+    <Compile Include="Exceptions\DataNotFoundException.cs" />
     <Compile Include="ICarDal.cs" />
     <Compile Include="IDalManager.cs" />
     <Compile Include="IFillupDal.cs" />

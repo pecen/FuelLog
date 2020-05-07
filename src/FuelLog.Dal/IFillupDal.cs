@@ -12,6 +12,6 @@ namespace FuelLog.Dal {
     void Insert(FillupDto data);
     void Update(FillupDto data);
     void Delete(int id);
-    void DeleteAllForCar(int carId);
+    void DeleteFillupsForCar(int carId);
   }
 }

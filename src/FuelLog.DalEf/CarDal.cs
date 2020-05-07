@@ -20,6 +20,10 @@ namespace FuelLog.DalEf {
       }
     }
 
+    public IList<int> DeleteRange(int[] ids) {
+      throw new NotImplementedException();
+    }
+
     public bool Exists(string licensePlate) {
       throw new NotImplementedException();
     }

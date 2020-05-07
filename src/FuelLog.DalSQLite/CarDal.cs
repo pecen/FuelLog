@@ -1,6 +1,7 @@
 ﻿using Csla.Data;
 using FuelLog.Dal;
 using FuelLog.Dal.Dto;
+using FuelLog.Dal.Exceptions;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,47 @@ using System.Threading.Tasks;
 namespace FuelLog.DalSQLite {
   public class CarDal : DalBase, ICarDal {
     public void Delete(int id) {
-      throw new NotImplementedException();
+      using (var ctx = ConnectionManager<SqliteConnection>.GetManager(_dbName)) {
+        using (var cm = ctx.Connection.CreateCommand()) {
+          FillupDal dal = new FillupDal();
+          dal.DeleteFillupsForCar(id);
+
+          cm.Parameters.AddWithValue("@Id", id);
+          cm.CommandText = "Delete From Car Where Id = @Id";
+          var rowsAffected = cm.ExecuteNonQuery();
+
+          if (rowsAffected == 0)
+            throw new DataNotFoundException("Delete of Car failed");
+        }
+      }
+    }
+
+    /// <summary>
+    /// Deletes a range of cars defined with their respective car id
+    /// </summary>
+    /// <param name="ids">The array of car id's</param>
+    /// <returns>A list of failed deletions defined by the car id's</returns>
+    public IList<int> DeleteRange(int[] ids) {
+      using (var ctx = ConnectionManager<SqliteConnection>.GetManager(_dbName)) {
+        List<int> failedIds = new List<int>();
+
+        foreach (var id in ids) {
+          using (var cm = ctx.Connection.CreateCommand()) {
+            FillupDal dal = new FillupDal();
+            dal.DeleteFillupsForCar(id);
+
+            cm.Parameters.AddWithValue("@Id", id);
+            cm.CommandText = "Delete From Car Where Id = @Id";
+            var rowsAffected = cm.ExecuteNonQuery();
+
+            if (rowsAffected == 0)
+              failedIds.Add(id);
+              //throw new DataNotFoundException("Delete of Car failed");
+          }
+        }
+
+        return failedIds;
+      }
     }
 
     public bool Exists(string licensePlate) {
@@ -52,11 +93,11 @@ namespace FuelLog.DalSQLite {
               AverageConsumption = dr.GetDecimal(10)
             };
 
-            if(DateTime.TryParse(date, out DateTime dateResult)) {
+            if (DateTime.TryParse(date, out DateTime dateResult)) {
               car.CreationDate = dateResult;
             }
 
-            if(DateTime.TryParse(modified, out DateTime modifiedResult)) {
+            if (DateTime.TryParse(modified, out DateTime modifiedResult)) {
               car.LastModified = modifiedResult;
             }
 

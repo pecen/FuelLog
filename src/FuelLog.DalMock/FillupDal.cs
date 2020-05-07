@@ -12,7 +12,7 @@ namespace FuelLog.DalMock {
       throw new NotImplementedException();
     }
 
-    public void DeleteAllForCar(int carId) {
+    public void DeleteFillupsForCar(int carId) {
       throw new NotImplementedException();
     }
 
