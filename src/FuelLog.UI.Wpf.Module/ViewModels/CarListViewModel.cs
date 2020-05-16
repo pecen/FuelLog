@@ -62,8 +62,10 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
       Columns.GetEnumValues<FilterableColumns>();
 
-      DeleteCarsCommand = new DelegateCommand(Execute, CanExecute)
-        .ObservesProperty(() => HasCheckedItem);
+      DeleteCarsCommand = new DelegateCommand(Execute, () => {
+        return Cars != null 
+            && Cars.Any(c => c.IsChecked);
+      }).ObservesProperty(() => HasCheckedItem);
       SearchCommand = new DelegateCommand(GetFilteredCarList);
 
       _eventAggregator.GetEvent<GetCarsCommand>().Subscribe(CarListReceived);
@@ -80,10 +82,10 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       Cars = obj;
     }
 
-    private bool CanExecute() {
-      return Cars != null
-        && Cars.Any(c => c.IsChecked);
-    }
+    //private bool CanExecute() {
+    //  return Cars != null
+    //    && Cars.Any(c => c.IsChecked);
+    //}
 
     private void Execute() {
       var count = Cars.Where(c => c.IsChecked).Count();
