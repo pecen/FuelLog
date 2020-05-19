@@ -15,6 +15,8 @@ namespace FuelLog.UI.Wpf.Module.Enums
     Costs,
     [Description("Add Car")]
     AddCar,
+    [Description("Add Fillup")]
+    AddFillup,
     [Description("Car List")]
     CarList
   }

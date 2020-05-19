@@ -1,0 +1,141 @@
+﻿<UserControl
+    x:Class="FuelLog.UI.Wpf.Module.Views.AddFillup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:properties="clr-namespace:FuelLog.UI.Wpf.Module.Properties"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="7*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.ColumnSpan="4"
+            Margin="0,5,0,0"
+            HorizontalAlignment="Center"
+            Content="{x:Static properties:AddFillup.PageHeader}"
+            FontSize="20" />
+        <TextBlock
+            Grid.Row="1"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddFillup.Date}" />
+        <DatePicker
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,5,5,5"
+            Text="{Binding Date}" />
+        <TextBlock
+            Grid.Row="2"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddFillup.Odometer}" />
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="0,5,5,5"
+            Text="{Binding Odometer}" />
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="2"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddFillup.Km}" />
+        <TextBlock
+            Grid.Row="3"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddFillup.Fuel}" />
+        <TextBox
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="0,5,5,5"
+            Text="{Binding Fuel}" />
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="2"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddFillup.Litre}" />
+        <Button
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Grid.Column="3"
+            Width="75"
+            Margin="5,5,5,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Command="{Binding SaveFillupCommand}"
+            Content="{x:Static properties:AddFillup.Save}" />
+        <TextBlock
+            Grid.Row="4"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddFillup.VolumePrice}" />
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="1"
+            Margin="0,5,5,5"
+            Text="{Binding Fuel}" />
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="2"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddFillup.CurrencyPerLitre}" />
+        <TextBlock
+            Grid.Row="5"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddFillup.TotalCost}" />
+        <TextBox
+            Grid.Row="5"
+            Grid.Column="1"
+            Margin="0,5,5,5"
+            Text="{Binding TotalCost}" />
+        <TextBlock
+            Grid.Row="5"
+            Grid.Column="2"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddFillup.Currency}" />
+        <TextBlock
+            Grid.Row="6"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddFillup.Note}" />
+        <TextBox
+            Grid.Row="6"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Height="100"
+            Margin="0,5,5,5"
+            Text="{Binding TotalCost}"
+            TextWrapping="Wrap" />
+    </Grid>
+</UserControl>

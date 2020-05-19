@@ -9,6 +9,20 @@ using System.Threading.Tasks;
 namespace FuelLog.Library {
   [Serializable]
   public class FillupInfo : ReadOnlyBase<FillupInfo> {
+    #region IsChecked
+
+    private bool _isChecked;
+    public bool IsChecked {
+      get => _isChecked;
+      set {
+        if (value == _isChecked) return;
+        _isChecked = value;
+        OnPropertyChanged(nameof(IsChecked));
+      }
+    }
+
+    #endregion
+
     #region Properties
 
     public static readonly PropertyInfo<int> IdProperty = RegisterProperty<int>(c => c.Id);

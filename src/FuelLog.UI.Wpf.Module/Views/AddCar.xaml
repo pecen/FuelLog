@@ -1,77 +1,76 @@
 ﻿<UserControl
-  x:Class="FuelLog.UI.Wpf.Module.Views.AddCar"
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:converters="clr-namespace:FuelLog.UI.Wpf.Module.Converters"
-  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:enums="clr-namespace:FuelLog.UI.Wpf.Module.Enums"
-  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  xmlns:prism="http://prismlibrary.com/"
-  xmlns:properties="clr-namespace:FuelLog.UI.Wpf.Module.Properties"
-  d:DesignHeight="350"
-  d:DesignWidth="525"
-  prism:ViewModelLocator.AutoWireViewModel="True"
-  mc:Ignorable="d">
-  <UserControl.Resources>
-    <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
-    <converters:BoolToItalicConverter x:Key="BoolToItalic" />
-    <converters:EmptyStringToTooltipConverter x:Key="EmptyStringToTooltipConverter" />
-    <converters:IsNotCheckedToVisibilityConverter x:Key="IsNotCheckedToVisibilityConverter" />
-    <converters:BoolToNotesHeightConverter x:Key="BoolToNotesHeightConverter" />
-    <converters:BoolToButtonTextConverter x:Key="BoolToButtonTextConverter" />
-    <converters:BoolToButtonToolTipTextConverter x:Key="BoolToButtonToolTipTextConverter" />
-    <converters:BoolToGreyForegroundConverter x:Key="BoolToGreyForeground" />
-    <converters:BoolToEnabledConverter x:Key="BoolToEnabledConverter" />
-    <converters:BoolToDisabledConverter x:Key="BoolToDisabledConverter" />
-    <converters:BoolToBlackForegroundConverter x:Key="BoolToBlackForegroundConverter" />
-    <converters:BoolToNormalFontConverter x:Key="BoolToNormalFontConverter" />
-  </UserControl.Resources>
-  <Grid>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="20*" />
-      <ColumnDefinition Width="50*" />
-      <ColumnDefinition Width="7*" />
-      <ColumnDefinition Width="Auto" />
-    </Grid.ColumnDefinitions>
+    x:Class="FuelLog.UI.Wpf.Module.Views.AddCar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:FuelLog.UI.Wpf.Module.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:properties="clr-namespace:FuelLog.UI.Wpf.Module.Properties"
+    d:DesignHeight="350"
+    d:DesignWidth="525"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+        <converters:BoolToItalicConverter x:Key="BoolToItalic" />
+        <converters:EmptyStringToTooltipConverter x:Key="EmptyStringToTooltipConverter" />
+        <converters:IsNotCheckedToVisibilityConverter x:Key="IsNotCheckedToVisibilityConverter" />
+        <converters:BoolToNotesHeightConverter x:Key="BoolToNotesHeightConverter" />
+        <converters:BoolToButtonTextConverter x:Key="BoolToButtonTextConverter" />
+        <converters:BoolToButtonToolTipTextConverter x:Key="BoolToButtonToolTipTextConverter" />
+        <converters:BoolToGreyForegroundConverter x:Key="BoolToGreyForeground" />
+        <converters:BoolToEnabledConverter x:Key="BoolToEnabledConverter" />
+        <converters:BoolToDisabledConverter x:Key="BoolToDisabledConverter" />
+        <converters:BoolToBlackForegroundConverter x:Key="BoolToBlackForegroundConverter" />
+        <converters:BoolToNormalFontConverter x:Key="BoolToNormalFontConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="7*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
 
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="30" />
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-    <Label
-      Grid.ColumnSpan="4"
-      Margin="0,5,0,0"
-      HorizontalAlignment="Center"
-      Content="{Binding PageHeader}"
-      FontSize="20" />
+        <Label
+            Grid.ColumnSpan="4"
+            Margin="0,5,0,0"
+            HorizontalAlignment="Center"
+            Content="{Binding PageHeader}"
+            FontSize="20" />
 
-    <TextBox
-      Grid.Row="1"
-      Grid.Column="0"
-      Grid.ColumnSpan="4"
-      Margin="5,0,5,5"
-      HorizontalContentAlignment="Center"
-      Background="Transparent"
-      BorderBrush="Bisque"
-      BorderThickness="5"
-      FontSize="10"
-      FontStyle="Italic"
-      IsReadOnly="True"
-      Text="{x:Static properties:AddCar.CarExistsInfo}"
-      TextWrapping="Wrap"
-      Visibility="{Binding CarExists, Converter={StaticResource BooleanToVisibility}, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Margin="5,0,5,5"
+            HorizontalContentAlignment="Center"
+            Background="Transparent"
+            BorderBrush="Bisque"
+            BorderThickness="5"
+            FontSize="10"
+            FontStyle="Italic"
+            IsReadOnly="True"
+            Text="{x:Static properties:AddCar.CarExistsInfo}"
+            TextWrapping="Wrap"
+            Visibility="{Binding CarExists, Converter={StaticResource BooleanToVisibility}, UpdateSourceTrigger=PropertyChanged}" />
 
-    <!--<TextBlock
+        <!--<TextBlock
       Grid.Row="2"
       Margin="5,5,0,5"
       HorizontalAlignment="Left"
@@ -79,17 +78,17 @@
       Text="{x:Static properties:AddCar.Filename}"
       Visibility="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BooleanToVisibilityConverter}}" />-->
 
-    <!--  ConverterParameter should be true when ImportCarsCheckbox is checked  -->
-    <TextBlock
-      Grid.Row="2"
-      Margin="5,5,0,5"
-      HorizontalAlignment="Left"
-      VerticalAlignment="Center"
-      FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToItalic}}"
-      Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToGreyForeground}}"
-      Text="{x:Static properties:AddCar.Filename}" />
+        <!--  ConverterParameter should be true when ImportCarsCheckbox is checked  -->
+        <TextBlock
+            Grid.Row="2"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToItalic}}"
+            Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToGreyForeground}}"
+            Text="{x:Static properties:AddCar.Filename}" />
 
-    <!--<TextBox
+        <!--<TextBox
       Grid.Row="2"
       Grid.Column="1"
       Margin="0,5,-8,5"
@@ -102,189 +101,190 @@
           <Binding Path="FileNameToolTip" />
         </MultiBinding>
       </TextBox.ToolTip>
-    -->
-    <!--<i:Interaction.Triggers>
+        -->
+        <!--<i:Interaction.Triggers>
         <i:EventTrigger EventName="TextChanged">
           <i:InvokeCommandAction Command="{Binding PublishedCommand}" />
         </i:EventTrigger>
       </i:Interaction.Triggers>-->
-    <!--
+        <!--
     </TextBox>-->
 
-    <!--  ConverterParameter should be true when ImportCarsCheckbox is checked  -->
-    <TextBox
-      Grid.Row="2"
-      Grid.Column="1"
-      Margin="0,5,-8,5"
-      FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
-      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToEnabledConverter}}"
-      Text="{Binding Filename, UpdateSourceTrigger=PropertyChanged}">
-      <!--  Text="{Binding Filename, Converter={StaticResource RemovePathFromFilenameConverter}, UpdateSourceTrigger=PropertyChanged}">  -->
-      <TextBox.ToolTip>
-        <MultiBinding Converter="{StaticResource EmptyStringToTooltipConverter}">
-          <Binding Path="FullPath" />
-          <Binding Path="FilenameToolTip" />
-        </MultiBinding>
-      </TextBox.ToolTip>
-      <!--<i:Interaction.Triggers>
+        <!--  ConverterParameter should be true when ImportCarsCheckbox is checked  -->
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="0,5,-8,5"
+            FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
+            IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToEnabledConverter}}"
+            Text="{Binding Filename, UpdateSourceTrigger=PropertyChanged}">
+            <!--  Text="{Binding Filename, Converter={StaticResource RemovePathFromFilenameConverter}, UpdateSourceTrigger=PropertyChanged}">  -->
+            <TextBox.ToolTip>
+                <MultiBinding Converter="{StaticResource EmptyStringToTooltipConverter}">
+                    <Binding Path="FullPath" />
+                    <Binding Path="FilenameToolTip" />
+                </MultiBinding>
+            </TextBox.ToolTip>
+            <!--<i:Interaction.Triggers>
         <i:EventTrigger EventName="TextChanged">
           <i:InvokeCommandAction Command="{Binding PublishedCommand}" />
         </i:EventTrigger>
       </i:Interaction.Triggers>-->
-    </TextBox>
+        </TextBox>
 
-    <!--  ConverterParameter should be true when ImportCarsCheckbox is checked  -->
-    <Button
-      Grid.Row="2"
-      Grid.Column="2"
-      Width="25"
-      Height="20"
-      Margin="0,0,-13,0"
-      HorizontalAlignment="Stretch"
-      VerticalAlignment="Stretch"
-      Command="{Binding GetFilenameCommand}"
-      Content="{x:Static properties:AddCar.OpenFileDialogButton}"
-      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToEnabledConverter}}"
-      ToolTip="{x:Static properties:AddCar.OpenFileDialogButtonToolTip}" />
+        <!--  ConverterParameter should be true when ImportCarsCheckbox is checked  -->
+        <Button
+            Grid.Row="2"
+            Grid.Column="2"
+            Width="25"
+            Height="20"
+            Margin="0,0,-13,0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Command="{Binding GetFilenameCommand}"
+            Content="{x:Static properties:AddCar.OpenFileDialogButton}"
+            IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToEnabledConverter}}"
+            ToolTip="{x:Static properties:AddCar.OpenFileDialogButtonToolTip}" />
 
-    <CheckBox
-      x:Name="importChkbox"
-      Grid.Row="2"
-      Grid.Column="3"
-      Margin="5,0,5,0"
-      VerticalAlignment="Center"
-      Content="{x:Static properties:AddCar.ImportCarsCheckbox}"
-      IsChecked="{Binding ImportCarsIsChecked}"
-      ToolTip="{x:Static properties:AddCar.ImportCarsCheckboxToolTip}" />
+        <CheckBox
+            x:Name="importChkbox"
+            Grid.Row="2"
+            Grid.Column="3"
+            Margin="5,0,5,0"
+            VerticalAlignment="Center"
+            Content="{x:Static properties:AddCar.ImportCarsCheckbox}"
+            IsChecked="{Binding ImportCarsIsChecked}"
+            ToolTip="{x:Static properties:AddCar.ImportCarsCheckboxToolTip}" />
 
-    <TextBlock
-      Grid.Row="3"
-      Margin="5,5,0,5"
-      HorizontalAlignment="Left"
-      VerticalAlignment="Center"
-      FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToNormalFontConverter}}"
-      Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToBlackForegroundConverter}}"
-      Text="{x:Static properties:AddCar.Make}" />
+        <TextBlock
+            Grid.Row="3"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToNormalFontConverter}}"
+            Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToBlackForegroundConverter}}"
+            Text="{x:Static properties:AddCar.Make}" />
 
-    <TextBox
-      Grid.Row="3"
-      Grid.Column="1"
-      Grid.ColumnSpan="2"
-      Margin="0,5,0,5"
-      FontStyle="{Binding CarExists, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
-      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToDisabledConverter}}"
-      Text="{Binding Make, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox
+            Grid.Row="3"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,5,0,5"
+            FontStyle="{Binding CarExists, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
+            IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToDisabledConverter}}"
+            Text="{Binding Make, UpdateSourceTrigger=PropertyChanged}" />
 
-    <TextBlock
-      Grid.Row="4"
-      Margin="5,5,0,5"
-      HorizontalAlignment="Left"
-      VerticalAlignment="Center"
-      FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToNormalFontConverter}}"
-      Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToBlackForegroundConverter}}"
-      Text="{x:Static properties:AddCar.Model}" />
+        <TextBlock
+            Grid.Row="4"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToNormalFontConverter}}"
+            Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToBlackForegroundConverter}}"
+            Text="{x:Static properties:AddCar.Model}" />
 
-    <TextBox
-      Grid.Row="4"
-      Grid.Column="1"
-      Grid.ColumnSpan="2"
-      Margin="0,5,0,5"
-      FontStyle="{Binding SourceComponentExists, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
-      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToDisabledConverter}}"
-      Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox
+            Grid.Row="4"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,5,0,5"
+            FontStyle="{Binding SourceComponentExists, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
+            IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToDisabledConverter}}"
+            Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}" />
 
-    <TextBlock
-      Grid.Row="5"
-      Margin="5,5,0,5"
-      HorizontalAlignment="Left"
-      VerticalAlignment="Center"
-      FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToNormalFontConverter}}"
-      Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToBlackForegroundConverter}}"
-      Text="{x:Static properties:AddCar.Plate}" />
+        <TextBlock
+            Grid.Row="5"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToNormalFontConverter}}"
+            Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToBlackForegroundConverter}}"
+            Text="{x:Static properties:AddCar.Plate}" />
 
-    <TextBox
-      Grid.Row="5"
-      Grid.Column="1"
-      Grid.ColumnSpan="2"
-      Margin="0,5,0,5"
-      FontStyle="{Binding SourceComponentExists, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
-      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToDisabledConverter}}"
-      Text="{Binding Plate, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox
+            Grid.Row="5"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,5,0,5"
+            FontStyle="{Binding SourceComponentExists, Converter={StaticResource BoolToItalic}, UpdateSourceTrigger=PropertyChanged}"
+            IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToDisabledConverter}}"
+            Text="{Binding Plate, UpdateSourceTrigger=PropertyChanged}" />
 
-    <TextBlock
-      Grid.Row="6"
-      Margin="5,5,0,5"
-      HorizontalAlignment="Left"
-      VerticalAlignment="Center"
-      Text="{x:Static properties:AddCar.Distance}" />
+        <TextBlock
+            Grid.Row="6"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddCar.Distance}" />
 
-    <ComboBox
-      Grid.Row="6"
-      Grid.Column="1"
-      Grid.ColumnSpan="2"
-      Margin="0,5,0,5"
-      ItemsSource="{Binding DistanceList}"
-      SelectedIndex="{Binding SelectedDistance}" />
+        <ComboBox
+            Grid.Row="6"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,5,0,5"
+            ItemsSource="{Binding DistanceList}"
+            SelectedIndex="{Binding SelectedDistance}" />
 
-    <TextBlock
-      Grid.Row="7"
-      Margin="5,5,0,5"
-      HorizontalAlignment="Left"
-      VerticalAlignment="Center"
-      Text="{x:Static properties:AddCar.Volume}" />
+        <TextBlock
+            Grid.Row="7"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddCar.Volume}" />
 
-    <ComboBox
-      Grid.Row="7"
-      Grid.Column="1"
-      Grid.ColumnSpan="2"
-      Margin="0,5,0,5"
-      ItemsSource="{Binding VolumeList}"
-      SelectedIndex="{Binding SelectedVolume}" />
+        <ComboBox
+            Grid.Row="7"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,5,0,5"
+            ItemsSource="{Binding VolumeList}"
+            SelectedIndex="{Binding SelectedVolume}" />
 
-    <TextBlock
-      Grid.Row="8"
-      Margin="5,5,0,5"
-      HorizontalAlignment="Left"
-      VerticalAlignment="Center"
-      Text="{x:Static properties:AddCar.Consumption}" />
+        <TextBlock
+            Grid.Row="8"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{x:Static properties:AddCar.Consumption}" />
 
-    <ComboBox
-      Grid.Row="8"
-      Grid.Column="1"
-      Grid.ColumnSpan="2"
-      Margin="0,5,0,5"
-      ItemsSource="{Binding ConsumptionList}"
-      SelectedIndex="{Binding SelectedConsumption}" />
+        <ComboBox
+            Grid.Row="8"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,5,0,5"
+            ItemsSource="{Binding ConsumptionList}"
+            SelectedIndex="{Binding SelectedConsumption}" />
 
-    <TextBlock
-      Grid.Row="9"
-      Margin="5,5,0,5"
-      HorizontalAlignment="Left"
-      VerticalAlignment="Top"
-      FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToNormalFontConverter}}"
-      Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToBlackForegroundConverter}}"
-      Text="{x:Static properties:AddCar.Notes}" />
+        <TextBlock
+            Grid.Row="9"
+            Margin="5,5,0,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            FontStyle="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToNormalFontConverter}}"
+            Foreground="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToBlackForegroundConverter}}"
+            Text="{x:Static properties:AddCar.Notes}" />
 
-    <TextBox
-      Grid.Row="9"
-      Grid.Column="1"
-      Grid.ColumnSpan="2"
-      Height="{Binding CarExists, Converter={StaticResource BoolToNotesHeightConverter}, UpdateSourceTrigger=PropertyChanged}"
-      Margin="0,5,0,5"
-      IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToDisabledConverter}}"
-      Text="{Binding Notes, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox
+            Grid.Row="9"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Height="{Binding CarExists, Converter={StaticResource BoolToNotesHeightConverter}, UpdateSourceTrigger=PropertyChanged}"
+            Margin="0,5,0,5"
+            IsEnabled="{Binding IsChecked, ElementName=importChkbox, Converter={StaticResource BoolToDisabledConverter}}"
+            Text="{Binding Notes, UpdateSourceTrigger=PropertyChanged}"
+            TextWrapping="Wrap" />
 
-    <Button
-      Grid.Row="3"
-      Grid.RowSpan="2"
-      Grid.Column="3"
-      Width="75"
-      Margin="5,5,5,5"
-      HorizontalAlignment="Stretch"
-      VerticalAlignment="Stretch"
-      Command="{Binding SaveCarCommand}"
-      Content="{Binding CarExists, Converter={StaticResource BoolToButtonTextConverter}, UpdateSourceTrigger=PropertyChanged}"
-      ToolTip="{Binding CarExists, Converter={StaticResource BoolToButtonToolTipTextConverter}, UpdateSourceTrigger=PropertyChanged}" />
-  </Grid>
+        <Button
+            Grid.Row="3"
+            Grid.RowSpan="2"
+            Grid.Column="3"
+            Width="75"
+            Margin="5,5,5,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Command="{Binding SaveCarCommand}"
+            Content="{Binding CarExists, Converter={StaticResource BoolToButtonTextConverter}, UpdateSourceTrigger=PropertyChanged}"
+            ToolTip="{Binding CarExists, Converter={StaticResource BoolToButtonToolTipTextConverter}, UpdateSourceTrigger=PropertyChanged}" />
+    </Grid>
 
 </UserControl>

@@ -1,9 +1,103 @@
-﻿<UserControl x:Class="FuelLog.UI.Wpf.Module.Views.FillupList"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:prism="http://prismlibrary.com/"             
-             prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid>
-            
+﻿<UserControl
+    x:Class="FuelLog.UI.Wpf.Module.Views.FillupList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:properties="clr-namespace:FuelLog.UI.Wpf.Module.Properties"
+    xmlns:views="clr-namespace:FuelLog.UI.Wpf.Module.Views"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Button
+                    Grid.Column="0"
+                    Width="78"
+                    Margin="0,2,0,2"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Command="{Binding DeleteCarsCommand}"
+                    Content="{x:Static properties:CarList.Delete}"
+                    ToolTip="{x:Static properties:CarList.DeleteInfo}" />
+                <Separator Margin="6,2,6,2" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            </StackPanel>
+            <Label
+                Grid.Column="1"
+                Margin="0,2,0,2"
+                Content="{x:Static properties:CarList.SearchCar}" />
+            <ComboBox
+                x:Name="Cars"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Margin="0,2,5,2"
+                DisplayMemberPath="FullName"
+                ItemsSource="{Binding Cars}"
+                SelectedItem="{Binding SelectedItem}"
+                SelectedIndex="{Binding SelectedCar}">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="SelectionChanged">
+                        <behaviors:InvokeCommandAction Command="{Binding GetFillupsCommand}" />
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+            </ComboBox>
+            <!--<TextBox
+                Grid.Column="2"
+                Margin="0,2,0,2"
+                VerticalContentAlignment="Center"
+                Background="White"
+                Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="TextChanged">
+                        <behaviors:InvokeCommandAction Command="{Binding SearchCommand}" />
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+            </TextBox>-->
+            <StackPanel
+                Grid.Column="3"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <Label HorizontalAlignment="Right" Content="Count:" />
+                <Label Content="{Binding Cars.Count}" />
+            </StackPanel>
+        </Grid>
+        <DataGrid
+            x:Name="componentGrid"
+            Grid.Row="1"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            HorizontalScrollBarVisibility="Auto"
+            ItemsSource="{Binding Fillups, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectedItem}">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGridCheckBoxColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <CheckBox
+                                Content="{x:Static properties:FillupList.SelectAll}"
+                                IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=views:FillupList}, Path=DataContext.AllSelected}"
+                                ToolTip="{x:Static properties:FillupList.CheckboxInfo}" />
+                        </DataTemplate>
+                    </DataGridCheckBoxColumn.HeaderTemplate>
+                </DataGridCheckBoxColumn>
+                <DataGridTextColumn Binding="{Binding Id}" Header="{x:Static properties:FillupList.FillupId}" />
+                <DataGridTextColumn Binding="{Binding CarId}" Header="{x:Static properties:FillupList.CarId}" />
+                <DataGridTextColumn Binding="{Binding Date}" Header="{x:Static properties:FillupList.Date}" />
+                <DataGridTextColumn Binding="{Binding Odometer}" Header="{x:Static properties:FillupList.Odometer}" />
+                <DataGridTextColumn Binding="{Binding Amount}" Header="{x:Static properties:FillupList.Amount}" />
+                <DataGridTextColumn Binding="{Binding VolumePrice}" Header="{x:Static properties:FillupList.VolumePrice}" />
+                <DataGridTextColumn Binding="{Binding Note}" Header="{x:Static properties:FillupList.Note}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

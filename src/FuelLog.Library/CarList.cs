@@ -11,24 +11,16 @@ namespace FuelLog.Library {
   public class CarList : ReadOnlyListBase<CarList, CarInfo> {
     #region Factory Methods
 
-    public static void GetCars(EventHandler<DataPortalResult<CarList>> callback) {
-      DataPortal.BeginFetch<CarList>(callback);
-    }
-
     public static CarList GetCars() {
       return DataPortal.Fetch<CarList>();
     }
-
-    //public static CarInfo GetCar(int carId)
-    //{
-    //    return DataPortal.Fetch<CarInfo>(carId);
-    //}
 
     #endregion
 
     #region Data Access
 
-    private void DataPortal_Fetch() {
+    [Fetch]
+    private void Fetch() {
       var rlce = RaiseListChangedEvents;
       RaiseListChangedEvents = false;
       IsReadOnly = false;

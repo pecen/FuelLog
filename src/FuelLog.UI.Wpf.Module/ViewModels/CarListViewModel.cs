@@ -27,10 +27,10 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
       set { SetProperty(ref _columns, value); }
     }
 
-    private int _selectedColumns;
+    private int _selectedColumn;
     public int SelectedColumn {
-      get { return _selectedColumns; }
-      set { SetProperty(ref _selectedColumns, value); }
+      get { return _selectedColumn; }
+      set { SetProperty(ref _selectedColumn, value); }
     }
 
     private string _searchText;
@@ -228,14 +228,14 @@ namespace FuelLog.UI.Wpf.Module.ViewModels {
 
         // this can of course be simplified
         if (AllSelected == true) {
-          foreach (var component in Cars) {
-            component.IsChecked = true;
+          foreach (var car in Cars) {
+            car.IsChecked = true;
           }
           HasCheckedItem = true;
         }
         else if (AllSelected == false) {
-          foreach (var component in Cars) {
-            component.IsChecked = false;
+          foreach (var car in Cars) {
+            car.IsChecked = false;
           }
           HasCheckedItem = false;
         }

@@ -23,9 +23,11 @@ namespace FuelLog.UI.Wpf.Module {
       //_regionManager.RegisterViewWithRegion(Regions.ContentRegion.ToString(), typeof(Fillups));
       //_regionManager.RegisterViewWithRegion(Regions.ContentRegion.ToString(), typeof(AddCar));
 
-      regionManager.RegisterViewWithRegion(Regions.TabRegion.ToString(), typeof(AddCar));
+      regionManager.RegisterViewWithRegion(Regions.TabRegion.ToString(), typeof(FillupList));
+      regionManager.RegisterViewWithRegion(Regions.TabRegion.ToString(), typeof(AddFillup));
       regionManager.RegisterViewWithRegion(Regions.TabRegion.ToString(), typeof(CarList));
-      regionManager.RegisterViewWithRegion(Regions.TabRegion.ToString(), typeof(Fillups));
+      regionManager.RegisterViewWithRegion(Regions.TabRegion.ToString(), typeof(AddCar));
+      //regionManager.RegisterViewWithRegion(Regions.TabRegion.ToString(), typeof(Fillups));
     }
 
     public void RegisterTypes(IContainerRegistry containerRegistry) {

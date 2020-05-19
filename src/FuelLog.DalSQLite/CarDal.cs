@@ -35,10 +35,10 @@ namespace FuelLog.DalSQLite {
     public IList<int> DeleteRange(int[] ids) {
       using (var ctx = ConnectionManager<SqliteConnection>.GetManager(_dbName)) {
         List<int> failedIds = new List<int>();
+        FillupDal dal = new FillupDal();
 
         foreach (var id in ids) {
           using (var cm = ctx.Connection.CreateCommand()) {
-            FillupDal dal = new FillupDal();
             dal.DeleteFillupsForCar(id);
 
             cm.Parameters.AddWithValue("@Id", id);
@@ -62,7 +62,7 @@ namespace FuelLog.DalSQLite {
     public List<CarDto> Fetch() {
       var result = new List<CarDto>();
 
-      using (var ctx = ConnectionManager<SqliteConnection>.GetManager(_dbName))  //connectionString,false))
+      using (var ctx = ConnectionManager<SqliteConnection>.GetManager(_dbName)) 
       {
         var cm = ctx.Connection.CreateCommand();
         cm.CommandType = System.Data.CommandType.Text;
@@ -118,7 +118,29 @@ namespace FuelLog.DalSQLite {
     }
 
     public void Insert(CarDto data) {
-      throw new NotImplementedException();
+      using (var ctx = ConnectionManager<SqliteConnection>.GetManager(_dbName)) {
+        using (var cm = ctx.Connection.CreateCommand()) {
+          cm.CommandType = System.Data.CommandType.Text;
+          cm.CommandText = "Insert Into Car (Make, Model, LicensePlate, Note, DistanceUnit, VolumeUnit, ConsumptionUnit, " +
+            "CreationDate, LastModified) " +
+              "Values (@Make, @Model, @LicensePlate, @Note, @Distance, @Volume, @Consumption, @CreationDate, @LastModified)";
+          cm.Parameters.AddWithValue("@Make", data.Make);
+          cm.Parameters.AddWithValue("@Model", data.Model);
+          cm.Parameters.AddWithValue("@LicensePlate", data.LicensePlate);
+          cm.Parameters.AddWithValue("@Note", data.Note);
+          cm.Parameters.AddWithValue("@Distance", data.DistanceUnit);
+          cm.Parameters.AddWithValue("@Volume", data.VolumeUnit);
+          cm.Parameters.AddWithValue("@Consumption", data.ConsumptionUnit);
+          cm.Parameters.AddWithValue("@CreationDate", data.CreationDate);
+          cm.Parameters.AddWithValue("@LastModified", data.LastModified);
+          cm.ExecuteNonQuery();
+          cm.Parameters.Clear();
+          cm.CommandText = "Select last_insert_rowid() from Car";
+          var r = cm.ExecuteScalar();
+          var newId = int.Parse(r.ToString());
+          data.Id = newId;
+        }
+      }
     }
 
     public void Update(CarDto data) {
